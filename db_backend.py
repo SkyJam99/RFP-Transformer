@@ -10,10 +10,11 @@ print(key)
 supabase = create_client(url, key)
 
 #RFPS CRUD Operations
-def create_rfp(supabase, rfp_title, rfp_description):
+def create_rfp(supabase, rfp_title, rfp_description, rfp_full_text):
     data = {
         "rfp_title": rfp_title,
-        "rfp_description": rfp_description
+        "rfp_description": rfp_description,
+        "rfp_full_text": rfp_full_text
     }
     response = supabase.table("rfp").insert(data).execute()
     return response.data
@@ -22,10 +23,11 @@ def get_rfps(supabase):
     response = supabase.table("rfp").select("*").execute()
     return response.data
 
-def update_rfp(supabase, rfp_id, new_title, new_description):
+def update_rfp(supabase, rfp_id, new_title, new_description, new_full_text=None):
     response = supabase.table("rfp").update({
         "rfp_title": new_title,
-        "rfp_description": new_description
+        "rfp_description": new_description,
+        "rfp_full_text": new_full_text
     }).eq("rfp_id", rfp_id).execute()
     return response.data
 
@@ -52,10 +54,11 @@ def delete_requirement(supabase, req_id):
     return response.data
 
 #Proposal CRUD Operations
-def create_proposal(supabase, prop_title, rfp_id=None):
+def create_proposal(supabase, prop_title, prop_full_text, rfp_id=None):
     data = {
         "prop_title": prop_title,
-        "rfp_id": rfp_id
+        "rfp_id": rfp_id,
+        "prop_full_text": prop_full_text
     }
     response = supabase.table("proposals").insert(data).execute()
     return response.data
@@ -64,13 +67,15 @@ def get_proposals(supabase):
     response = supabase.table("proposals").select("*").execute()
     return response.data
 
-def update_proposal(supabase, prop_id, new_title=None, new_rfp_id=None):
+def update_proposal(supabase, prop_id, new_title=None, new_rfp_id=None, new_full_text=None):
     update_data = {}
     if new_title:
         update_data["prop_title"] = new_title
     if new_rfp_id is not None:  # Allow updating rfp_id to null
         update_data["rfp_id"] = new_rfp_id
-    
+    if new_full_text is not None: # Same for full_text
+        update_data["prop_full_text"] = new_full_text
+
     response = supabase.table("proposals").update(update_data).eq("prop_id", prop_id).execute()
     return response.data
 
@@ -106,7 +111,7 @@ def update_answer(supabase, answer_id, seq_order=None, answer_text=None, approve
         update_data["prop_id"] = prop_id
     if req_id is not None:
         update_data["req_id"] = req_id
-    
+
     response = supabase.table("answers").update(update_data).eq("answer_id", answer_id).execute()
     return response.data
 
@@ -145,7 +150,7 @@ def update_lookup(supabase, look_id, req_text=None, answer_text=None, keywords=N
         update_data["req_id"] = req_id
     if answer_id is not None:
         update_data["answer_id"] = answer_id
-    
+
     response = supabase.table("lookup").update(update_data).eq("look_id", look_id).execute()
     return response.data
 
@@ -157,7 +162,7 @@ def delete_lookup(supabase, look_id):
 def test_crud_operations(supabase):
      # 1. Create a new RFP
     print("Creating a new RFP...")
-    created = create_rfp(supabase, "Test RFP", "This is a test RFP description")
+    created = create_rfp(supabase, "Test RFP", "This is a test RFP description", "This is a test RFP full text.")
     assert created, "Create operation failed.\n"
     print(f"Created: {created}")
 
@@ -170,7 +175,7 @@ def test_crud_operations(supabase):
     # 3. Update an RFP
     rfp_id = created[0]['rfp_id']  # Using the ID of the created entry
     print(f"Updating RFP with ID {rfp_id}...")
-    updated = update_rfp(supabase, rfp_id, "Updated RFP Title", "Updated RFP Description")
+    updated = update_rfp(supabase, rfp_id, "Updated RFP Title", "Updated RFP Description", "Updated RFP Full Text")
     assert updated, "Update operation failed.\n"
     print(f"Updated: {updated}")
 
@@ -179,8 +184,8 @@ def test_crud_operations(supabase):
     deleted = delete_rfp(supabase, rfp_id)
     assert deleted, "Delete operation failed.\n"
     print(f"Deleted: {deleted}")
-    
-    
+
+
     # 1. Create a new requirement
     print("Creating a new requirement...")
     created = create_requirement(supabase, rfp_id=None, req_text="Test requirement", category="General")
@@ -208,7 +213,7 @@ def test_crud_operations(supabase):
 
     # 1. Create a new proposal with no rfp_id (null)
     print("Creating a new proposal...")
-    created = create_proposal(supabase, "Test Proposal")
+    created = create_proposal(supabase, "Test Proposal", "This is a test proposal full text.")
     assert created, "Create operation failed.\n"
     print(f"Created: {created}")
 
@@ -221,7 +226,7 @@ def test_crud_operations(supabase):
     # 3. Update the proposal
     prop_id = created[0]['prop_id']  # Using the ID of the created entry
     print(f"Updating proposal with ID {prop_id}...")
-    updated = update_proposal(supabase, prop_id, "Updated Proposal Title", new_rfp_id=None)
+    updated = update_proposal(supabase, prop_id, "Updated Proposal Title", new_rfp_id=None, new_full_text="Updated Proposal Full Text")
     assert updated, "Update operation failed.\n"
     print(f"Updated: {updated}")
 
