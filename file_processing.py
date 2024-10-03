@@ -1,5 +1,23 @@
 import os
 import db_backend
+import mammoth
+import markdownify
+
+#Convert docx to html (so that the HTML can be converted to markdown)
+def convert_docx_to_html(docx_path):
+    with open(docx_path, "rb") as docx_file:
+        result = mammoth.convert_to_html(docx_file)
+        html = result.value
+        messages = result.messages
+        print(messages)
+    return html
+
+def convert_html_to_markdown(html_path):
+    with open(html_path, "r") as html_file:
+        html = html_file.read()
+    
+    markdown = markdownify.markdownify(html)
+    return markdown
 
 def add_proposal_from_file(supabase, filepath, prop_title, rfp_id=None):
     try:
@@ -24,5 +42,14 @@ def add_proposal_from_file(supabase, filepath, prop_title, rfp_id=None):
         return f"An error occurred: {e}"
     
 
-    # Testing the function
-    
+# Testing the function
+supabase = db_backend.get_supabase_connection()
+filepath = './test_proposal.docx'
+prop_title = 'Test Proposal'
+
+#prop_html = convert_docx_to_html('./test_proposal.docx')
+#print(prop_html)
+
+prop_md = convert_html_to_markdown('./test_proposal.html')
+print(prop_md)
+#add_proposal_from_file(supabase, filepath, prop_title)    

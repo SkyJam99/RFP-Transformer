@@ -4,10 +4,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-url = "https://owhhdcqqiewmkaqahbub.supabase.co"
-key = os.getenv("SB_API_KEY")
-print(key)
-supabase = create_client(url, key)
+
+def get_supabase_connection():
+    url = "https://owhhdcqqiewmkaqahbub.supabase.co"
+    key = os.getenv("SB_API_KEY")
+    print(key)
+    supabase = create_client(url, key)
+    return supabase
+
 
 #RFPS CRUD Operations
 def create_rfp(supabase, rfp_title, rfp_description, rfp_full_text):
@@ -289,4 +293,4 @@ def test_crud_operations(supabase):
     print(f"\n------------------------\nTests completed successfully.\n------------------------\n")
 
 # Run the test
-test_crud_operations(supabase)
+#test_crud_operations(get_supabase_connection())
