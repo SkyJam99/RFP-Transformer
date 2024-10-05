@@ -80,6 +80,14 @@ def add_proposal_from_file(supabase, filepath, prop_title, rfp_id=None):
         return f"An error occurred: {e}"
     
 
+def chunk_text(text, chunk_length=1000):
+    chunks = []
+    # Split the text into chunks of the specified length
+    for i in range(0, len(text), chunk_length):
+        chunk = text[i:i + chunk_length]
+        chunks.append(chunk)
+    return chunks
+
 # Testing the function
 supabase = db_backend.get_supabase_connection()
 filepath = './test_proposal.html'
