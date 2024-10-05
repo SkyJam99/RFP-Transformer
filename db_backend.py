@@ -8,7 +8,7 @@ load_dotenv()
 def get_supabase_connection():
     url = "https://owhhdcqqiewmkaqahbub.supabase.co"
     key = os.getenv("SB_API_KEY")
-    print(key)
+    #print(key)
     supabase = create_client(url, key)
     return supabase
 
