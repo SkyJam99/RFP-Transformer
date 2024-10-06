@@ -1,27 +1,135 @@
 [
     {
-        "look_id": 11,
+        "look_id": 229,
+        "keywords": [
+            "innovative",
+            "cost-effective",
+            "commitment",
+            "safety",
+            "on time",
+            "on budget"
+        ]
+    },
+    {
+        "look_id": 230,
+        "keywords": [
+            "project team",
+            "Travel Time System",
+            "Queued and Stopped Vehicle Advisory System",
+            "Highway 405"
+        ]
+    },
+    {
+        "look_id": 231,
+        "keywords": [
+            "labour force",
+            "skills",
+            "expertise",
+            "selection"
+        ]
+    },
+    {
+        "look_id": 232,
+        "keywords": [
+            "ninety years",
+            "electrical contractor",
+            "forty years",
+            "Utility Sector",
+            "Maintenance contracts"
+        ]
+    },
+    {
+        "look_id": 233,
+        "keywords": [
+            "equipment",
+            "systems",
+            "maximum efficiency"
+        ]
+    },
+    {
+        "look_id": 234,
+        "keywords": [
+            "single-source",
+            "accountability",
+            "services",
+            "prompt",
+            "effective"
+        ]
+    },
+    {
+        "look_id": 235,
+        "keywords": [
+            "health",
+            "safety",
+            "environment",
+            "commitment",
+            "work environment"
+        ]
+    },
+    {
+        "look_id": 236,
+        "keywords": [
+            "Project Team",
+            "B&M",
+            "Transnomis",
+            "LEA",
+            "Stinson ITS"
+        ]
+    },
+    {
+        "look_id": 237,
+        "keywords": [
+            "Transnomis",
+            "technology company",
+            "road information management",
+            "communications solutions"
+        ]
+    },
+    {
+        "look_id": 238,
+        "keywords": [
+            "LEA Consulting",
+            "Canadian consulting firm",
+            "planning",
+            "engineering design",
+            "urban infrastructure"
+        ]
+    },
+    {
+        "look_id": 239,
+        "keywords": [
+            "Stinson ITS",
+            "Manufacturer",
+            "Distributor",
+            "System Integrator",
+            "Intelligent Transportation Systems",
+            "Turn-Key Solutions"
+        ]
+    },
+    {
+        "look_id": 240,
+        "keywords": [
+            "design",
+            "construction",
+            "operation",
+            "maintenance",
+            "Travel Time System",
+            "MTO Central Region"
+        ]
+    },
+    {
+        "look_id": 241,
         "keywords": [
             "Travel Time System",
             "design",
             "construction",
             "operation",
             "maintenance",
-            "Ontario"
+            "MTO Central Region"
         ]
     },
     {
-        "look_id": 12,
-        "keywords": [
-            "commitment",
-            "innovative",
-            "cost-effective",
-            "safety",
-            "client satisfaction"
-        ]
-    },
-    {
-        "look_id": 13,
+        "look_id": 242,
         "keywords": [
             "Operation",
             "Maintenance",
@@ -31,52 +139,134 @@
         ]
     },
     {
-        "look_id": 14,
+        "look_id": 243,
+        "keywords": [
+            "coordinate",
+            "work",
+            "Contractors",
+            "contract limits"
+        ]
+    },
+    {
+        "look_id": 244,
+        "keywords": [
+            "Travel time data",
+            "partner agencies",
+            "collaborate",
+            "TT destinations"
+        ]
+    },
+    {
+        "look_id": 245,
+        "keywords": [
+            "MTO",
+            "travel time information",
+            "VMS",
+            "existing TT System",
+            "Go-Live"
+        ]
+    },
+    {
+        "look_id": 286,
+        "keywords": [
+            "dashboard",
+            "map view"
+        ]
+    },
+    {
+        "look_id": 246,
         "keywords": [
             "critical path schedule",
             "contract period",
-            "project management"
+            "schedule updates",
+            "MTO"
         ]
     },
     {
-        "look_id": 15,
-        "keywords": [
-            "compliance",
-            "local health guidelines",
-            "safety",
-            "construction"
-        ]
-    },
-    {
-        "look_id": 16,
+        "look_id": 247,
         "keywords": [
             "job cost control",
             "Oracle",
             "JD Edwards",
             "Project Manager",
-            "financials"
+            "live project financials"
         ]
     },
     {
-        "look_id": 17,
+        "look_id": 248,
         "keywords": [
-            "change management",
-            "JDE",
-            "process",
-            "projects"
+            "external power disconnect",
+            "Bluetooth equipment",
+            "isolation"
         ]
     },
     {
-        "look_id": 18,
+        "look_id": 249,
+        "keywords": [
+            "OPSS 609",
+            "standards",
+            "RFP",
+            "electrical grounding equipment"
+        ]
+    },
+    {
+        "look_id": 250,
+        "keywords": [
+            "TT System",
+            "Graphical User Interface",
+            "GUI",
+            "MTO users"
+        ]
+    },
+    {
+        "look_id": 251,
+        "keywords": [
+            "Test Plan",
+            "Pre-Installation Testing",
+            "Proof of Performance",
+            "System Integration Testing",
+            "Pilot Demonstration Testing",
+            "System Acceptance Testing"
+        ]
+    },
+    {
+        "look_id": 252,
+        "keywords": [
+            "reporting structure",
+            "Project Manager",
+            "Project Foreman",
+            "project parties"
+        ]
+    },
+    {
+        "look_id": 253,
+        "keywords": [
+            "stakeholder plan",
+            "identifies",
+            "goals",
+            "work methods",
+            "project scope risks"
+        ]
+    },
+    {
+        "look_id": 254,
         "keywords": [
             "Project Manager",
             "communication",
             "stakeholders",
-            "relationships"
+            "maintaining relationships"
         ]
     },
     {
-        "look_id": 19,
+        "look_id": 255,
+        "keywords": [
+            "field crews",
+            "emergencies",
+            "24 hr/7 Day/365 Call Centre"
+        ]
+    },
+    {
+        "look_id": 256,
         "keywords": [
             "on-time",
             "on-budget",
@@ -85,871 +275,161 @@
         ]
     },
     {
-        "look_id": 20,
+        "look_id": 257,
         "keywords": [
-            "project manager",
             "single point of contact",
+            "project manager",
             "communication"
         ]
     },
     {
-        "look_id": 21,
+        "look_id": 258,
         "keywords": [
             "Quality Assurance",
             "Quality Control",
-            "Policy",
             "Quality Management"
         ]
     },
     {
-        "look_id": 22,
+        "look_id": 259,
         "keywords": [
             "ITS equipment",
-            "BT readers",
-            "communication infrastructure",
+            "testing",
+            "installation"
+        ]
+    },
+    {
+        "look_id": 260,
+        "keywords": [
+            "GIT",
+            "revision control",
+            "software development"
+        ]
+    },
+    {
+        "look_id": 261,
+        "keywords": [
+            "Continuous Integration",
+            "CI",
+            "software development"
+        ]
+    },
+    {
+        "look_id": 262,
+        "keywords": [
+            "System Testing",
+            "software errors",
+            "risk mitigation"
+        ]
+    },
+    {
+        "look_id": 263,
+        "keywords": [
+            "System Testing",
+            "MTO processes",
+            "Test plan",
+            "software errors"
+        ]
+    },
+    {
+        "look_id": 264,
+        "keywords": [
+            "PIT Testing",
+            "POP Testing",
+            "ATMS",
+            "installation"
+        ]
+    },
+    {
+        "look_id": 265,
+        "keywords": [
+            "SIT",
+            "System Integration Testing",
+            "operational",
             "testing"
         ]
     },
     {
-        "look_id": 23,
-        "keywords": [
-            "revision control",
-            "deployment",
-            "faulty changes"
-        ]
-    },
-    {
-        "look_id": 24,
-        "keywords": [
-            "critical system functions",
-            "reviewed",
-            "security functions"
-        ]
-    },
-    {
-        "look_id": 25,
-        "keywords": [
-            "test server",
-            "data",
-            "integrated devices",
-            "open data sources"
-        ]
-    },
-    {
-        "look_id": 26,
-        "keywords": [
-            "Comprehensive System Testing",
-            "software errors",
-            "issues"
-        ]
-    },
-    {
-        "look_id": 27,
-        "keywords": [
-            "commitment",
-            "innovative",
-            "cost-effective",
-            "on time",
-            "within budget",
-            "safety",
-            "client satisfaction"
-        ]
-    },
-    {
-        "look_id": 28,
+        "look_id": 266,
         "keywords": [
             "modal transportation",
-            "safe",
-            "efficient",
             "traffic movement",
-            "public",
             "highways",
             "roadways"
         ]
     },
     {
-        "look_id": 29,
+        "look_id": 267,
         "keywords": [
             "Public Protection",
             "Traffic Management",
             "traffic flow",
-            "traffic control plans",
-            "protection"
+            "safety"
         ]
     },
     {
-        "look_id": 30,
+        "look_id": 268,
         "keywords": [
-            "occupational health",
-            "safety",
-            "Nobody Gets Hurt",
-            "commitment"
+            "Occupational Health",
+            "Safety",
+            "workplace vision"
         ]
     },
     {
-        "look_id": 31,
+        "look_id": 294,
         "keywords": [
-            "mandatory safety training",
-            "refresher courses",
-            "proof of training",
-            "field crew"
+            "raw data",
+            "Bluetooth Readers",
+            "Solution capability"
         ]
     },
     {
-        "look_id": 32,
+        "look_id": 269,
+        "keywords": [
+            "Travel Time system",
+            "Bluetooth",
+            "WiFi",
+            "data transmission"
+        ]
+    },
+    {
+        "look_id": 270,
         "keywords": [
             "sensors",
             "MAC addresses",
             "Bluetooth",
-            "Wi-Fi",
-            "detection radius"
+            "Wi-Fi"
         ]
     },
     {
-        "look_id": 33,
+        "look_id": 271,
         "keywords": [
             "Stinson AIS",
-            "versatile sensor",
             "Bluetooth",
-            "WiFi detection"
+            "WiFi",
+            "sensor capabilities"
         ]
     },
     {
-        "look_id": 34,
+        "look_id": 272,
         "keywords": [
-            "solar system",
-            "12 days autonomy",
-            "cloudy conditions",
-            "snow"
-        ]
-    },
-    {
-        "look_id": 35,
-        "keywords": [
-            "hosting",
-            "OVH",
-            "internet hosting",
-            "data centers",
-            "servers"
-        ]
-    },
-    {
-        "look_id": 36,
-        "keywords": [
-            "data collection",
-            "Bluetooth Readers",
-            "raw data"
-        ]
-    },
-    {
-        "look_id": 37,
-        "keywords": [
-            "data processing",
-            "travel time information",
-            "MTO formats"
-        ]
-    },
-    {
-        "look_id": 38,
-        "keywords": [
-            "travel time information",
-            "secured data feeds"
-        ]
-    },
-    {
-        "look_id": 39,
-        "keywords": [
-            "data feeds",
-            "MTO",
-            "secure transmission"
-        ]
-    },
-    {
-        "look_id": 40,
-        "keywords": [
-            "public API",
-            "travel time information",
-            "data sharing"
-        ]
-    },
-    {
-        "look_id": 41,
-        "keywords": [
-            "metric system",
-            "system configuration"
-        ]
-    },
-    {
-        "look_id": 42,
-        "keywords": [
-            "scalability",
-            "TT System",
-            "expansion"
-        ]
-    },
-    {
-        "look_id": 43,
-        "keywords": [
-            "real-time data",
-            "continuous operation",
-            "travel time"
-        ]
-    },
-    {
-        "look_id": 44,
-        "keywords": [
-            "uptime",
-            "99%",
-            "maintenance"
-        ]
-    },
-    {
-        "look_id": 45,
-        "keywords": [
-            "backup",
-            "redundancy",
-            "system failure"
-        ]
-    },
-    {
-        "look_id": 46,
-        "keywords": [
-            "remote access",
-            "TT System",
-            "GUI",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 47,
-        "keywords": [
-            "GUI",
-            "compatibility",
-            "web browsers"
-        ]
-    },
-    {
-        "look_id": 48,
-        "keywords": [
-            "GUI",
-            "modules",
-            "Travel Time Dashboard",
-            "Historical Data Portal"
-        ]
-    },
-    {
-        "look_id": 49,
-        "keywords": [
-            "GUI",
-            "concurrent users",
-            "operations"
-        ]
-    },
-    {
-        "look_id": 50,
-        "keywords": [
-            "AODA",
-            "accessibility",
-            "GUI"
-        ]
-    },
-    {
-        "look_id": 51,
-        "keywords": [
-            "WCAG",
-            "accessibility",
-            "GUI"
-        ]
-    },
-    {
-        "look_id": 52,
-        "keywords": [
-            "GO ITS",
-            "security requirements",
-            "TT System"
-        ]
-    },
-    {
-        "look_id": 53,
-        "keywords": [
-            "privacy",
-            "Freedom of Information",
-            "guidelines"
-        ]
-    },
-    {
-        "look_id": 54,
-        "keywords": [
-            "access limitation",
-            "authorized individuals",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 55,
-        "keywords": [
-            "user access",
-            "privileges",
-            "system features"
-        ]
-    },
-    {
-        "look_id": 56,
-        "keywords": [
-            "user access",
-            "privileges",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 57,
-        "keywords": [
-            "user access",
-            "privileges",
-            "categorization"
-        ]
-    },
-    {
-        "look_id": 58,
-        "keywords": [
-            "IPSec VPN",
-            "collaboration",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 59,
-        "keywords": [
-            "VPN",
-            "secure channels",
-            "data feeds"
-        ]
-    },
-    {
-        "look_id": 60,
-        "keywords": [
-            "Bluetooth reader",
-            "unique ID",
-            "identification"
-        ]
-    },
-    {
-        "look_id": 61,
-        "keywords": [
-            "VMS",
-            "unique ID",
-            "identification"
-        ]
-    },
-    {
-        "look_id": 62,
-        "keywords": [
-            "Bluetooth reader",
-            "logging",
-            "failures"
-        ]
-    },
-    {
-        "look_id": 63,
-        "keywords": [
-            "data transfer",
-            "Bluetooth reader",
-            "communication"
-        ]
-    },
-    {
-        "look_id": 64,
-        "keywords": [
-            "Bluetooth reader",
-            "configuration",
-            "settings"
-        ]
-    },
-    {
-        "look_id": 65,
-        "keywords": [
-            "Bluetooth device",
-            "failure notification",
+            "ease of installation",
+            "Stinson AIS",
             "configuration"
         ]
     },
     {
-        "look_id": 66,
+        "look_id": 273,
         "keywords": [
-            "Bluetooth device",
-            "configuration changes",
-            "recording"
+            "hosting",
+            "OVH",
+            "certifications",
+            "data centers",
+            "internet hosting"
         ]
     },
     {
-        "look_id": 67,
-        "keywords": [
-            "MAC IDs",
-            "encryption",
-            "privacy"
-        ]
-    },
-    {
-        "look_id": 68,
-        "keywords": [
-            "data collection",
-            "Bluetooth Readers",
-            "contract"
-        ]
-    },
-    {
-        "look_id": 69,
-        "keywords": [
-            "data processing",
-            "travel time information",
-            "maximum time"
-        ]
-    },
-    {
-        "look_id": 70,
-        "keywords": [
-            "data processing",
-            "travel time information",
-            "support"
-        ]
-    },
-    {
-        "look_id": 71,
-        "keywords": [
-            "travel time",
-            "route",
-            "calculation"
-        ]
-    },
-    {
-        "look_id": 72,
-        "keywords": [
-            "infill",
-            "travel time information",
-            "Bluetooth reader"
-        ]
-    },
-    {
-        "look_id": 73,
-        "keywords": [
-            "infill",
-            "travel time information",
-            "Bluetooth reader"
-        ]
-    },
-    {
-        "look_id": 74,
-        "keywords": [
-            "infill",
-            "travel time information",
-            "Bluetooth reader"
-        ]
-    },
-    {
-        "look_id": 75,
-        "keywords": [
-            "data filtering",
-            "anomalies",
-            "statistical methods"
-        ]
-    },
-    {
-        "look_id": 76,
-        "keywords": [
-            "processing statuses",
-            "recording",
-            "post-mortem analysis"
-        ]
-    },
-    {
-        "look_id": 77,
-        "keywords": [
-            "data feeds",
-            "real-time",
-            "secured"
-        ]
-    },
-    {
-        "look_id": 78,
-        "keywords": [
-            "data feeds",
-            "MTO specifications",
-            "compliance"
-        ]
-    },
-    {
-        "look_id": 79,
-        "keywords": [
-            "link-based",
-            "travel time",
-            "XML format"
-        ]
-    },
-    {
-        "look_id": 80,
-        "keywords": [
-            "link-based",
-            "travel time",
-            "UTF-8"
-        ]
-    },
-    {
-        "look_id": 81,
-        "keywords": [
-            "route-based",
-            "travel time",
-            "XML format"
-        ]
-    },
-    {
-        "look_id": 82,
-        "keywords": [
-            "route-based",
-            "travel time",
-            "UTF-8"
-        ]
-    },
-    {
-        "look_id": 83,
-        "keywords": [
-            "sign-based",
-            "travel time message",
-            "XML format"
-        ]
-    },
-    {
-        "look_id": 84,
-        "keywords": [
-            "sign-based",
-            "travel time message",
-            "UTF-8"
-        ]
-    },
-    {
-        "look_id": 85,
-        "keywords": [
-            "data timeout",
-            "travel time measurement",
-            "real-time"
-        ]
-    },
-    {
-        "look_id": 86,
-        "keywords": [
-            "data timeout",
-            "configurable",
-            "traffic patterns"
-        ]
-    },
-    {
-        "look_id": 87,
-        "keywords": [
-            "data timeout",
-            "default limit",
-            "two minutes"
-        ]
-    },
-    {
-        "look_id": 88,
-        "keywords": [
-            "VMS message",
-            "validation",
-            "time period"
-        ]
-    },
-    {
-        "look_id": 89,
-        "keywords": [
-            "configurable",
-            "time period",
-            "VMS"
-        ]
-    },
-    {
-        "look_id": 90,
-        "keywords": [
-            "slow traffic condition",
-            "real-time",
-            "MTO definition"
-        ]
-    },
-    {
-        "look_id": 91,
-        "keywords": [
-            "slow traffic condition",
-            "configurable",
-            "Solution"
-        ]
-    },
-    {
-        "look_id": 92,
-        "keywords": [
-            "slow traffic",
-            "definition",
-            "free-flow travel time"
-        ]
-    },
-    {
-        "look_id": 93,
-        "keywords": [
-            "refresh rate",
-            "link-based",
-            "data feed"
-        ]
-    },
-    {
-        "look_id": 94,
-        "keywords": [
-            "refresh rate",
-            "route-based",
-            "data feed"
-        ]
-    },
-    {
-        "look_id": 95,
-        "keywords": [
-            "refresh rate",
-            "sign-based",
-            "data feed"
-        ]
-    },
-    {
-        "look_id": 96,
-        "keywords": [
-            "data hosting",
-            "cloud-based",
-            "Canada"
-        ]
-    },
-    {
-        "look_id": 97,
-        "keywords": [
-            "historical data",
-            "storage",
-            "accessibility"
-        ]
-    },
-    {
-        "look_id": 98,
-        "keywords": [
-            "aggregation period",
-            "historical data",
-            "five minutes"
-        ]
-    },
-    {
-        "look_id": 99,
-        "keywords": [
-            "stored data",
-            "aggregated travel time",
-            "minimum"
-        ]
-    },
-    {
-        "look_id": 100,
-        "keywords": [
-            "VMS message",
-            "archives",
-            "stored data"
-        ]
-    },
-    {
-        "look_id": 101,
-        "keywords": [
-            "historical data",
-            "auditing",
-            "Bluetooth Readers"
-        ]
-    },
-    {
-        "look_id": 102,
-        "keywords": [
-            "historical data",
-            "access",
-            "GUI"
-        ]
-    },
-    {
-        "look_id": 103,
-        "keywords": [
-            "historical data",
-            "portal",
-            "MTO users",
-            "remote access"
-        ]
-    },
-    {
-        "look_id": 104,
-        "keywords": [
-            "historical data",
-            "MTO users",
-            "accessibility",
-            "travel time",
-            "publishing"
-        ]
-    },
-    {
-        "look_id": 105,
-        "keywords": [
-            "VMS messages",
-            "queries",
-            "field hardware",
-            "auditing",
-            "accuracy checking"
-        ]
-    },
-    {
-        "look_id": 106,
-        "keywords": [
-            "travel times",
-            "routes",
-            "query",
-            "specified time period"
-        ]
-    },
-    {
-        "look_id": 107,
-        "keywords": [
-            "travel times",
-            "routes",
-            "query",
-            "recurring time periods",
-            "specific days"
-        ]
-    },
-    {
-        "look_id": 108,
-        "keywords": [
-            "link travel time",
-            "query",
-            "check-in",
-            "check-out",
-            "Bluetooth pair",
-            "travel time",
-            "encrypted MAC ID"
-        ]
-    },
-    {
-        "look_id": 109,
-        "keywords": [
-            "route",
-            "link",
-            "travel time",
-            "query",
-            "average",
-            "maximum",
-            "minimum"
-        ]
-    },
-    {
-        "look_id": 110,
-        "keywords": [
-            "route",
-            "link",
-            "travel time",
-            "query",
-            "matched records",
-            "unmatched records"
-        ]
-    },
-    {
-        "look_id": 111,
-        "keywords": [
-            "route",
-            "link",
-            "travel time",
-            "query",
-            "MTO-assigned IDs",
-            "origin",
-            "destination"
-        ]
-    },
-    {
-        "look_id": 112,
-        "keywords": [
-            "route",
-            "link",
-            "travel time",
-            "query",
-            "MTO-assigned ID",
-            "selected routes",
-            "links"
-        ]
-    },
-    {
-        "look_id": 113,
-        "keywords": [
-            "route",
-            "link",
-            "travel time",
-            "query",
-            "MTO-assigned VMS ID",
-            "sign"
-        ]
-    },
-    {
-        "look_id": 114,
-        "keywords": [
-            "data portal",
-            "query",
-            "historical data",
-            "Bluetooth reader",
-            "VMS",
-            "MTO-assigned ID"
-        ]
-    },
-    {
-        "look_id": 115,
-        "keywords": [
-            "Bluetooth Readers",
-            "queries",
-            "encrypted MAC ID",
-            "check-in",
-            "check-out",
-            "timestamps"
-        ]
-    },
-    {
-        "look_id": 116,
-        "keywords": [
-            "MTO",
-            "data ownership",
-            "aggregated data",
-            "archived data"
-        ]
-    },
-    {
-        "look_id": 117,
-        "keywords": [
-            "Proponent",
-            "data dump",
-            "MTO",
-            "frequency",
-            "processed travel time data",
-            "Central Region"
-        ]
-    },
-    {
-        "look_id": 118,
-        "keywords": [
-            "GUI",
-            "dashboard",
-            "MTO",
-            "real-time travel time",
-            "hardware",
-            "Bluetooth reader",
-            "VMS"
-        ]
-    },
-    {
-        "look_id": 119,
-        "keywords": [
-            "dashboard",
-            "map view"
-        ]
-    },
-    {
-        "look_id": 120,
+        "look_id": 287,
         "keywords": [
             "dashboard",
             "travel time index",
@@ -959,425 +439,564 @@
         ]
     },
     {
-        "look_id": 121,
+        "look_id": 274,
         "keywords": [
-            "dashboard",
-            "buffer time index",
-            "BTI",
-            "links",
-            "routes"
+            "Transnomis Solutions",
+            "dedicated servers",
+            "OVH",
+            "fail-over",
+            "live streaming replication"
         ]
     },
     {
-        "look_id": 122,
+        "look_id": 275,
         "keywords": [
-            "dashboard",
-            "matched records",
-            "encrypted MAC ID",
-            "link",
-            "route",
-            "time period"
-        ]
-    },
-    {
-        "look_id": 123,
-        "keywords": [
-            "dashboard",
-            "table",
-            "graphical view",
-            "VMS",
-            "route destinations",
-            "travel time",
-            "date/time stamp"
-        ]
-    },
-    {
-        "look_id": 124,
-        "keywords": [
-            "dashboard",
-            "table",
-            "graphical view",
-            "historical route travel times",
-            "messages"
-        ]
-    },
-    {
-        "look_id": 125,
-        "keywords": [
-            "dashboard",
-            "table",
-            "graphical view",
-            "tabulate",
-            "travel time routes",
+            "data collection",
             "Bluetooth Readers",
-            "historical travel times"
-        ]
-    },
-    {
-        "look_id": 126,
-        "keywords": [
-            "dashboard",
-            "table",
-            "graphical view",
-            "tabulate",
-            "Bluetooth Readers",
-            "routes",
-            "real-time travel times",
-            "historical travel times"
-        ]
-    },
-    {
-        "look_id": 127,
-        "keywords": [
-            "dashboard",
-            "base map",
-            "up-to-date",
-            "Google Maps",
-            "Bing Maps"
-        ]
-    },
-    {
-        "look_id": 128,
-        "keywords": [
-            "base map",
-            "updated",
-            "annually",
-            "new section",
-            "highway",
-            "MTO jurisdiction"
-        ]
-    },
-    {
-        "look_id": 129,
-        "keywords": [
             "Proponent",
-            "responsible",
-            "obtaining",
-            "renewing",
-            "map license"
+            "contract"
         ]
     },
     {
-        "look_id": 130,
+        "look_id": 276,
         "keywords": [
-            "dashboard",
-            "map",
-            "display",
-            "travel times",
-            "coloured lines",
-            "roadways"
+            "data processing",
+            "travel time information",
+            "requirements"
         ]
     },
     {
-        "look_id": 131,
+        "look_id": 277,
         "keywords": [
-            "dashboard",
-            "map view",
-            "default",
-            "MTO Central Region",
-            "zoom",
-            "focus"
+            "data hosting",
+            "cloud-based solution",
+            "Canada",
+            "MTO"
         ]
     },
     {
-        "look_id": 132,
+        "look_id": 278,
         "keywords": [
-            "dashboard",
-            "map",
-            "option",
-            "individual municipalities",
-            "Ontario"
+            "historical data",
+            "storage",
+            "auditing",
+            "Bluetooth Readers"
         ]
     },
     {
-        "look_id": 133,
+        "look_id": 279,
         "keywords": [
-            "dashboard",
-            "map",
-            "option",
-            "other MTO Regions",
-            "full province",
-            "Ontario"
+            "historical data",
+            "access",
+            "querying",
+            "GUI",
+            "portal module"
         ]
     },
     {
-        "look_id": 134,
+        "look_id": 280,
         "keywords": [
-            "dashboard",
-            "map",
-            "zoom feature",
-            "selected area",
-            "province",
-            "Ontario"
+            "data portal",
+            "selection criteria",
+            "querying",
+            "time period",
+            "location",
+            "field hardware"
         ]
     },
     {
-        "look_id": 135,
+        "look_id": 281,
         "keywords": [
-            "dashboard",
-            "map",
-            "display",
-            "TT System components",
-            "Bluetooth Readers",
-            "VMSs",
-            "routes"
+            "historical data",
+            "portal",
+            "accessibility",
+            "MTO users"
         ]
     },
     {
-        "look_id": 136,
+        "look_id": 282,
         "keywords": [
-            "dashboard",
-            "map",
-            "default",
-            "real-time travel time",
-            "routes",
-            "data refresh"
+            "historical data",
+            "accessibility",
+            "MTO users",
+            "travel time",
+            "publishing"
         ]
     },
     {
-        "look_id": 137,
+        "look_id": 283,
         "keywords": [
-            "dashboard",
-            "map",
-            "display",
-            "historical travel time",
-            "user"
+            "data ownership",
+            "MTO",
+            "aggregated data",
+            "archived data"
         ]
     },
     {
-        "look_id": 138,
+        "look_id": 284,
+        "keywords": [
+            "data dump",
+            "MTO",
+            "frequency",
+            "data inclusion"
+        ]
+    },
+    {
+        "look_id": 285,
         "keywords": [
             "GUI",
-            "user-accessible",
-            "reporting system"
+            "dashboard",
+            "real-time",
+            "travel time",
+            "hardware"
         ]
     },
     {
-        "look_id": 139,
+        "look_id": 288,
         "keywords": [
             "reporting system",
-            "user-specified",
             "historical time period",
             "location"
         ]
     },
     {
-        "look_id": 140,
+        "look_id": 289,
         "keywords": [
-            "reporting system",
-            "generate",
-            "display",
-            "comparisons",
-            "travel time information",
-            "graph",
-            "chart",
-            "customizable"
+            "data feeds",
+            "sharable",
+            "partners",
+            "MTO"
         ]
     },
     {
-        "look_id": 141,
+        "look_id": 290,
         "keywords": [
-            "reports",
-            "reporting system",
-            "printer-friendly",
-            "organized format"
-        ]
-    },
-    {
-        "look_id": 142,
-        "keywords": [
-            "reports",
-            "exportable",
-            "CSV file format"
-        ]
-    },
-    {
-        "look_id": 143,
-        "keywords": [
-            "reports",
-            "exportable",
-            "XML file format"
-        ]
-    },
-    {
-        "look_id": 144,
-        "keywords": [
-            "reports",
-            "exportable",
-            "PDF file format"
-        ]
-    },
-    {
-        "look_id": 145,
-        "keywords": [
-            "Proponent",
-            "responsible",
             "maintenance",
+            "Proponent",
             "Solution",
             "Term of Agreement"
         ]
     },
     {
-        "look_id": 146,
+        "look_id": 291,
         "keywords": [
-            "Proponent",
-            "keep up to date",
-            "Solution",
-            "software updates",
-            "Term of Agreement"
+            "email alert",
+            "notifications",
+            "system availability",
+            "threshold"
         ]
     },
     {
-        "look_id": 147,
+        "look_id": 292,
         "keywords": [
-            "Proponent",
-            "provide",
-            "bug patches",
+            "email alert",
+            "communication loss",
+            "Solution capability"
+        ]
+    },
+    {
+        "look_id": 293,
+        "keywords": [
+            "email alert",
+            "speed threshold",
+            "Solution capability"
+        ]
+    },
+    {
+        "look_id": 295,
+        "keywords": [
+            "process raw data",
+            "travel time information",
+            "MTO formats"
+        ]
+    },
+    {
+        "look_id": 296,
+        "keywords": [
+            "publish",
+            "secured data feeds",
+            "travel time information"
+        ]
+    },
+    {
+        "look_id": 297,
+        "keywords": [
+            "metric system",
+            "configuration",
             "Solution"
         ]
     },
     {
-        "look_id": 148,
+        "look_id": 298,
         "keywords": [
-            "system parameter",
-            "configuration",
-            "users",
-            "GUI",
-            "system configuration module"
+            "scalable",
+            "future expansion",
+            "TT System"
         ]
     },
     {
-        "look_id": 149,
+        "look_id": 299,
         "keywords": [
-            "system configuration module",
-            "add",
-            "modify",
-            "delete",
-            "Bluetooth Readers"
-        ]
-    },
-    {
-        "look_id": 150,
-        "keywords": [
-            "system configuration module",
-            "configure",
-            "data feed refresh rate"
-        ]
-    },
-    {
-        "look_id": 151,
-        "keywords": [
-            "Solution",
-            "automatically",
-            "send",
-            "configuration file",
-            "MTO",
-            "last business day"
-        ]
-    },
-    {
-        "look_id": 152,
-        "keywords": [
-            "Solution",
-            "generate",
-            "daily",
-            "weekly",
-            "monthly",
-            "reports",
-            "status",
-            "Readers",
-            "field hardware health",
-            "communications status"
-        ]
-    },
-    {
-        "look_id": 153,
-        "keywords": [
-            "Bluetooth Readers",
-            "real-time monitoring",
-            "status"
-        ]
-    },
-    {
-        "look_id": 154,
-        "keywords": [
-            "Bluetooth Readers",
-            "status display",
-            "GUI",
-            "MTO-assigned ID",
-            "IP address"
-        ]
-    },
-    {
-        "look_id": 155,
-        "keywords": [
-            "email alerts",
-            "communication loss",
-            "Bluetooth Readers"
-        ]
-    },
-    {
-        "look_id": 156,
-        "keywords": [
-            "email alerts",
-            "speed thresholds",
-            "link",
-            "route"
-        ]
-    },
-    {
-        "look_id": 157,
-        "keywords": [
-            "ITS Central",
-            "data retrieval",
-            "device status",
-            "field devices"
-        ]
-    },
-    {
-        "look_id": 158,
-        "keywords": [
-            "data publication",
-            "XML file",
-            "HTTPS",
-            "secured data feeds"
-        ]
-    },
-    {
-        "look_id": 159,
-        "keywords": [
-            "metric system",
-            "configuration",
-            "user preference"
-        ]
-    },
-    {
-        "look_id": 160,
-        "keywords": [
-            "scalability",
-            "geographic expansion",
-            "additional routes"
-        ]
-    },
-    {
-        "look_id": 161,
-        "keywords": [
+            "real-time data",
             "continuous operation",
-            "24/7/365",
-            "ITS Central"
+            "24/7"
         ]
     },
     {
-        "look_id": 162,
+        "look_id": 300,
         "keywords": [
             "uptime",
             "99%",
-            "triple servers",
-            "redundancy"
+            "maintenance"
         ]
     },
     {
-        "look_id": 163,
+        "look_id": 301,
+        "keywords": [
+            "backup",
+            "redundancy",
+            "system failure"
+        ]
+    },
+    {
+        "look_id": 302,
+        "keywords": [
+            "remote access",
+            "GUI",
+            "secured manner"
+        ]
+    },
+    {
+        "look_id": 303,
+        "keywords": [
+            "GUI compatibility",
+            "Microsoft Edge",
+            "Google Chrome"
+        ]
+    },
+    {
+        "look_id": 304,
+        "keywords": [
+            "GO ITS",
+            "security requirements",
+            "compliance"
+        ]
+    },
+    {
+        "look_id": 305,
+        "keywords": [
+            "user access",
+            "privileges",
+            "functional level"
+        ]
+    },
+    {
+        "look_id": 306,
+        "keywords": [
+            "collaboration",
+            "VPN tunnel",
+            "MTO firewall"
+        ]
+    },
+    {
+        "look_id": 307,
+        "keywords": [
+            "Bluetooth reader",
+            "unique ID",
+            "identification"
+        ]
+    },
+    {
+        "look_id": 308,
+        "keywords": [
+            "data collection",
+            "Bluetooth Readers",
+            "configuration"
+        ]
+    },
+    {
+        "look_id": 309,
+        "keywords": [
+            "data processing time",
+            "one second",
+            "travel time information"
+        ]
+    },
+    {
+        "look_id": 310,
+        "keywords": [
+            "data hosting",
+            "cloud-based solution",
+            "Canada",
+            "MTO premises"
+        ]
+    },
+    {
+        "look_id": 311,
+        "keywords": [
+            "historical data",
+            "storage",
+            "6 months",
+            "Bluetooth Readers"
+        ]
+    },
+    {
+        "look_id": 312,
+        "keywords": [
+            "historical data",
+            "query",
+            "GUI",
+            "filtering options"
+        ]
+    },
+    {
+        "look_id": 313,
+        "keywords": [
+            "data ownership",
+            "MTO",
+            "raw data",
+            "aggregated data",
+            "archived data"
+        ]
+    },
+    {
+        "look_id": 314,
+        "keywords": [
+            "dashboard",
+            "real-time travel time",
+            "hardware issues",
+            "maintenance issues"
+        ]
+    },
+    {
+        "look_id": 315,
+        "keywords": [
+            "reporting tools",
+            "customize reports",
+            "MTO needs"
+        ]
+    },
+    {
+        "look_id": 316,
+        "keywords": [
+            "reports",
+            "export",
+            "CSV format"
+        ]
+    },
+    {
+        "look_id": 317,
+        "keywords": [
+            "reports",
+            "export",
+            "XML format"
+        ]
+    },
+    {
+        "look_id": 318,
+        "keywords": [
+            "reports",
+            "export",
+            "PDF format"
+        ]
+    },
+    {
+        "look_id": 319,
+        "keywords": [
+            "reports",
+            "PDF",
+            "exportable"
+        ]
+    },
+    {
+        "look_id": 320,
+        "keywords": [
+            "reports",
+            "PDF",
+            "export",
+            "browser"
+        ]
+    },
+    {
+        "look_id": 321,
+        "keywords": [
+            "reporting system",
+            "automatic",
+            "daily",
+            "weekly",
+            "monthly",
+            "ranking",
+            "average speed",
+            "average travel time"
+        ]
+    },
+    {
+        "look_id": 322,
+        "keywords": [
+            "reports",
+            "real time",
+            "automated",
+            "configuration tool"
+        ]
+    },
+    {
+        "look_id": 323,
+        "keywords": [
+            "data feeds",
+            "sharable",
+            "partners",
+            "MTO"
+        ]
+    },
+    {
+        "look_id": 324,
+        "keywords": [
+            "maintenance",
+            "responsibility",
+            "Proponent",
+            "Term of Agreement"
+        ]
+    },
+    {
+        "look_id": 325,
+        "keywords": [
+            "software updates",
+            "maintenance",
+            "Proponent",
+            "Term of Agreement"
+        ]
+    },
+    {
+        "look_id": 326,
+        "keywords": [
+            "configuration file",
+            "automatic",
+            "transfer",
+            "MTO"
+        ]
+    },
+    {
+        "look_id": 327,
+        "keywords": [
+            "email alert",
+            "notifications",
+            "system availability",
+            "threshold"
+        ]
+    },
+    {
+        "look_id": 328,
+        "keywords": [
+            "operational support",
+            "warranty",
+            "emergency repairs",
+            "routine maintenance",
+            "TT system"
+        ]
+    },
+    {
+        "look_id": 329,
+        "keywords": [
+            "technical support",
+            "contact information",
+            "MTO"
+        ]
+    },
+    {
+        "look_id": 330,
+        "keywords": [
+            "Scheduled System Maintenance Plan",
+            "MTO",
+            "SLA initiation"
+        ]
+    },
+    {
+        "look_id": 331,
+        "keywords": [
+            "safety management plan",
+            "environmental management plan",
+            "MTO"
+        ]
+    },
+    {
+        "look_id": 332,
+        "keywords": [
+            "quality management plan",
+            "project team",
+            "quality control specialist"
+        ]
+    },
+    {
+        "look_id": 333,
+        "keywords": [
+            "dispatch center",
+            "contact information",
+            "MTO"
+        ]
+    },
+    {
+        "look_id": 334,
+        "keywords": [
+            "routine maintenance",
+            "Scheduled System Maintenance Plan"
+        ]
+    },
+    {
+        "look_id": 335,
+        "keywords": [
+            "electronic ticketing system",
+            "system outages",
+            "equipment operation"
+        ]
+    },
+    {
+        "look_id": 336,
+        "keywords": [
+            "emergency maintenance plan",
+            "manufacturer",
+            "contract"
+        ]
+    },
+    {
+        "look_id": 337,
+        "keywords": [
+            "emergency dispatch center",
+            "24-hour",
+            "staffed"
+        ]
+    },
+    {
+        "look_id": 338,
+        "keywords": [
+            "response time",
+            "critical failures",
+            "major failures",
+            "minor failures"
+        ]
+    },
+    {
+        "look_id": 339,
+        "keywords": [
+            "warranty",
+            "labour",
+            "equipment",
+            "materials",
+            "defects",
+            "repair",
+            "replacement",
+            "MTO"
+        ]
+    },
+    {
+        "look_id": 340,
+        "keywords": [
+            "Stinson AIS",
+            "5 year warranty",
+            "system acceptance"
+        ]
+    },
+    {
+        "look_id": 341,
         "keywords": [
             "servers",
             "OVH",
@@ -1386,549 +1005,814 @@
         ]
     },
     {
-        "look_id": 164,
+        "look_id": 342,
         "keywords": [
-            "remote access",
-            "HTTPS",
-            "password-based login",
-            "user group permissions"
+            "Watch Dog",
+            "server availability",
+            "downtime",
+            "system failures"
         ]
     },
     {
-        "look_id": 165,
+        "look_id": 343,
         "keywords": [
-            "user rights",
-            "user groups",
-            "permissions"
+            "Travel Time System",
+            "design",
+            "construction",
+            "operation",
+            "maintenance",
+            "MTO Central Region"
         ]
     },
     {
-        "look_id": 166,
+        "look_id": 344,
         "keywords": [
-            "VPN tunnel",
-            "IPSec",
-            "collaboration",
+            "Operation",
+            "Maintenance",
+            "Support Phase",
+            "TT Service",
+            "optional extension"
+        ]
+    },
+    {
+        "look_id": 345,
+        "keywords": [
+            "critical path schedule",
+            "contract period",
+            "schedule updates"
+        ]
+    },
+    {
+        "look_id": 346,
+        "keywords": [
+            "equipment management",
+            "material management",
+            "no latency"
+        ]
+    },
+    {
+        "look_id": 347,
+        "keywords": [
+            "compliance",
+            "local health guidelines",
+            "safety",
+            "construction"
+        ]
+    },
+    {
+        "look_id": 348,
+        "keywords": [
+            "TT System",
+            "Graphical User Interface",
+            "MTO users"
+        ]
+    },
+    {
+        "look_id": 349,
+        "keywords": [
+            "job cost control",
+            "Oracle",
+            "JD Edwards",
+            "early warning system"
+        ]
+    },
+    {
+        "look_id": 350,
+        "keywords": [
+            "JDE",
+            "change management",
+            "process"
+        ]
+    },
+    {
+        "look_id": 351,
+        "keywords": [
+            "stakeholder plan",
+            "identify stakeholders",
+            "goals",
+            "work methods",
+            "scope risks"
+        ]
+    },
+    {
+        "look_id": 352,
+        "keywords": [
+            "on-time",
+            "on-budget",
+            "Microsoft Project",
+            "project completion"
+        ]
+    },
+    {
+        "look_id": 353,
+        "keywords": [
+            "single point of contact",
+            "project manager",
+            "communication"
+        ]
+    },
+    {
+        "look_id": 354,
+        "keywords": [
+            "Quality Assurance",
+            "Quality Control",
+            "Policy",
+            "Program"
+        ]
+    },
+    {
+        "look_id": 355,
+        "keywords": [
+            "ITS equipment",
+            "BT readers",
+            "communication infrastructure",
+            "testing"
+        ]
+    },
+    {
+        "look_id": 356,
+        "keywords": [
+            "revision control",
+            "deployment",
+            "faulty changes"
+        ]
+    },
+    {
+        "look_id": 357,
+        "keywords": [
+            "Comprehensive System Testing",
+            "mitigate risks",
+            "software errors"
+        ]
+    },
+    {
+        "look_id": 358,
+        "keywords": [
+            "system testing",
+            "MTO processes",
+            "test plan",
+            "software errors"
+        ]
+    },
+    {
+        "look_id": 359,
+        "keywords": [
+            "PIT testing",
+            "POP testing",
+            "ATMS",
+            "performance standards"
+        ]
+    },
+    {
+        "look_id": 360,
+        "keywords": [
+            "SIT",
+            "system integration",
+            "operational testing"
+        ]
+    },
+    {
+        "look_id": 361,
+        "keywords": [
+            "traffic management",
+            "public safety",
+            "traffic control plans"
+        ]
+    },
+    {
+        "look_id": 362,
+        "keywords": [
+            "occupational health",
+            "safety commitment",
+            "workplace safety"
+        ]
+    },
+    {
+        "look_id": 363,
+        "keywords": [
+            "Travel Time system",
+            "Bluetooth",
+            "WiFi",
+            "data transmission"
+        ]
+    },
+    {
+        "look_id": 364,
+        "keywords": [
+            "sensors",
+            "MAC addresses",
+            "data encryption",
+            "LTE modem"
+        ]
+    },
+    {
+        "look_id": 365,
+        "keywords": [
+            "solar systems",
+            "standalone sites",
+            "manufacturing experience"
+        ]
+    },
+    {
+        "look_id": 366,
+        "keywords": [
+            "hosting",
+            "OVH",
+            "certifications",
+            "data centers",
+            "internet hosting"
+        ]
+    },
+    {
+        "look_id": 367,
+        "keywords": [
+            "servers",
+            "Transnomis Solutions",
+            "OVH",
+            "fail-over",
+            "live streaming replication"
+        ]
+    },
+    {
+        "look_id": 368,
+        "keywords": [
+            "travel time",
+            "secured data feeds",
+            "solution"
+        ]
+    },
+    {
+        "look_id": 369,
+        "keywords": [
+            "real-time",
+            "travel time",
+            "data feeds",
+            "continuous operation"
+        ]
+    },
+    {
+        "look_id": 370,
+        "keywords": [
+            "data hosting",
+            "cloud-based solution",
+            "Canada",
             "MTO"
         ]
     },
     {
-        "look_id": 167,
+        "look_id": 371,
         "keywords": [
-            "MAC ID",
-            "encryption",
-            "privacy requirements"
+            "historical data",
+            "auditing",
+            "Bluetooth Readers",
+            "encrypted MAC ID"
         ]
     },
     {
-        "look_id": 168,
+        "look_id": 372,
         "keywords": [
-            "data collection",
-            "Bluetooth/Wi-Fi readers",
-            "configuration"
+            "historical data",
+            "access",
+            "querying",
+            "GUI",
+            "portal module"
         ]
     },
     {
-        "look_id": 169,
+        "look_id": 373,
         "keywords": [
-            "data processing time",
-            "travel time information"
+            "data portal",
+            "selection criteria",
+            "querying",
+            "time period",
+            "location",
+            "field hardware"
         ]
     },
     {
-        "look_id": 170,
+        "look_id": 374,
         "keywords": [
-            "data filtering",
-            "travel times",
-            "algorithmic calculation"
+            "historical data",
+            "portal",
+            "accessibility",
+            "MTO users"
         ]
     },
     {
-        "look_id": 171,
+        "look_id": 375,
         "keywords": [
-            "route-based",
+            "historical data",
+            "accessibility",
+            "MTO users",
             "travel time",
-            "data feed",
-            "XML"
+            "publishing"
         ]
     },
     {
-        "look_id": 172,
+        "look_id": 376,
         "keywords": [
-            "route-based",
-            "travel time",
-            "data feed",
-            "UTF-8"
+            "data ownership",
+            "MTO",
+            "aggregated data",
+            "archived data"
         ]
     },
     {
-        "look_id": 173,
+        "look_id": 377,
         "keywords": [
-            "sign-based",
-            "travel time",
-            "message",
-            "data feed",
-            "XML"
+            "data dump",
+            "MTO",
+            "frequency",
+            "processed travel time",
+            "Central Region"
         ]
     },
     {
-        "look_id": 174,
+        "look_id": 378,
         "keywords": [
-            "sign-based",
+            "dashboard",
+            "real-time",
             "travel time",
-            "message",
-            "data feed",
-            "UTF-8"
+            "hardware",
+            "MTO"
         ]
     },
     {
-        "look_id": 175,
+        "look_id": 379,
         "keywords": [
-            "travel time",
-            "data timeout limit",
+            "dashboard",
+            "map view"
+        ]
+    },
+    {
+        "look_id": 380,
+        "keywords": [
+            "dashboard",
+            "travel time index",
+            "TTI",
+            "real-time",
+            "free-flow"
+        ]
+    },
+    {
+        "look_id": 381,
+        "keywords": [
+            "maintenance",
+            "Proponent",
+            "Solution",
+            "Term of Agreement"
+        ]
+    },
+    {
+        "look_id": 382,
+        "keywords": [
+            "software updates",
+            "Proponent",
+            "Solution",
+            "Term of Agreement"
+        ]
+    },
+    {
+        "look_id": 383,
+        "keywords": [
+            "email alert",
+            "communication loss",
+            "reader"
+        ]
+    },
+    {
+        "look_id": 384,
+        "keywords": [
+            "email alert",
+            "speed threshold",
             "link",
             "route"
         ]
     },
     {
-        "look_id": 176,
+        "look_id": 385,
         "keywords": [
-            "default",
-            "data timeout limit",
-            "two minutes"
+            "ITS Central",
+            "data retrieval",
+            "device status",
+            "Bluetooth",
+            "CCTV",
+            "traffic signals"
         ]
     },
     {
-        "look_id": 177,
+        "look_id": 386,
         "keywords": [
-            "slow traffic",
-            "conditions",
-            "MTO",
-            "measured speed"
-        ]
-    },
-    {
-        "look_id": 178,
-        "keywords": [
-            "real-time",
-            "route travel times",
-            "slow",
-            "configurable",
-            "ITS Central"
-        ]
-    },
-    {
-        "look_id": 179,
-        "keywords": [
-            "refresh rate",
-            "secured",
-            "link-based",
+            "raw data",
             "travel time",
-            "data feed"
+            "MTO formats"
         ]
     },
     {
-        "look_id": 180,
+        "look_id": 387,
         "keywords": [
-            "historical raw data",
-            "6 months",
-            "timestamped",
-            "encrypted MAC ID",
+            "XML",
+            "HTTPS",
+            "data feeds"
+        ]
+    },
+    {
+        "look_id": 388,
+        "keywords": [
+            "uptime",
+            "99%",
+            "maintenance"
+        ]
+    },
+    {
+        "look_id": 389,
+        "keywords": [
+            "servers",
+            "redundancy",
+            "fail-over",
+            "OVH"
+        ]
+    },
+    {
+        "look_id": 390,
+        "keywords": [
+            "data collection",
             "Bluetooth Readers"
         ]
     },
     {
-        "look_id": 181,
+        "look_id": 391,
         "keywords": [
-            "GUI",
-            "query",
-            "historical travel time data",
-            "filtering options"
+            "data processing",
+            "1 second"
         ]
     },
     {
-        "look_id": 182,
+        "look_id": 392,
         "keywords": [
-            "MTO",
+            "algorithm",
+            "travel time",
+            "data filtering"
+        ]
+    },
+    {
+        "look_id": 393,
+        "keywords": [
+            "security",
+            "GO ITS",
+            "compliance"
+        ]
+    },
+    {
+        "look_id": 394,
+        "keywords": [
+            "VPN",
+            "IPSec",
+            "collaboration"
+        ]
+    },
+    {
+        "look_id": 395,
+        "keywords": [
+            "data timeout",
+            "default limit",
+            "two minutes"
+        ]
+    },
+    {
+        "look_id": 396,
+        "keywords": [
+            "VMS message",
+            "valid",
+            "time period"
+        ]
+    },
+    {
+        "look_id": 397,
+        "keywords": [
+            "default time period",
+            "weekdays",
+            "weekends",
+            "statutory holidays"
+        ]
+    },
+    {
+        "look_id": 398,
+        "keywords": [
+            "real-time",
+            "route travel time",
+            "slow traffic condition"
+        ]
+    },
+    {
+        "look_id": 399,
+        "keywords": [
+            "slow traffic",
+            "free-flow travel time",
+            "speed limit"
+        ]
+    },
+    {
+        "look_id": 400,
+        "keywords": [
+            "data hosting",
+            "cloud-based solution",
+            "Canada"
+        ]
+    },
+    {
+        "look_id": 401,
+        "keywords": [
+            "historical data",
+            "aggregated travel time",
+            "contract duration"
+        ]
+    },
+    {
+        "look_id": 402,
+        "keywords": [
+            "historical raw data",
+            "auditing purposes",
+            "six months"
+        ]
+    },
+    {
+        "look_id": 403,
+        "keywords": [
             "data ownership",
-            "raw",
-            "aggregated",
-            "archived"
+            "aggregated data",
+            "archived data"
         ]
     },
     {
-        "look_id": 183,
+        "look_id": 404,
         "keywords": [
             "dashboard",
             "real-time travel time",
-            "hardware",
-            "maintenance issues"
+            "hardware information"
         ]
     },
     {
-        "look_id": 184,
-        "keywords": [
-            "dashboard",
-            "TTI",
-            "BTI",
-            "link",
-            "route"
-        ]
-    },
-    {
-        "look_id": 185,
-        "keywords": [
-            "travel time",
-            "routes",
-            "customizable"
-        ]
-    },
-    {
-        "look_id": 186,
+        "look_id": 405,
         "keywords": [
             "reporting system",
-            "data distributions",
-            "travel times"
+            "historical time period",
+            "location"
         ]
     },
     {
-        "look_id": 187,
+        "look_id": 406,
         "keywords": [
-            "printer friendly",
-            "organized",
-            "customization",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 188,
-        "keywords": [
-            "exportable",
+            "report export",
             "CSV format"
         ]
     },
     {
-        "look_id": 189,
+        "look_id": 407,
         "keywords": [
-            "exportable",
+            "report export",
             "XML format"
         ]
     },
     {
-        "look_id": 190,
+        "look_id": 408,
         "keywords": [
-            "exportable",
+            "report export",
             "PDF format"
         ]
     },
     {
-        "look_id": 191,
+        "look_id": 409,
+        "keywords": [
+            "reports",
+            "PDF",
+            "exportable"
+        ]
+    },
+    {
+        "look_id": 410,
+        "keywords": [
+            "reports",
+            "PDF",
+            "export",
+            "browser",
+            "Save as PDF"
+        ]
+    },
+    {
+        "look_id": 411,
+        "keywords": [
+            "reporting system",
+            "automatic generation",
+            "daily",
+            "weekly",
+            "monthly",
+            "ranking",
+            "average speed",
+            "average travel time"
+        ]
+    },
+    {
+        "look_id": 412,
+        "keywords": [
+            "reports",
+            "on-demand",
+            "real time",
+            "automatically generated",
+            "Report Automation"
+        ]
+    },
+    {
+        "look_id": 413,
+        "keywords": [
+            "data feeds",
+            "sharable",
+            "partners",
+            "MTO"
+        ]
+    },
+    {
+        "look_id": 414,
         "keywords": [
             "maintenance",
-            "project team",
-            "Operations and Maintenance plan"
+            "responsibility",
+            "Term of Agreement"
         ]
     },
     {
-        "look_id": 192,
-        "keywords": [
-            "changes",
-            "notification",
-            "MTO approval"
-        ]
-    },
-    {
-        "look_id": 193,
+        "look_id": 415,
         "keywords": [
             "software updates",
-            "ITS Central"
+            "up to date",
+            "Term of Agreement"
         ]
     },
     {
-        "look_id": 194,
+        "look_id": 416,
         "keywords": [
-            "Service Level Agreement",
-            "operational procedures",
-            "MTO"
+            "bug patches",
+            "Solution",
+            "development"
         ]
     },
     {
-        "look_id": 195,
+        "look_id": 417,
         "keywords": [
-            "change logging",
-            "audit log",
-            "ITS Central"
+            "changes",
+            "logged",
+            "ITS Central",
+            "audit log"
         ]
     },
     {
-        "look_id": 196,
+        "look_id": 418,
         "keywords": [
-            "automatic transfer",
             "configuration file",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 197,
-        "keywords": [
-            "email alert",
-            "system availability",
-            "UptimeRobot"
-        ]
-    },
-    {
-        "look_id": 198,
-        "keywords": [
-            "monitoring",
-            "ITS components",
-            "BT readers"
-        ]
-    },
-    {
-        "look_id": 199,
-        "keywords": [
-            "annual review",
-            "meeting",
-            "project progress"
-        ]
-    },
-    {
-        "look_id": 200,
-        "keywords": [
-            "quarterly review",
-            "meeting",
-            "project progress"
-        ]
-    },
-    {
-        "look_id": 201,
-        "keywords": [
-            "maintenance progress",
-            "meetings",
-            "project management"
-        ]
-    },
-    {
-        "look_id": 202,
-        "keywords": [
-            "permits",
-            "mobilization",
-            "compliance"
-        ]
-    },
-    {
-        "look_id": 203,
-        "keywords": [
-            "traffic management",
-            "coordination",
-            "operations"
-        ]
-    },
-    {
-        "look_id": 204,
-        "keywords": [
+            "automatic",
             "MTO",
-            "arrival",
-            "notification"
+            "last business day"
         ]
     },
     {
-        "look_id": 205,
+        "look_id": 419,
         "keywords": [
-            "environmental health",
-            "safety meeting",
-            "onsite"
+            "Black & McDonald",
+            "System Operational Support",
+            "Warranty",
+            "Emergency Repairs",
+            "Routine Maintenance"
         ]
     },
     {
-        "look_id": 206,
+        "look_id": 420,
         "keywords": [
-            "traffic control",
-            "devices",
-            "installation"
+            "technical support",
+            "response times",
+            "SLA",
+            "penalties",
+            "outages"
         ]
     },
     {
-        "look_id": 207,
+        "look_id": 421,
         "keywords": [
-            "routine maintenance",
-            "mobilization plan",
-            "seasonal"
-        ]
-    },
-    {
-        "look_id": 208,
-        "keywords": [
-            "maintenance completion",
-            "reporting",
-            "documentation"
-        ]
-    },
-    {
-        "look_id": 209,
-        "keywords": [
-            "log book",
-            "dismantle",
-            "cleaning"
-        ]
-    },
-    {
-        "look_id": 210,
-        "keywords": [
-            "device replacement",
+            "Scheduled System Maintenance Plan",
+            "MTO",
             "approval",
-            "compliance"
+            "SLA"
         ]
     },
     {
-        "look_id": 211,
+        "look_id": 422,
         "keywords": [
-            "MTO",
-            "departure",
-            "notification"
-        ]
-    },
-    {
-        "look_id": 212,
-        "keywords": [
-            "information management",
-            "plan",
-            "documentation"
-        ]
-    },
-    {
-        "look_id": 213,
-        "keywords": [
-            "maintenance reports",
-            "field crews",
-            "collection"
-        ]
-    },
-    {
-        "look_id": 214,
-        "keywords": [
-            "scanning",
-            "electronic copies",
-            "organization"
-        ]
-    },
-    {
-        "look_id": 215,
-        "keywords": [
-            "safety plan",
+            "safety management",
             "environmental management",
-            "submission"
+            "MTO",
+            "review"
         ]
     },
     {
-        "look_id": 216,
+        "look_id": 423,
         "keywords": [
-            "quality management",
-            "submission",
-            "approval"
+            "quality management plan",
+            "review",
+            "quality control"
         ]
     },
     {
-        "look_id": 217,
+        "look_id": 424,
         "keywords": [
             "dispatch center",
-            "contact list",
-            "submission"
-        ]
-    },
-    {
-        "look_id": 218,
-        "keywords": [
-            "SLA plan",
-            "approval",
+            "contact information",
             "MTO"
         ]
     },
     {
-        "look_id": 219,
+        "look_id": 425,
         "keywords": [
-            "software maintenance",
-            "support",
-            "services"
+            "routine maintenance",
+            "Scheduled System Maintenance Plan",
+            "scheduling"
         ]
     },
     {
-        "look_id": 220,
+        "look_id": 426,
         "keywords": [
-            "system enhancements",
-            "modifications",
-            "functionality"
+            "electronic ticketing system",
+            "system outages",
+            "equipment operation"
         ]
     },
     {
-        "look_id": 221,
-        "keywords": [
-            "non-routine maintenance",
-            "ITS devices",
-            "planning"
-        ]
-    },
-    {
-        "look_id": 222,
-        "keywords": [
-            "emergency dispatch",
-            "24/7",
-            "contact information"
-        ]
-    },
-    {
-        "look_id": 223,
+        "look_id": 427,
         "keywords": [
             "emergency maintenance",
-            "log book",
-            "documentation"
+            "response plan",
+            "manufacturer",
+            "contract"
         ]
     },
     {
-        "look_id": 224,
+        "look_id": 428,
+        "keywords": [
+            "emergency dispatch center",
+            "construction",
+            "staffing"
+        ]
+    },
+    {
+        "look_id": 429,
+        "keywords": [
+            "response time",
+            "critical failures",
+            "major failures",
+            "minor failures"
+        ]
+    },
+    {
+        "look_id": 430,
         "keywords": [
             "warranty",
             "labour",
             "equipment",
             "materials",
-            "defects",
-            "repair",
-            "replace",
-            "MTO"
+            "five years"
         ]
     },
     {
-        "look_id": 225,
+        "look_id": 431,
+        "keywords": [
+            "warranty",
+            "repair",
+            "replace",
+            "equipment",
+            "no additional expense"
+        ]
+    },
+    {
+        "look_id": 432,
         "keywords": [
             "Stinson AIS",
-            "warranty",
-            "5 years",
+            "5 year",
+            "all-inclusive warranty",
             "system acceptance"
         ]
     },
     {
-        "look_id": 226,
+        "look_id": 433,
         "keywords": [
-            "replacement spares",
-            "B&M",
-            "maintenance staff",
-            "service calls"
+            "servers",
+            "OVH",
+            "triple redundancy",
+            "fail-over"
         ]
     },
     {
-        "look_id": 227,
-        "keywords": [
-            "contract extension",
-            "warranty",
-            "2 years"
-        ]
-    },
-    {
-        "look_id": 228,
+        "look_id": 434,
         "keywords": [
             "Watch Dog",
-            "server",
-            "availability",
-            "downtime",
+            "high availability",
+            "10 minutes downtime",
             "system failures"
         ]
     }

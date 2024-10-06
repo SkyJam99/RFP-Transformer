@@ -179,6 +179,19 @@ def delete_lookup(supabase, look_id):
     response = supabase.table("lookup").delete().eq("look_id", look_id).execute()
     return response.data
 
+# Function to delete all entries in the lookup table (dangerous - for testing purposes)
+def delete_all_lookups(supabase):
+    # First we get all the lookups and get the id of each one
+    lookups = get_lookups(supabase)
+
+    # Then we delete each lookup by id
+    for lookup in lookups:
+        look_id = lookup["look_id"]
+        delete_lookup(supabase, look_id)
+
+    print("All lookups deleted.")
+
+
 # Generate Lookup File
 def generate_lookup_file(supabase, output_file_path):
     supabase = get_supabase_connection()

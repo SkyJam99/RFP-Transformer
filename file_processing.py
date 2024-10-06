@@ -3,6 +3,7 @@ import db_backend
 import mammoth
 import markdownify
 from bs4 import BeautifulSoup
+import re
 
 #Convert docx to html (so that the HTML can be converted to markdown)
 def convert_docx_to_html(docx_path):
@@ -86,6 +87,34 @@ def chunk_text(text, chunk_length=1000):
     for i in range(0, len(text), chunk_length):
         chunk = text[i:i + chunk_length]
         chunks.append(chunk)
+    return chunks
+
+# Smarter chunking function
+def chunk_text_v2(text, chunk_length=1000, overlap_sentences=2):
+    # Split text into sentences
+    sentences = re.split(r'(?<=[.!?])\s+', text)
+    chunks = []
+    current_chunk = []
+    current_length = 0
+
+    for sentence in sentences:
+        sentence_length = len(sentence)
+        if current_length + sentence_length > chunk_length and current_chunk:
+            # Add the current chunk to the list of chunks
+            chunks.append(" ".join(current_chunk))
+            
+            # Start a new chunk with overlap
+            current_chunk = current_chunk[-overlap_sentences:] if overlap_sentences > 0 else []
+            current_length = sum(len(s) for s in current_chunk)
+        
+        # Add the sentence to the current chunk
+        current_chunk.append(sentence)
+        current_length += sentence_length
+
+    # Add the last chunk if not empty
+    if current_chunk:
+        chunks.append(" ".join(current_chunk))
+
     return chunks
 
 def read_file(filepath):

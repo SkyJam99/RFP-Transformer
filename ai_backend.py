@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
-from file_processing import extract_text_from_html, read_file, chunk_text
+from file_processing import extract_text_from_html, read_file, chunk_text, chunk_text_v2
 import time
 import json
 from typing import List
@@ -45,14 +45,18 @@ def extract_responses(messages):
 # DONE - 2. Either create seperate threads for each chunk, or use the same thread for all chunks
 # DONE - 3. Read the first few chunks to generate context for the assistant and the lookup table
 # DONE - 4. Run each thread through the assistant, extracting verbatim answers, and keywords for searching the lookup table. This should be extracted in JSON format so we can easily parse it later
-# 5. Add each answer to the lookup database
-# 6. Generate a new lookup file based on everything in the database
+# DONE - 5. Add each answer to the lookup database
+# DONE - 6. Generate a new lookup file based on everything in the database
 # DONE TODO Switch to JSON response format
+# DONE TODO Make the chunking logic more robust and less likely to cut off words / paragraphs
+# DONE TODO Switch to seperate threads for each chunk of text. This will reduce input token usage and therefore reduce cost
 # TODO Write better instructions for the assistant
-# TODO Make the chunking logic more robust and less likely to cut off words / paragraphs
-# TODO Switch to seperate threads for each chunk of text. This will reduce input token usage and therefore reduce cost
-def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_length=20000):
-    proposalChunks = chunk_text(proposalText, chunk_length)
+# TODO Get the proposal text from the database and include proposal ID in the lookup table
+# TODO Update the lookup file in the RFP assistant (which isn't implemented yet)
+# TODO Include overall context and requirement text (maybe?) in the lookup table
+def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_length=20000, chunk_overlap=3):
+    # Using the new chunking function
+    proposalChunks = chunk_text_v2(proposalText, chunk_length, chunk_overlap)
     thread = client.beta.threads.create()
     assistant_id = 'asst_rstr7lrME0LAhivV2sJzwLXD' # This is the id of the Proposal Parser assistant
 
@@ -171,7 +175,7 @@ def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_len
         i += 1
 
     # Generate a new lookup file based on everything in the database
-    lookup_file_path = generate_lookup_file(supabase)
+    lookup_file_path = generate_lookup_file(supabase, "database_lookup.json")
     print(f"Lookup file generated at: {lookup_file_path}")
 
 
