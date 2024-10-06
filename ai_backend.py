@@ -8,7 +8,7 @@ from typing import List
 load_dotenv()
 
 
-def setup_client():
+def setup_GPT_client():
     client = OpenAI(
         organization= 'org-jIubm8k3HElevXNOWzQoIxOG',
         project= 'proj_aHSkZJkaEFFa2KwQGyEhnx3i',
@@ -16,7 +16,7 @@ def setup_client():
     )
     return client
 
-def get_gpt_response(message, client=setup_client()):
+def get_gpt_response(message, client=setup_GPT_client()):
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[{"role": "user", "content": message}],
@@ -42,17 +42,20 @@ def extract_responses(messages):
 # DONE - 1. Split proposal into chunks
 # DONE - 2. Either create seperate threads for each chunk, or use the same thread for all chunks
 # DONE - 3. Read the first few chunks to generate context for the assistant and the lookup table
-# 4. Run each thread through the assistant, extracting verbatim answers, and keywords for searching the lookup table. This should be extracted in JSON format so we can easily parse it later
+# PARTIALLY DONE 4. Run each thread through the assistant, extracting verbatim answers, and keywords for searching the lookup table. This should be extracted in JSON format so we can easily parse it later
 # 5. Add each answer to the lookup database
 # 6. Generate a new lookup file based on everything in the database
 # TODO Switch to JSON response format
-def parse_proposal_for_lookup(proposalText, client=setup_client()):
-    proposalChunks = chunk_text(proposalText)
+# TODO Write better instructions for the assistant
+# TODO Make the chunking logic more robust and less likely to cut off words / paragraphs
+# TODO Switch to seperate threads for each chunk of text. This will reduce input token usage and therefore reduce cost
+def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_length=20000):
+    proposalChunks = chunk_text(proposalText, chunk_length)
     thread = client.beta.threads.create()
     assistant_id = 'asst_rstr7lrME0LAhivV2sJzwLXD' # This is the id of the Proposal Parser assistant
 
     # Use the first 3 chunks to generate context
-    context_chunks = proposalChunks[:3]  
+    context_chunks = proposalChunks[:2]  
     context = "\n".join(context_chunks)
 
     # Create a message object associated with the thread
@@ -82,9 +85,55 @@ def parse_proposal_for_lookup(proposalText, client=setup_client()):
     context = responses[-1]
     print(context)   
 
-    # for chunk in proposalChunks:
-    #     response = get_gpt_response(chunk)
-    #     print(response)
+    chunk_responses = []
+    # Send each chunk to the assistant to extract verbatim answers
+    i = 0
+    for chunk in proposalChunks:
+
+        # Create a new thread for each chunk
+        thread = client.beta.threads.create()
+
+        # Add the chunk to the thread as a message
+        message = client.beta.threads.messages.create(
+            thread_id=thread.id,
+            role="user",
+            content="Here is a chunk of the proposal. Based on the overall context, extract any verbatim answers that should be added to an answer database. This database will be used to help write more proposals in the future. Therefore it is vital that the exact text in the chunk is returned, but ONLY if that answer would be useful for future proposals. If there are no good verbatim answers, respond with 'empty chunk'. Here is the overall context: [" + context + "]. Here is the chunk to look for useful answers in: [" + chunk + "]",
+        )
+
+        # Send the thread to the assistant for generation
+        run = client.beta.threads.runs.create_and_poll(
+            thread_id=thread.id,
+            assistant_id=assistant_id,
+        )
+
+        # Check the status of the run, and wait until it is completed
+        while run.status != "completed":
+            print(run.status)
+            time.sleep(1)
+
+        # Send print message to console about what number chunk we are on out of the total chunks
+        print(f"Chunk {i} of {len(proposalChunks)} Processed")
+
+        # Extract response for the chunk and append to the list of responses
+        messages = client.beta.threads.messages.list(thread_id=thread.id)
+        chunk_responses.append(extract_responses(messages))
+        
+        # Move on to the next chunk
+        i += 1
+
+    # DEPRECATED # Extract and print all of the responses from the assistant
+    # messages = client.beta.threads.messages.list(thread_id=thread.id)
+    # responses = extract_responses(messages)
+
+    # Print all of the responses
+    i = 0
+    for response in chunk_responses:
+        print(f"Response to chunk number {i}: {response}")
+        i += 1
+
+
+
+        
 
 filepath = './test_proposal.html'
 parse_proposal_for_lookup(extract_text_from_html(read_file(filepath)))
