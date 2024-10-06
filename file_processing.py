@@ -88,6 +88,12 @@ def chunk_text(text, chunk_length=1000):
         chunks.append(chunk)
     return chunks
 
+def read_file(filepath):
+    with open(filepath, 'r', encoding='latin-1') as file:
+        print("File opened successfully")
+        prop_full_text = file.read()
+        return prop_full_text
+
 # Testing the function
 supabase = db_backend.get_supabase_connection()
 filepath = './test_proposal.html'
@@ -98,4 +104,4 @@ prop_title = 'Test Proposal'
 
 #prop_md = convert_html_to_markdown('./test_proposal.html')
 #print(prop_md)
-add_proposal_from_file(supabase, filepath, prop_title)    
+#add_proposal_from_file(supabase, filepath, prop_title)    
