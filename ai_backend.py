@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from file_processing import extract_text_from_html, read_file, chunk_text
 import time
+import json
 from typing import List
 
 load_dotenv()
@@ -42,10 +43,10 @@ def extract_responses(messages):
 # DONE - 1. Split proposal into chunks
 # DONE - 2. Either create seperate threads for each chunk, or use the same thread for all chunks
 # DONE - 3. Read the first few chunks to generate context for the assistant and the lookup table
-# PARTIALLY DONE 4. Run each thread through the assistant, extracting verbatim answers, and keywords for searching the lookup table. This should be extracted in JSON format so we can easily parse it later
+# DONE - 4. Run each thread through the assistant, extracting verbatim answers, and keywords for searching the lookup table. This should be extracted in JSON format so we can easily parse it later
 # 5. Add each answer to the lookup database
 # 6. Generate a new lookup file based on everything in the database
-# TODO Switch to JSON response format
+# DONE TODO Switch to JSON response format
 # TODO Write better instructions for the assistant
 # TODO Make the chunking logic more robust and less likely to cut off words / paragraphs
 # TODO Switch to seperate threads for each chunk of text. This will reduce input token usage and therefore reduce cost
@@ -62,7 +63,10 @@ def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_len
     message = client.beta.threads.messages.create(
         thread_id=thread.id,
         role="user",
-        content="Here are the first few chunks of the proposal. Generate short context from this that will be used to extract answers and keywords. Beginning of Proposal: \n" + context,
+        content=(
+            "Here are the first few chunks of the proposal. Generate a short context summary in JSON format that will be used to extract answers and keywords. "
+            "The JSON object should include only 'overall_context'. Beginning of Proposal: \n" + context
+        ),
     )
 
     # This sends the thread of messages to the assistant for generation
@@ -76,16 +80,22 @@ def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_len
         print(run.status)
         time.sleep(3)
 
-    # Get the generated responses from OpenAi and extract them from the JSON
+    # Get the generated context from OpenAi and extract it from the JSON
     messages = client.beta.threads.messages.list(thread_id=thread.id)
     responses = extract_responses(messages)
-    # for response in responses:
-    #     print(response)
-
     context = responses[-1]
-    print(context)   
+    try:
+        context_json = json.loads(context)
+        overall_context = context_json.get("overall_context", "")
+    except json.JSONDecodeError:
+        print("Error parsing context JSON")
+        overall_context = context
+    print(overall_context)
 
+    
+    # Create a list to store all of the responses from the assistant
     chunk_responses = []
+
     # Send each chunk to the assistant to extract verbatim answers
     i = 0
     for chunk in proposalChunks:
@@ -97,7 +107,13 @@ def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_len
         message = client.beta.threads.messages.create(
             thread_id=thread.id,
             role="user",
-            content="Here is a chunk of the proposal. Based on the overall context, extract any verbatim answers that should be added to an answer database. This database will be used to help write more proposals in the future. Therefore it is vital that the exact text in the chunk is returned, but ONLY if that answer would be useful for future proposals. If there are no good verbatim answers, respond with 'empty chunk'. Here is the overall context: [" + context + "]. Here is the chunk to look for useful answers in: [" + chunk + "]",
+            content=(
+                "Here is a chunk of the proposal. Based on the overall context, extract any verbatim answers that should "
+                "be added to an answer database. This database will be used to help write more proposals in the future. "
+                "Return the answers in structured JSON format, where each answer has a 'verbatim_answer', a "
+                "'req_description', and a list of 'keywords'. If there are no good verbatim answers, respond with an empty JSON list []. "
+                "Here is the overall context: [" + context + "]. Here is the chunk to look for useful answers in: [" + chunk + "]"
+            ),
         )
 
         # Send the thread to the assistant for generation
@@ -112,11 +128,23 @@ def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_len
             time.sleep(1)
 
         # Send print message to console about what number chunk we are on out of the total chunks
-        print(f"Chunk {i} of {len(proposalChunks)} Processed")
+        print(f"\nChunk {i} of {len(proposalChunks)} Processed")
 
         # Extract response for the chunk and append to the list of responses
         messages = client.beta.threads.messages.list(thread_id=thread.id)
-        chunk_responses.append(extract_responses(messages))
+        chunk_response_json = extract_responses(messages)
+        print(chunk_response_json)
+        try:
+            chunk_response_json = json.loads(chunk_response_json[0])
+            answers = chunk_response_json.get("answers", [])
+            for answer in answers:
+                chunk_responses.append(answer)
+            # chunk_responses.extend(chunk_response_json)
+            print(chunk_responses)
+        except:
+            print(f"Error parsing JSON for chunk {i}: {chunk_response_json}")
+
+        #chunk_responses.append(extract_responses(messages))
         
         # Move on to the next chunk
         i += 1
@@ -128,7 +156,10 @@ def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_len
     # Print all of the responses
     i = 0
     for response in chunk_responses:
-        print(f"Response to chunk number {i}: {response}")
+        verbatim_answer = response.get("verbatim_answer", "N/A")
+        req_description = response.get("req_description", "N/A")
+        keywords = response.get("keywords", [])
+        print(f"Extracted Answer #{i}:\n  Verbatim Answer: {verbatim_answer}\n  Requirement Description: {req_description}\n  Keywords: {', '.join(keywords)}\n")
         i += 1
 
 
