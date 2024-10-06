@@ -79,7 +79,7 @@ def add_proposal_from_file(supabase, filepath, prop_title, rfp_id=None):
         print(f"An error occurred: {str(e)}")
         return f"An error occurred: {e}"
     
-
+# TODO Create a smarter chunking function that splits the text at the end of a sentence / section, but also keeps the chunks within a certain length, and includes an overlap of the last x sentences at the beginning and end of each chunk
 def chunk_text(text, chunk_length=1000):
     chunks = []
     # Split the text into chunks of the specified length

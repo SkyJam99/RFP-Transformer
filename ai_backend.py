@@ -5,6 +5,7 @@ from file_processing import extract_text_from_html, read_file, chunk_text
 import time
 import json
 from typing import List
+from db_backend import create_lookup, get_supabase_connection, generate_lookup_file
 
 load_dotenv()
 
@@ -133,14 +134,14 @@ def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_len
         # Extract response for the chunk and append to the list of responses
         messages = client.beta.threads.messages.list(thread_id=thread.id)
         chunk_response_json = extract_responses(messages)
-        print(chunk_response_json)
+        # print(chunk_response_json)
         try:
             chunk_response_json = json.loads(chunk_response_json[0])
             answers = chunk_response_json.get("answers", [])
             for answer in answers:
                 chunk_responses.append(answer)
             # chunk_responses.extend(chunk_response_json)
-            print(chunk_responses)
+            # print(chunk_responses)
         except:
             print(f"Error parsing JSON for chunk {i}: {chunk_response_json}")
 
@@ -153,14 +154,29 @@ def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_len
     # messages = client.beta.threads.messages.list(thread_id=thread.id)
     # responses = extract_responses(messages)
 
+    # Get supabase connection
+    supabase = get_supabase_connection()
+
     # Print all of the responses
     i = 0
     for response in chunk_responses:
         verbatim_answer = response.get("verbatim_answer", "N/A")
         req_description = response.get("req_description", "N/A")
         keywords = response.get("keywords", [])
+
+        # Add the answer to the lookup database
+        create_lookup(supabase, req_description, verbatim_answer, keywords, overall_context)
+
         print(f"Extracted Answer #{i}:\n  Verbatim Answer: {verbatim_answer}\n  Requirement Description: {req_description}\n  Keywords: {', '.join(keywords)}\n")
         i += 1
+
+    # Generate a new lookup file based on everything in the database
+    lookup_file_path = generate_lookup_file(supabase)
+    print(f"Lookup file generated at: {lookup_file_path}")
+
+
+    # TODO: Update the lookup file in the RFP assistant (which isn't implemented yet)
+    return lookup_file_path
 
 
 

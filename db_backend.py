@@ -1,6 +1,7 @@
 from supabase import create_client, Client
 import os
 from dotenv import load_dotenv
+import json
 
 load_dotenv()
 
@@ -177,6 +178,31 @@ def update_lookup(supabase, look_id, req_text=None, answer_text=None, keywords=N
 def delete_lookup(supabase, look_id):
     response = supabase.table("lookup").delete().eq("look_id", look_id).execute()
     return response.data
+
+# Generate Lookup File
+def generate_lookup_file(supabase, output_file_path):
+    supabase = get_supabase_connection()
+    
+    # Retrieve all lookups
+    lookups = get_lookups(supabase)
+
+    # Prep the lookup data
+    lookup_entries = []
+    for lookup in lookups:
+        entry = {
+            "look_id": lookup["look_id"],
+            "keywords": lookup["keywords"]
+        }
+        lookup_entries.append(entry)
+
+    # Write the lookup data to a JSON file
+    with open(output_file_path, "w") as file:
+        json.dump(lookup_entries, file, indent=4)
+
+    return output_file_path
+
+# Test lookup file generation
+# print(generate_lookup_file(get_supabase_connection(), "database_lookup.json"))
 
 #Test the CRUD operations
 def test_crud_operations(supabase):
