@@ -24,6 +24,9 @@ def create_rfp(supabase, rfp_title, rfp_description, rfp_full_text):
     response = supabase.table("rfp").insert(data).execute()
     return response.data
 
+#Create an rfp for testing
+#print(create_rfp(get_supabase_connection(), "Test RFP", "This is a test RFP description", "This is a test RFP full text."))
+
 def get_rfps(supabase):
     response = supabase.table("rfp").select("*").execute()
     return response.data
@@ -65,6 +68,17 @@ def update_requirement(supabase, req_id, updated_text):
 def delete_requirement(supabase, req_id):
     response = supabase.table("requirements").delete().eq("req_id", req_id).execute()
     return response.data
+
+def delete_all_requirements(supabase):
+    requirements = get_requirements(supabase)
+    for requirement in requirements:
+        req_id = requirement["req_id"]
+        delete_requirement(supabase, req_id)
+
+    print("All requirements deleted.")
+
+# Function to delete all entries in the requirements table (dangerous - for testing purposes)
+#delete_all_requirements(get_supabase_connection())
 
 #Proposal CRUD Operations
 def create_proposal(supabase, prop_title, prop_full_text, rfp_id=None):
