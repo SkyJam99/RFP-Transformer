@@ -1,1819 +1,597 @@
 [
     {
-        "look_id": 229,
+        "look_id": 650,
         "keywords": [
-            "innovative",
-            "cost-effective",
             "commitment",
+            "innovative solutions",
+            "cost-effective",
             "safety",
-            "on time",
-            "on budget"
-        ]
+            "integrity"
+        ],
+        "answer_text": "B&M is committed to implementing innovative and cost-effective solutions to its customers\u2019 requirements on time, on budget, and with safety foremost in mind. Black & McDonald is a reliable and flexible contractor operating with integrity and loyalty to employees, customers, suppliers, and the communities we serve."
     },
     {
-        "look_id": 230,
+        "look_id": 651,
         "keywords": [
-            "project team",
-            "Travel Time System",
-            "Queued and Stopped Vehicle Advisory System",
-            "Highway 405"
-        ]
-    },
-    {
-        "look_id": 231,
-        "keywords": [
-            "labour force",
-            "skills",
+            "skilled workforce",
+            "training",
             "expertise",
-            "selection"
-        ]
+            "best practices"
+        ],
+        "answer_text": "B&M will provide a labour force whose selection is based on the required skills and level of expertise. This ensures that best practices and leading edge methodologies are implemented for every contract with which we work. Our staff members continuously train and update their skills, providing our clients with expertise and knowledge in all areas of operation, maintenance, health and safety."
     },
     {
-        "look_id": 232,
-        "keywords": [
-            "ninety years",
-            "electrical contractor",
-            "forty years",
-            "Utility Sector",
-            "Maintenance contracts"
-        ]
-    },
-    {
-        "look_id": 233,
-        "keywords": [
-            "equipment",
-            "systems",
-            "maximum efficiency"
-        ]
-    },
-    {
-        "look_id": 234,
-        "keywords": [
-            "single-source",
-            "accountability",
-            "services",
-            "prompt",
-            "effective"
-        ]
-    },
-    {
-        "look_id": 235,
+        "look_id": 652,
         "keywords": [
             "health",
             "safety",
             "environment",
-            "commitment",
-            "work environment"
-        ]
+            "quality",
+            "reputation"
+        ],
+        "answer_text": "B&M is committed to protecting their people, their property and the environment and will take all necessary steps to provide and maintain a safe and healthy work environment. With a track record of success spanning over ten decades, B&M has built a solid reputation based on our company\u2019s mission of providing our customers with quality and service that is second to none."
     },
     {
-        "look_id": 236,
-        "keywords": [
-            "Project Team",
-            "B&M",
-            "Transnomis",
-            "LEA",
-            "Stinson ITS"
-        ]
-    },
-    {
-        "look_id": 237,
-        "keywords": [
-            "Transnomis",
-            "technology company",
-            "road information management",
-            "communications solutions"
-        ]
-    },
-    {
-        "look_id": 238,
-        "keywords": [
-            "LEA Consulting",
-            "Canadian consulting firm",
-            "planning",
-            "engineering design",
-            "urban infrastructure"
-        ]
-    },
-    {
-        "look_id": 239,
-        "keywords": [
-            "Stinson ITS",
-            "Manufacturer",
-            "Distributor",
-            "System Integrator",
-            "Intelligent Transportation Systems",
-            "Turn-Key Solutions"
-        ]
-    },
-    {
-        "look_id": 240,
+        "look_id": 653,
         "keywords": [
             "design",
             "construction",
             "operation",
             "maintenance",
-            "Travel Time System",
-            "MTO Central Region"
-        ]
+            "Travel Time System"
+        ],
+        "answer_text": "The project involves the design, construction, operation and maintenance of a new Travel Time (TT) System by replacing the existing TT system on multiple highway corridors in MTO Central Region, Ontario."
     },
     {
-        "look_id": 241,
+        "look_id": 703,
+        "keywords": [
+            "warranty",
+            "Black & McDonald Limited",
+            "labour",
+            "equipment",
+            "materials",
+            "five years",
+            "repair",
+            "replacement",
+            "Stinson AIS devices",
+            "all-inclusive warranty"
+        ],
+        "answer_text": "Black & McDonald Limited will provide warranty on all labour, equipment and materials provided. Upon completion of installation, all equipment and materials delivered will be free of material defects and will perform to the requisite standard for a period of five (5) years. All materials provided and work executed under this contract are covered by the warranty. Black & McDonald Limited will repair or replace any equipment that fails throughout the warranty period at no additional expense to the MTO. The B&M will provide warranty services in accordance with the Service Level Agreement's response times for repair or replacement of equipment that has failed. The Stinson AIS devices will be provided with a 5 year all-inclusive warranty which will commence at the time of system acceptance. Advanced replacement spares will be provided to B&M maintenance staff to have on hand during any service calls. In the case that the contract is extended for an additional 2 years, the warranty will be extended accordingly as well."
+    },
+    {
+        "look_id": 654,
         "keywords": [
             "Travel Time System",
             "design",
             "construction",
             "operation",
             "maintenance",
-            "MTO Central Region"
-        ]
-    },
-    {
-        "look_id": 242,
-        "keywords": [
-            "Operation",
-            "Maintenance",
-            "Support Phase",
-            "TT Service",
-            "extension"
-        ]
-    },
-    {
-        "look_id": 243,
-        "keywords": [
-            "coordinate",
-            "work",
-            "Contractors",
-            "contract limits"
-        ]
-    },
-    {
-        "look_id": 244,
-        "keywords": [
-            "Travel time data",
-            "partner agencies",
-            "collaborate",
-            "TT destinations"
-        ]
-    },
-    {
-        "look_id": 245,
-        "keywords": [
-            "MTO",
-            "travel time information",
+            "Ontario Ministry of Transportation",
             "VMS",
-            "existing TT System",
-            "Go-Live"
-        ]
+            "congestion"
+        ],
+        "answer_text": "The project involves the design, construction, operation and maintenance of a new Travel Time (TT) System by replacing the existing TT system on multiple highway corridors in MTO Central Region, Ontario. The travel time information will be displayed on MTO owned VMS to assist the public to find out the travel time along alternate routes and plan their route selections accordingly as well as reducing congestion in work zones and around incidents."
     },
     {
-        "look_id": 286,
-        "keywords": [
-            "dashboard",
-            "map view"
-        ]
-    },
-    {
-        "look_id": 246,
-        "keywords": [
-            "critical path schedule",
-            "contract period",
-            "schedule updates",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 247,
-        "keywords": [
-            "job cost control",
-            "Oracle",
-            "JD Edwards",
-            "Project Manager",
-            "live project financials"
-        ]
-    },
-    {
-        "look_id": 248,
-        "keywords": [
-            "external power disconnect",
-            "Bluetooth equipment",
-            "isolation"
-        ]
-    },
-    {
-        "look_id": 249,
-        "keywords": [
-            "OPSS 609",
-            "standards",
-            "RFP",
-            "electrical grounding equipment"
-        ]
-    },
-    {
-        "look_id": 250,
+        "look_id": 655,
         "keywords": [
             "TT System",
             "Graphical User Interface",
-            "GUI",
-            "MTO users"
-        ]
-    },
-    {
-        "look_id": 251,
-        "keywords": [
             "Test Plan",
             "Pre-Installation Testing",
-            "Proof of Performance",
             "System Integration Testing",
             "Pilot Demonstration Testing",
             "System Acceptance Testing"
-        ]
+        ],
+        "answer_text": "B&M is responsible to provide, host, and manage a TT System Graphical User Interface (GUI) for MTO users to access. B&M will be responsible for developing a Test Plan including Pre-Installation Testing (PIT), Proof of Performance (POP), System Integration Testing (SIT), Pilot Demonstration Testing (PDT) and System Acceptance Testing (SAT)."
     },
     {
-        "look_id": 252,
+        "look_id": 656,
         "keywords": [
-            "reporting structure",
+            "job cost control",
+            "Oracle JD Edwards",
             "Project Manager",
-            "Project Foreman",
-            "project parties"
-        ]
+            "financials",
+            "value engineering"
+        ],
+        "answer_text": "B&M utilizes a well-defined and monitored job cost control system using Oracle\u2019s JD Edwards (JDE) which acts as an early warning system to enable the Project Manager to review live project financials at any given moment, unlike some elaborate systems which provide little more than historical data long after opportunities for value engineering have passed."
     },
     {
-        "look_id": 253,
+        "look_id": 657,
         "keywords": [
+            "JDE",
+            "change management",
+            "Change Requests",
+            "Change Order",
+            "budget"
+        ],
+        "answer_text": "B&M uses JDE to track and manage the change management process for all projects. Change Requests contain important information regarding a potential customer Change Order including; brief description, reference numbers, associated dates and all required adjustments to estimated man-hours, cost and revenue which impact the overall budget of a job."
+    },
+    {
+        "look_id": 658,
+        "keywords": [
+            "stakeholder management",
+            "Project Managers",
             "stakeholder plan",
-            "identifies",
-            "goals",
-            "work methods",
             "project scope risks"
-        ]
+        ],
+        "answer_text": "B&M understands that effective stakeholder management is a key skill for our Project Managers who are accountable for end-to-end project management and execution. B&M creates a stakeholder plan that identifies the stakeholders, discusses goals, determines work methods and identifies project/work scope risks."
     },
     {
-        "look_id": 254,
-        "keywords": [
-            "Project Manager",
-            "communication",
-            "stakeholders",
-            "maintaining relationships"
-        ]
-    },
-    {
-        "look_id": 255,
-        "keywords": [
-            "field crews",
-            "emergencies",
-            "24 hr/7 Day/365 Call Centre"
-        ]
-    },
-    {
-        "look_id": 256,
+        "look_id": 659,
         "keywords": [
             "on-time",
             "on-budget",
             "Microsoft Project",
-            "project completion"
-        ]
+            "Project Scheduler",
+            "Critical Path"
+        ],
+        "answer_text": "B&M prioritises on-time and on-budget project completion and uses Microsoft Project to achieve this goal. It enables all of the associated requirements, milestones, and ultimate completion dates involved in the completion of the project delivered through an integrated team method to be mutually established and easily updated. Every project is assigned to a dedicated Project Scheduler who is primarily responsible for assisting the Project Manager in scheduling activities such as creating baseline schedules, updating schedules weekly or biweekly to integrate change orders, defining and monitoring the Critical Path of the project, and rising any anticipated delays issues to the Project Manager."
     },
     {
-        "look_id": 257,
-        "keywords": [
-            "single point of contact",
-            "project manager",
-            "communication"
-        ]
-    },
-    {
-        "look_id": 258,
+        "look_id": 660,
         "keywords": [
             "Quality Assurance",
             "Quality Control",
-            "Quality Management"
-        ]
+            "evaluation",
+            "improvement",
+            "training sessions"
+        ],
+        "answer_text": "B&M has a Quality Assurance / Quality Control Policy and Program in place that will comply with our client's Quality Management needs' principles and objectives. Our Program was established to fulfill, and then surpass, our client's quality assurance standards through continual evaluation and improvement. The goal of B&M's Program is to increase efficiency and lower project costs while maintaining the highest level of quality in every performed work. Through training sessions, seminars, access to educational resources, and IMSA certification courses, B&M promotes quality work by developing and maintaining our workforce knowledge."
     },
     {
-        "look_id": 259,
+        "look_id": 661,
         "keywords": [
-            "ITS equipment",
-            "testing",
-            "installation"
-        ]
+            "Stinson AIS sensor",
+            "Factory Acceptance Tests",
+            "Bluetooth detection",
+            "WiFi detection",
+            "burn in period"
+        ],
+        "answer_text": "The Stinson AIS sensor is designed and manufactured by Stinson ITS Inc. in its Woodbridge, ON facility. Each device goes through a series of Factory Acceptance Tests (FAT) which includes manual testing and verification of each subsystem component is functioning properly. These include verifying core device functions such as Bluetooth detection, WiFi detection, onboard Web Server operation, NTP sync, Factory reset and firmware update are operating correctly. After initial testing each device also goes through a 7 day burn in period. Devices are tested again upon completion of the burn in."
     },
     {
-        "look_id": 260,
-        "keywords": [
-            "GIT",
-            "revision control",
-            "software development"
-        ]
-    },
-    {
-        "look_id": 261,
-        "keywords": [
-            "Continuous Integration",
-            "CI",
-            "software development"
-        ]
-    },
-    {
-        "look_id": 262,
+        "look_id": 662,
         "keywords": [
             "System Testing",
             "software errors",
-            "risk mitigation"
-        ]
+            "MTO processes"
+        ],
+        "answer_text": "Comprehensive System Testing will also mitigate risks of software errors and issues. The project will undergo comprehensive testing, in adherence with standard MTO processes."
     },
     {
-        "look_id": 263,
+        "look_id": 663,
         "keywords": [
-            "System Testing",
-            "MTO processes",
-            "Test plan",
-            "software errors"
-        ]
+            "traffic management",
+            "public safety",
+            "construction",
+            "traffic control plans"
+        ],
+        "answer_text": "B&M has in place a Public Protection & Traffic Management Planning tenet to make sure B&M authorized employees comprehend the necessities for and to provide protection for workers and the public by regulating traffic flow and implementing efficient traffic control plans."
     },
     {
-        "look_id": 264,
+        "look_id": 664,
         "keywords": [
-            "PIT Testing",
-            "POP Testing",
-            "ATMS",
-            "installation"
-        ]
+            "occupational health",
+            "safety",
+            "workplace safety",
+            "management commitment"
+        ],
+        "answer_text": "B&M believes that the measures we take will help drive B&M closer to our vision of a workplace where 'Nobody Gets Hurt Today or Tomorrow'. Our management team is committed to putting our people first in meeting our customer's challenges in the most critical environments."
     },
     {
-        "look_id": 265,
-        "keywords": [
-            "SIT",
-            "System Integration Testing",
-            "operational",
-            "testing"
-        ]
-    },
-    {
-        "look_id": 266,
-        "keywords": [
-            "modal transportation",
-            "traffic movement",
-            "highways",
-            "roadways"
-        ]
-    },
-    {
-        "look_id": 267,
-        "keywords": [
-            "Public Protection",
-            "Traffic Management",
-            "traffic flow",
-            "safety"
-        ]
-    },
-    {
-        "look_id": 268,
-        "keywords": [
-            "Occupational Health",
-            "Safety",
-            "workplace vision"
-        ]
-    },
-    {
-        "look_id": 294,
-        "keywords": [
-            "raw data",
-            "Bluetooth Readers",
-            "Solution capability"
-        ]
-    },
-    {
-        "look_id": 269,
+        "look_id": 665,
         "keywords": [
             "Travel Time system",
             "Bluetooth",
             "WiFi",
-            "data transmission"
-        ]
+            "data transmission",
+            "ITS Central"
+        ],
+        "answer_text": "The Travel Time system will gather data from Bluetooth and Wifi detectors. The data will be transmitted to ITS Central control software, and be used to estimate travel times along roadways within the scope area, between detectors, and between specified origin destination pairs."
     },
     {
-        "look_id": 270,
-        "keywords": [
-            "sensors",
-            "MAC addresses",
-            "Bluetooth",
-            "Wi-Fi"
-        ]
-    },
-    {
-        "look_id": 271,
+        "look_id": 666,
         "keywords": [
             "Stinson AIS",
-            "Bluetooth",
-            "WiFi",
-            "sensor capabilities"
-        ]
+            "Bluetooth detection",
+            "MTO project",
+            "accuracy",
+            "penetration rates"
+        ],
+        "answer_text": "The Stinson AIS participated in an MTO project in 2016 to test a variety of alternative Bluetooth detection devices to determine their accuracy and penetration rates. The results of the testing confirmed that the Stinson AIS met industry standards for both metrics and as such were well suited for travel time applications on roadways."
     },
     {
-        "look_id": 272,
+        "look_id": 667,
         "keywords": [
-            "ease of installation",
-            "Stinson AIS",
-            "configuration"
-        ]
+            "solar systems",
+            "standalone sites",
+            "autonomy",
+            "solar panel"
+        ],
+        "answer_text": "Stinson will be supplying solar systems for all of the standalone sites that are called for in this project. The system will provide 12 days of autonomy and will utilize a solar panel twice as large as is needed such that it can fully charge even in cloudy conditions or when the panel is partially covered in snow."
     },
     {
-        "look_id": 273,
+        "look_id": 668,
         "keywords": [
             "hosting",
             "OVH",
             "certifications",
             "data centers",
             "internet hosting"
-        ]
+        ],
+        "answer_text": "For hosting, we propose the services of OVH (https://www.ovh.com/). It is one of the largest internet hosting companies in the world, with 400,000 servers, 33 data centers in 4 continents and 1.6 million customers. It is fully certified: PCI DSS, ISO/IEC 27001, 27017, 27018, 27701, 50001, SOC 1, SOC 2 and SOC 3, Cloud Security Alliance STAR certified."
     },
     {
-        "look_id": 287,
+        "look_id": 669,
         "keywords": [
-            "dashboard",
-            "travel time index",
-            "TTI",
-            "links",
-            "routes"
-        ]
-    },
-    {
-        "look_id": 274,
-        "keywords": [
-            "Transnomis Solutions",
-            "dedicated servers",
+            "servers",
             "OVH",
+            "dedicated servers",
             "fail-over",
             "live streaming replication"
-        ]
+        ],
+        "answer_text": "As part of the contract, Transnomis Solutions will procure three dedicated servers with OVH data center in Beauharnois, QC. One server will be the primary server hosting the ITS Central application. The second (fail-over) server will be used for live streaming replication, which will be ready to take over immediately should the primary server fails. The third server will also have live streaming replication serving as hot spare."
     },
     {
-        "look_id": 275,
+        "look_id": 704,
         "keywords": [
-            "data collection",
-            "Bluetooth Readers",
-            "Proponent",
-            "contract"
-        ]
+            "servers",
+            "OVH",
+            "triple redundancy",
+            "fail-over",
+            "streaming replication",
+            "primary server",
+            "secondary server",
+            "tertiary server"
+        ],
+        "answer_text": "A total of 3 servers, hosted professionally by OVH within Canada, will be utilized in this project to achieve full system triple redundancy and fail-over. OVH has technician and security on-site 24/7. It has systematic double power supply, 250 kVA UPS and generators with an initial autonomy of 48 hours. It has a minimum of 2 network connections and two network rooms within each of its data centers. In addition to the primary server, an identical software installation will be created in two additional servers \u2013 one for failover and one for hot spare. The database will be set up with streaming replication such that the databases in all three (3) servers will always be in sync. In the event the primary server fails, the secondary server can quickly and automatically take over to become the primary server. Transnomis will then reconfigure streaming replication such that the secondary server will stream to the tertiary server, and reconfigure the failover to be the tertiary server. The failed server will then be replaced."
     },
     {
-        "look_id": 276,
+        "look_id": 670,
         "keywords": [
-            "data processing",
-            "travel time information",
-            "requirements"
-        ]
+            "responsibility",
+            "software service",
+            "contact point",
+            "server availability"
+        ],
+        "answer_text": "Although hosting is provided by reliable third party, Transnomis Solutions is fully responsible for the availability of its software service. The Ministry will never have to deal with the hosting company. Transnomis Solutions will be the single point of contact for all issues related to services provided for this contract, including server availability issues."
     },
     {
-        "look_id": 277,
-        "keywords": [
-            "data hosting",
-            "cloud-based solution",
-            "Canada",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 278,
-        "keywords": [
-            "historical data",
-            "storage",
-            "auditing",
-            "Bluetooth Readers"
-        ]
-    },
-    {
-        "look_id": 279,
-        "keywords": [
-            "historical data",
-            "access",
-            "querying",
-            "GUI",
-            "portal module"
-        ]
-    },
-    {
-        "look_id": 280,
-        "keywords": [
-            "data portal",
-            "selection criteria",
-            "querying",
-            "time period",
-            "location",
-            "field hardware"
-        ]
-    },
-    {
-        "look_id": 281,
-        "keywords": [
-            "historical data",
-            "portal",
-            "accessibility",
-            "MTO users"
-        ]
-    },
-    {
-        "look_id": 282,
-        "keywords": [
-            "historical data",
-            "accessibility",
-            "MTO users",
-            "travel time",
-            "publishing"
-        ]
-    },
-    {
-        "look_id": 283,
-        "keywords": [
-            "data ownership",
-            "MTO",
-            "aggregated data",
-            "archived data"
-        ]
-    },
-    {
-        "look_id": 284,
-        "keywords": [
-            "data dump",
-            "MTO",
-            "frequency",
-            "data inclusion"
-        ]
-    },
-    {
-        "look_id": 285,
-        "keywords": [
-            "GUI",
-            "dashboard",
-            "real-time",
-            "travel time",
-            "hardware"
-        ]
-    },
-    {
-        "look_id": 288,
-        "keywords": [
-            "reporting system",
-            "historical time period",
-            "location"
-        ]
-    },
-    {
-        "look_id": 289,
-        "keywords": [
-            "data feeds",
-            "sharable",
-            "partners",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 290,
-        "keywords": [
-            "maintenance",
-            "Proponent",
-            "Solution",
-            "Term of Agreement"
-        ]
-    },
-    {
-        "look_id": 291,
-        "keywords": [
-            "email alert",
-            "notifications",
-            "system availability",
-            "threshold"
-        ]
-    },
-    {
-        "look_id": 292,
-        "keywords": [
-            "email alert",
-            "communication loss",
-            "Solution capability"
-        ]
-    },
-    {
-        "look_id": 293,
-        "keywords": [
-            "email alert",
-            "speed threshold",
-            "Solution capability"
-        ]
-    },
-    {
-        "look_id": 295,
-        "keywords": [
-            "process raw data",
-            "travel time information",
-            "MTO formats"
-        ]
-    },
-    {
-        "look_id": 296,
-        "keywords": [
-            "publish",
-            "secured data feeds",
-            "travel time information"
-        ]
-    },
-    {
-        "look_id": 297,
-        "keywords": [
-            "metric system",
-            "configuration",
-            "Solution"
-        ]
-    },
-    {
-        "look_id": 298,
-        "keywords": [
-            "scalable",
-            "future expansion",
-            "TT System"
-        ]
-    },
-    {
-        "look_id": 299,
-        "keywords": [
-            "real-time data",
-            "continuous operation",
-            "24/7"
-        ]
-    },
-    {
-        "look_id": 300,
-        "keywords": [
-            "uptime",
-            "99%",
-            "maintenance"
-        ]
-    },
-    {
-        "look_id": 301,
-        "keywords": [
-            "backup",
-            "redundancy",
-            "system failure"
-        ]
-    },
-    {
-        "look_id": 302,
-        "keywords": [
-            "remote access",
-            "GUI",
-            "secured manner"
-        ]
-    },
-    {
-        "look_id": 303,
-        "keywords": [
-            "GUI compatibility",
-            "Microsoft Edge",
-            "Google Chrome"
-        ]
-    },
-    {
-        "look_id": 304,
-        "keywords": [
-            "GO ITS",
-            "security requirements",
-            "compliance"
-        ]
-    },
-    {
-        "look_id": 305,
-        "keywords": [
-            "user access",
-            "privileges",
-            "functional level"
-        ]
-    },
-    {
-        "look_id": 306,
-        "keywords": [
-            "collaboration",
-            "VPN tunnel",
-            "MTO firewall"
-        ]
-    },
-    {
-        "look_id": 307,
-        "keywords": [
-            "Bluetooth reader",
-            "unique ID",
-            "identification"
-        ]
-    },
-    {
-        "look_id": 308,
-        "keywords": [
-            "data collection",
-            "Bluetooth Readers",
-            "configuration"
-        ]
-    },
-    {
-        "look_id": 309,
-        "keywords": [
-            "data processing time",
-            "one second",
-            "travel time information"
-        ]
-    },
-    {
-        "look_id": 310,
+        "look_id": 671,
         "keywords": [
             "data hosting",
             "cloud-based solution",
             "Canada",
             "MTO premises"
-        ]
+        ],
+        "answer_text": "Data shall be hosted and stored by the Proponent within Canada utilizing cloud-based solution, outside of MTO premises."
     },
     {
-        "look_id": 311,
+        "look_id": 672,
         "keywords": [
             "historical data",
             "storage",
-            "6 months",
-            "Bluetooth Readers"
-        ]
-    },
-    {
-        "look_id": 312,
-        "keywords": [
-            "historical data",
-            "query",
-            "GUI",
-            "filtering options"
-        ]
-    },
-    {
-        "look_id": 313,
-        "keywords": [
-            "data ownership",
-            "MTO",
-            "raw data",
-            "aggregated data",
-            "archived data"
-        ]
-    },
-    {
-        "look_id": 314,
-        "keywords": [
-            "dashboard",
-            "real-time travel time",
-            "hardware issues",
-            "maintenance issues"
-        ]
-    },
-    {
-        "look_id": 315,
-        "keywords": [
-            "reporting tools",
-            "customize reports",
-            "MTO needs"
-        ]
-    },
-    {
-        "look_id": 316,
-        "keywords": [
-            "reports",
-            "export",
-            "CSV format"
-        ]
-    },
-    {
-        "look_id": 317,
-        "keywords": [
-            "reports",
-            "export",
-            "XML format"
-        ]
-    },
-    {
-        "look_id": 318,
-        "keywords": [
-            "reports",
-            "export",
-            "PDF format"
-        ]
-    },
-    {
-        "look_id": 319,
-        "keywords": [
-            "reports",
-            "PDF",
-            "exportable"
-        ]
-    },
-    {
-        "look_id": 320,
-        "keywords": [
-            "reports",
-            "PDF",
-            "export",
-            "browser"
-        ]
-    },
-    {
-        "look_id": 321,
-        "keywords": [
-            "reporting system",
-            "automatic",
-            "daily",
-            "weekly",
-            "monthly",
-            "ranking",
-            "average speed",
-            "average travel time"
-        ]
-    },
-    {
-        "look_id": 322,
-        "keywords": [
-            "reports",
-            "real time",
-            "automated",
-            "configuration tool"
-        ]
-    },
-    {
-        "look_id": 323,
-        "keywords": [
-            "data feeds",
-            "sharable",
-            "partners",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 324,
-        "keywords": [
-            "maintenance",
-            "responsibility",
-            "Proponent",
-            "Term of Agreement"
-        ]
-    },
-    {
-        "look_id": 325,
-        "keywords": [
-            "software updates",
-            "maintenance",
-            "Proponent",
-            "Term of Agreement"
-        ]
-    },
-    {
-        "look_id": 326,
-        "keywords": [
-            "configuration file",
-            "automatic",
-            "transfer",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 327,
-        "keywords": [
-            "email alert",
-            "notifications",
-            "system availability",
-            "threshold"
-        ]
-    },
-    {
-        "look_id": 328,
-        "keywords": [
-            "operational support",
-            "warranty",
-            "emergency repairs",
-            "routine maintenance",
-            "TT system"
-        ]
-    },
-    {
-        "look_id": 329,
-        "keywords": [
-            "technical support",
-            "contact information",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 330,
-        "keywords": [
-            "Scheduled System Maintenance Plan",
-            "MTO",
-            "SLA initiation"
-        ]
-    },
-    {
-        "look_id": 331,
-        "keywords": [
-            "safety management plan",
-            "environmental management plan",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 332,
-        "keywords": [
-            "quality management plan",
-            "project team",
-            "quality control specialist"
-        ]
-    },
-    {
-        "look_id": 333,
-        "keywords": [
-            "dispatch center",
-            "contact information",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 334,
-        "keywords": [
-            "routine maintenance",
-            "Scheduled System Maintenance Plan"
-        ]
-    },
-    {
-        "look_id": 335,
-        "keywords": [
-            "electronic ticketing system",
-            "system outages",
-            "equipment operation"
-        ]
-    },
-    {
-        "look_id": 336,
-        "keywords": [
-            "emergency maintenance plan",
-            "manufacturer",
-            "contract"
-        ]
-    },
-    {
-        "look_id": 337,
-        "keywords": [
-            "emergency dispatch center",
-            "24-hour",
-            "staffed"
-        ]
-    },
-    {
-        "look_id": 338,
-        "keywords": [
-            "response time",
-            "critical failures",
-            "major failures",
-            "minor failures"
-        ]
-    },
-    {
-        "look_id": 339,
-        "keywords": [
-            "warranty",
-            "labour",
-            "equipment",
-            "materials",
-            "defects",
-            "repair",
-            "replacement",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 340,
-        "keywords": [
-            "Stinson AIS",
-            "5 year warranty",
-            "system acceptance"
-        ]
-    },
-    {
-        "look_id": 341,
-        "keywords": [
-            "servers",
-            "OVH",
-            "triple redundancy",
-            "fail-over"
-        ]
-    },
-    {
-        "look_id": 342,
-        "keywords": [
-            "Watch Dog",
-            "server availability",
-            "downtime",
-            "system failures"
-        ]
-    },
-    {
-        "look_id": 343,
-        "keywords": [
-            "Travel Time System",
-            "design",
-            "construction",
-            "operation",
-            "maintenance",
-            "MTO Central Region"
-        ]
-    },
-    {
-        "look_id": 344,
-        "keywords": [
-            "Operation",
-            "Maintenance",
-            "Support Phase",
-            "TT Service",
-            "optional extension"
-        ]
-    },
-    {
-        "look_id": 345,
-        "keywords": [
-            "critical path schedule",
-            "contract period",
-            "schedule updates"
-        ]
-    },
-    {
-        "look_id": 346,
-        "keywords": [
-            "equipment management",
-            "material management",
-            "no latency"
-        ]
-    },
-    {
-        "look_id": 347,
-        "keywords": [
-            "compliance",
-            "local health guidelines",
-            "safety",
-            "construction"
-        ]
-    },
-    {
-        "look_id": 348,
-        "keywords": [
-            "TT System",
-            "Graphical User Interface",
-            "MTO users"
-        ]
-    },
-    {
-        "look_id": 349,
-        "keywords": [
-            "job cost control",
-            "Oracle",
-            "JD Edwards",
-            "early warning system"
-        ]
-    },
-    {
-        "look_id": 350,
-        "keywords": [
-            "JDE",
-            "change management",
-            "process"
-        ]
-    },
-    {
-        "look_id": 351,
-        "keywords": [
-            "stakeholder plan",
-            "identify stakeholders",
-            "goals",
-            "work methods",
-            "scope risks"
-        ]
-    },
-    {
-        "look_id": 352,
-        "keywords": [
-            "on-time",
-            "on-budget",
-            "Microsoft Project",
-            "project completion"
-        ]
-    },
-    {
-        "look_id": 353,
-        "keywords": [
-            "single point of contact",
-            "project manager",
-            "communication"
-        ]
-    },
-    {
-        "look_id": 354,
-        "keywords": [
-            "Quality Assurance",
-            "Quality Control",
-            "Policy",
-            "Program"
-        ]
-    },
-    {
-        "look_id": 355,
-        "keywords": [
-            "ITS equipment",
-            "BT readers",
-            "communication infrastructure",
-            "testing"
-        ]
-    },
-    {
-        "look_id": 356,
-        "keywords": [
-            "revision control",
-            "deployment",
-            "faulty changes"
-        ]
-    },
-    {
-        "look_id": 357,
-        "keywords": [
-            "Comprehensive System Testing",
-            "mitigate risks",
-            "software errors"
-        ]
-    },
-    {
-        "look_id": 358,
-        "keywords": [
-            "system testing",
-            "MTO processes",
-            "test plan",
-            "software errors"
-        ]
-    },
-    {
-        "look_id": 359,
-        "keywords": [
-            "PIT testing",
-            "POP testing",
-            "ATMS",
-            "performance standards"
-        ]
-    },
-    {
-        "look_id": 360,
-        "keywords": [
-            "SIT",
-            "system integration",
-            "operational testing"
-        ]
-    },
-    {
-        "look_id": 361,
-        "keywords": [
-            "traffic management",
-            "public safety",
-            "traffic control plans"
-        ]
-    },
-    {
-        "look_id": 362,
-        "keywords": [
-            "occupational health",
-            "safety commitment",
-            "workplace safety"
-        ]
-    },
-    {
-        "look_id": 363,
-        "keywords": [
-            "Travel Time system",
-            "Bluetooth",
-            "WiFi",
-            "data transmission"
-        ]
-    },
-    {
-        "look_id": 364,
-        "keywords": [
-            "sensors",
-            "MAC addresses",
-            "data encryption",
-            "LTE modem"
-        ]
-    },
-    {
-        "look_id": 365,
-        "keywords": [
-            "solar systems",
-            "standalone sites",
-            "manufacturing experience"
-        ]
-    },
-    {
-        "look_id": 366,
-        "keywords": [
-            "hosting",
-            "OVH",
-            "certifications",
-            "data centers",
-            "internet hosting"
-        ]
-    },
-    {
-        "look_id": 367,
-        "keywords": [
-            "servers",
-            "Transnomis Solutions",
-            "OVH",
-            "fail-over",
-            "live streaming replication"
-        ]
-    },
-    {
-        "look_id": 368,
-        "keywords": [
-            "travel time",
-            "secured data feeds",
-            "solution"
-        ]
-    },
-    {
-        "look_id": 369,
-        "keywords": [
-            "real-time",
-            "travel time",
-            "data feeds",
-            "continuous operation"
-        ]
-    },
-    {
-        "look_id": 370,
-        "keywords": [
-            "data hosting",
-            "cloud-based solution",
-            "Canada",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 371,
-        "keywords": [
-            "historical data",
             "auditing",
-            "Bluetooth Readers",
-            "encrypted MAC ID"
-        ]
+            "Bluetooth Readers"
+        ],
+        "answer_text": "The Proponent shall store a minimum of six (6) months of historical raw data for auditing purposes, including individual timestamped encrypted MAC ID records with their associated Bluetooth Readers."
     },
     {
-        "look_id": 372,
-        "keywords": [
-            "historical data",
-            "access",
-            "querying",
-            "GUI",
-            "portal module"
-        ]
-    },
-    {
-        "look_id": 373,
-        "keywords": [
-            "data portal",
-            "selection criteria",
-            "querying",
-            "time period",
-            "location",
-            "field hardware"
-        ]
-    },
-    {
-        "look_id": 374,
-        "keywords": [
-            "historical data",
-            "portal",
-            "accessibility",
-            "MTO users"
-        ]
-    },
-    {
-        "look_id": 375,
-        "keywords": [
-            "historical data",
-            "accessibility",
-            "MTO users",
-            "travel time",
-            "publishing"
-        ]
-    },
-    {
-        "look_id": 376,
+        "look_id": 673,
         "keywords": [
             "data ownership",
             "MTO",
             "aggregated data",
             "archived data"
-        ]
+        ],
+        "answer_text": "MTO shall own all data, including aggregated and archived data."
     },
     {
-        "look_id": 377,
+        "look_id": 674,
         "keywords": [
             "data dump",
             "MTO",
-            "frequency",
-            "processed travel time",
+            "processed travel time data",
             "Central Region"
-        ]
+        ],
+        "answer_text": "The Proponent shall perform a regular data dump to MTO. MTO to provide the Proponent with details on frequency of these data dumps and which data to include. Data to include at minimum processed travel time data for all links and routes in Central Region."
     },
     {
-        "look_id": 378,
-        "keywords": [
-            "dashboard",
-            "real-time",
-            "travel time",
-            "hardware",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 379,
-        "keywords": [
-            "dashboard",
-            "map view"
-        ]
-    },
-    {
-        "look_id": 380,
-        "keywords": [
-            "dashboard",
-            "travel time index",
-            "TTI",
-            "real-time",
-            "free-flow"
-        ]
-    },
-    {
-        "look_id": 381,
-        "keywords": [
-            "maintenance",
-            "Proponent",
-            "Solution",
-            "Term of Agreement"
-        ]
-    },
-    {
-        "look_id": 382,
-        "keywords": [
-            "software updates",
-            "Proponent",
-            "Solution",
-            "Term of Agreement"
-        ]
-    },
-    {
-        "look_id": 383,
-        "keywords": [
-            "email alert",
-            "communication loss",
-            "reader"
-        ]
-    },
-    {
-        "look_id": 384,
-        "keywords": [
-            "email alert",
-            "speed threshold",
-            "link",
-            "route"
-        ]
-    },
-    {
-        "look_id": 385,
-        "keywords": [
-            "ITS Central",
-            "data retrieval",
-            "device status",
-            "Bluetooth",
-            "CCTV",
-            "traffic signals"
-        ]
-    },
-    {
-        "look_id": 386,
-        "keywords": [
-            "raw data",
-            "travel time",
-            "MTO formats"
-        ]
-    },
-    {
-        "look_id": 387,
-        "keywords": [
-            "XML",
-            "HTTPS",
-            "data feeds"
-        ]
-    },
-    {
-        "look_id": 388,
-        "keywords": [
-            "uptime",
-            "99%",
-            "maintenance"
-        ]
-    },
-    {
-        "look_id": 389,
-        "keywords": [
-            "servers",
-            "redundancy",
-            "fail-over",
-            "OVH"
-        ]
-    },
-    {
-        "look_id": 390,
-        "keywords": [
-            "data collection",
-            "Bluetooth Readers"
-        ]
-    },
-    {
-        "look_id": 391,
-        "keywords": [
-            "data processing",
-            "1 second"
-        ]
-    },
-    {
-        "look_id": 392,
-        "keywords": [
-            "algorithm",
-            "travel time",
-            "data filtering"
-        ]
-    },
-    {
-        "look_id": 393,
-        "keywords": [
-            "security",
-            "GO ITS",
-            "compliance"
-        ]
-    },
-    {
-        "look_id": 394,
-        "keywords": [
-            "VPN",
-            "IPSec",
-            "collaboration"
-        ]
-    },
-    {
-        "look_id": 395,
-        "keywords": [
-            "data timeout",
-            "default limit",
-            "two minutes"
-        ]
-    },
-    {
-        "look_id": 396,
-        "keywords": [
-            "VMS message",
-            "valid",
-            "time period"
-        ]
-    },
-    {
-        "look_id": 397,
-        "keywords": [
-            "default time period",
-            "weekdays",
-            "weekends",
-            "statutory holidays"
-        ]
-    },
-    {
-        "look_id": 398,
-        "keywords": [
-            "real-time",
-            "route travel time",
-            "slow traffic condition"
-        ]
-    },
-    {
-        "look_id": 399,
-        "keywords": [
-            "slow traffic",
-            "free-flow travel time",
-            "speed limit"
-        ]
-    },
-    {
-        "look_id": 400,
-        "keywords": [
-            "data hosting",
-            "cloud-based solution",
-            "Canada"
-        ]
-    },
-    {
-        "look_id": 401,
-        "keywords": [
-            "historical data",
-            "aggregated travel time",
-            "contract duration"
-        ]
-    },
-    {
-        "look_id": 402,
-        "keywords": [
-            "historical raw data",
-            "auditing purposes",
-            "six months"
-        ]
-    },
-    {
-        "look_id": 403,
-        "keywords": [
-            "data ownership",
-            "aggregated data",
-            "archived data"
-        ]
-    },
-    {
-        "look_id": 404,
+        "look_id": 675,
         "keywords": [
             "dashboard",
             "real-time travel time",
-            "hardware information"
-        ]
+            "hardware",
+            "Bluetooth reader",
+            "VMS"
+        ],
+        "answer_text": "The GUI shall provide a dashboard for MTO to access real-time travel time and hardware (Bluetooth reader, VMS) information."
     },
     {
-        "look_id": 405,
+        "look_id": 676,
+        "keywords": [
+            "travel time index",
+            "TTI",
+            "links",
+            "routes"
+        ],
+        "answer_text": "The dashboard shall provide information on travel time index (TTI) for links and routes. TTI = TT (real-time) / TT (free-flow)."
+    },
+    {
+        "look_id": 677,
         "keywords": [
             "reporting system",
             "historical time period",
             "location"
-        ]
+        ],
+        "answer_text": "The reporting system shall be able to report on any user-specified historical time period and location."
     },
     {
-        "look_id": 406,
-        "keywords": [
-            "report export",
-            "CSV format"
-        ]
-    },
-    {
-        "look_id": 407,
-        "keywords": [
-            "report export",
-            "XML format"
-        ]
-    },
-    {
-        "look_id": 408,
-        "keywords": [
-            "report export",
-            "PDF format"
-        ]
-    },
-    {
-        "look_id": 409,
+        "look_id": 678,
         "keywords": [
             "reports",
-            "PDF",
-            "exportable"
-        ]
+            "printer-friendly",
+            "organized format"
+        ],
+        "answer_text": "The reports from the reporting system shall be generated in a printer-friendly and clearly organized format."
     },
     {
-        "look_id": 410,
-        "keywords": [
-            "reports",
-            "PDF",
-            "export",
-            "browser",
-            "Save as PDF"
-        ]
-    },
-    {
-        "look_id": 411,
-        "keywords": [
-            "reporting system",
-            "automatic generation",
-            "daily",
-            "weekly",
-            "monthly",
-            "ranking",
-            "average speed",
-            "average travel time"
-        ]
-    },
-    {
-        "look_id": 412,
-        "keywords": [
-            "reports",
-            "on-demand",
-            "real time",
-            "automatically generated",
-            "Report Automation"
-        ]
-    },
-    {
-        "look_id": 413,
-        "keywords": [
-            "data feeds",
-            "sharable",
-            "partners",
-            "MTO"
-        ]
-    },
-    {
-        "look_id": 414,
+        "look_id": 679,
         "keywords": [
             "maintenance",
-            "responsibility",
+            "Proponent",
             "Term of Agreement"
-        ]
+        ],
+        "answer_text": "The Proponent shall be responsible for all maintenance of the Solution during the Term of Agreement."
     },
     {
-        "look_id": 415,
-        "keywords": [
-            "software updates",
-            "up to date",
-            "Term of Agreement"
-        ]
-    },
-    {
-        "look_id": 416,
-        "keywords": [
-            "bug patches",
-            "Solution",
-            "development"
-        ]
-    },
-    {
-        "look_id": 417,
+        "look_id": 680,
         "keywords": [
             "changes",
-            "logged",
-            "ITS Central",
-            "audit log"
-        ]
+            "processes",
+            "methodologies",
+            "MTO"
+        ],
+        "answer_text": "In the event the Proponent makes any changes to its processes or methodologies during the Term of Agreement, including but not limited to data collection, processing methodology, storage, hosting, or cybersecurity, the Proponent shall inform MTO in detail of these changes in advance."
     },
     {
-        "look_id": 418,
+        "look_id": 681,
         "keywords": [
-            "configuration file",
-            "automatic",
+            "ITS Central",
+            "Advanced Traffic Management System",
+            "data retrieval",
+            "Bluetooth Readers",
             "MTO",
-            "last business day"
-        ]
+            "QSVAS",
+            "field devices"
+        ],
+        "answer_text": "Transnomis' ITS Central software is currently installed as the Advanced Traffic Management System in the City of Edmonton, Region of York, Region of Durham, MTO East Region, and BC Ferries. In addition, ITS Central is the control software being used for MTO's Queue and Stopped Vehicle Advisory System (QSVAS) on Highway 405, which is currently in the Operational Performance Test (OPT) period. ITS Central specializes in retrieving data and device status information from the field devices it\u2019s integrated with, including the Stinson AIS Bluetooth/WiFi sensor, cellular modems, CCTV cameras, variable message signs, vehicle detectors, traffic signals, and various weather detection equipment (e.g., atmospheric sensors, wind meters, pavement sensors, etc.)."
     },
     {
-        "look_id": 419,
+        "look_id": 682,
+        "keywords": [
+            "scalability",
+            "Bluetooth readers",
+            "VMS",
+            "future expansion"
+        ],
+        "answer_text": "ITS Central is designed to be fully scalable, to include future geographic expansion and inclusion of additional routes. In addition, adding additional Bluetooth readers and VMS\u2019s is a common request by our previous clients, and can be easily accommodated."
+    },
+    {
+        "look_id": 683,
+        "keywords": [
+            "continuous operation",
+            "24/7",
+            "high availability",
+            "redundancy",
+            "failover"
+        ],
+        "answer_text": "Our ITS Central software is designed to operate continuously, 24/7/365. Our ITS Central Advanced Traffic Management Systems in the City of Edmonton, Region of York, Region of Durham, MTO East Region, and BC Ferries operate continuously (24/7/365). MTO's QSVAS is also designed for continuous operations. Our systems in Toronto, Oklahoma, and California are also running 24/7/365. High availability features, and redundancy are designed within our proposed system, including triple servers, failover, device monitoring."
+    },
+    {
+        "look_id": 684,
+        "keywords": [
+            "uptime",
+            "redundancy",
+            "triple servers",
+            "OVH",
+            "99% uptime"
+        ],
+        "answer_text": "Professional third-party hosting, and triple servers are proposed to achieve 99% uptime, with an expected uptime of better than 99.99% excluding scheduled maintenance. A total of 3 servers, hosted professionally by OVH within Canada, will be utilized in this project to achieve full system triple redundancy and fail-over."
+    },
+    {
+        "look_id": 685,
+        "keywords": [
+            "compliance",
+            "security requirements",
+            "Government of Ontario",
+            "ITS Central"
+        ],
+        "answer_text": "ITS Central complies with all Government of Ontario Information Technology Standards security requirements."
+    },
+    {
+        "look_id": 686,
+        "keywords": [
+            "IPSec VPN",
+            "collaboration",
+            "MTO",
+            "secure data transmission"
+        ],
+        "answer_text": "The project team will collaborate with MTO to establish a site-to-site IPSec VPN tunnel between the ITS Central server and MTO firewall."
+    },
+    {
+        "look_id": 687,
+        "keywords": [
+            "algorithm",
+            "travel times",
+            "data processing",
+            "filtering",
+            "configurable parameters"
+        ],
+        "answer_text": "ITS Central employs advanced algorithmic calculation of travel times between sensors by aggregating and filtering the raw travel time data eliminating aberrations and outliers. The parameters for this algorithm are configurable."
+    },
+    {
+        "look_id": 688,
+        "keywords": [
+            "data hosting",
+            "cloud-based solution",
+            "OVH",
+            "Canada",
+            "security",
+            "Transnomis Solutions",
+            "responsibility"
+        ],
+        "answer_text": "Data shall be hosted and stored by the Proponent within Canada utilizing cloud-based solution, outside of MTO premises. For hosting, we propose the services of OVH (https://www.ovh.com/). It is one of the largest internet hosting companies in the world, with 400,000 servers, 33 data centers in 4 continents and 1.6 million customers. It is fully certified: PCI DSS, ISO/IEC 27001, 27017, 27018, 27701, 50001, SOC 1, SOC 2 and SOC 3, Cloud Security Alliance STAR certified. OVH.com has a data center in Beauharnois, QC. Its facility is highly secure with access only by authorized employees. It has technician and security on-site 24/7. It has systematic double power supply, 250 kVA UPS and generators with an initial autonomy of 48 hours. It has a minimum of 2 network connections and two network rooms within each of its data centers. Although hosting is provided by reliable third party, Transnomis Solutions is fully responsible for the availability of its software service. The Ministry will never have to deal with the hosting company. Transnomis Solutions will be the single point of contact for all issues related to services provided for this contract, including server availability issues."
+    },
+    {
+        "look_id": 689,
+        "keywords": [
+            "historical data",
+            "aggregated travel time",
+            "ITS Central",
+            "contract duration"
+        ],
+        "answer_text": "Historical aggregated travel time information shall be stored and accessible to users for the duration of the Contract. Historical aggregated travel time information is stored in ITS Central's database, and will be accessible for the duration of the contract."
+    },
+    {
+        "look_id": 690,
+        "keywords": [
+            "historical raw data",
+            "auditing",
+            "Bluetooth Readers",
+            "timestamped records"
+        ],
+        "answer_text": "The Proponent shall store a minimum of six (6) months of historical raw data for auditing purposes, including individual timestamped encrypted MAC ID records with their associated Bluetooth Readers. ITS Central will store the historical raw data for a minimum of 6 months, including individual timestamped encrypted MAC ID records with their associated Bluetooth Readers."
+    },
+    {
+        "look_id": 691,
+        "keywords": [
+            "data ownership",
+            "MTO",
+            "aggregated data",
+            "archived data"
+        ],
+        "answer_text": "MTO shall own all data, including aggregated and archived data. MTO will own all data including raw, aggregated and archived data."
+    },
+    {
+        "look_id": 692,
+        "keywords": [
+            "reporting",
+            "customization",
+            "MTO",
+            "ITS Central"
+        ],
+        "answer_text": "Transnomis will customize reports within ITS Central to address all of MTO's needs."
+    },
+    {
+        "look_id": 693,
         "keywords": [
             "Black & McDonald",
             "System Operational Support",
             "Warranty",
             "Emergency Repairs",
-            "Routine Maintenance"
-        ]
+            "Routine Maintenance",
+            "Service Level Agreement"
+        ],
+        "answer_text": "Black & McDonald (B&M) will be responsible for System Operational Support, Warranty, System Emergency Repairs, and System Routine Maintenance for the TT system. B&M will maintain fault free operation of the TT system including the hardware and software parts as well as maintaining effective working conditions according to the contract's specifications. B&M project management team will review the restrictions outline in Appendix C3 and create a maintenance plan based on information provided. The maintenance team will carry out successful coordination with any other contractors to stay away from working in the same area by providing the advanced notice to the contract administrator or representative from general contractors. All activities will follow the requirements specified in the Service Level Agreement to ensure equipment and system performance levels are met throughout the life of the Contract."
     },
     {
-        "look_id": 420,
+        "look_id": 694,
+        "keywords": [
+            "monitoring",
+            "ITS components",
+            "Black & McDonald",
+            "MTO",
+            "system performance",
+            "incident reporting"
+        ],
+        "answer_text": "During the operational and maintenance phases of the contract, Black & McDonald will be responsible for monitoring the operation of all ITS components including BT readers installed under the contract. B&M will immediately notify the MTO if any MTO-supplied material or equipment (existing or new) is discovered to be broken or faulty, affecting system performance. Field devices will be monitored by ITS Central, and notifications will be sent to B&M if a device failure is detected. In line with the Agreement, the MTO will decide on a course of action with respect to such material or equipment. When Black & McDonald Limited is notified of an occurrence, it must respond within the specified time frame. Any incidents will be documented in detail and reported to the MTO, with a summary of the root cause and corrective action taken."
+    },
+    {
+        "look_id": 695,
         "keywords": [
             "technical support",
             "response times",
             "SLA",
             "penalties",
             "outages"
-        ]
+        ],
+        "answer_text": "B&M will ensure that technical support response times will comply with response and resolution limit requirements and associated penalties for outages as outlined in the SLA section 3.2."
     },
     {
-        "look_id": 421,
+        "look_id": 696,
+        "keywords": [
+            "communication",
+            "project team",
+            "MTO",
+            "monitoring",
+            "emergency response"
+        ],
+        "answer_text": "B&M believes that continuous communication between the project team and the MTO is essential to ensure that issues arising from production, operation, and maintenance are closely and rapidly monitored as well as appropriate emergency response plans are provided."
+    },
+    {
+        "look_id": 697,
         "keywords": [
             "Scheduled System Maintenance Plan",
             "MTO",
             "approval",
-            "SLA"
-        ]
+            "staff responsibilities",
+            "resources"
+        ],
+        "answer_text": "A Scheduled System Maintenance Plan will be submitted to the MTO for approval one month prior to SLA initiation. This plan will indicate all staff, staff responsibilities, resources, schedules and operating guidelines."
     },
     {
-        "look_id": 422,
+        "look_id": 698,
         "keywords": [
             "safety management",
             "environmental management",
             "MTO",
-            "review"
-        ]
+            "risk mitigation",
+            "protection strategy"
+        ],
+        "answer_text": "A comprehensive project safety and environmental management plan will be developed and submitted to the MTO for review. The project's safety and environmental protection plan will go through site-specific safety hazards, risk mitigation measures, and environmental protection strategy."
     },
     {
-        "look_id": 423,
+        "look_id": 699,
         "keywords": [
-            "quality management plan",
-            "review",
-            "quality control"
-        ]
-    },
-    {
-        "look_id": 424,
-        "keywords": [
-            "dispatch center",
-            "contact information",
+            "monthly service report",
+            "template",
+            "maintenance services",
             "MTO"
-        ]
+        ],
+        "answer_text": "The project team will prepare a template for monthly field maintenance service. The template will be completed on a monthly basis, based on maintenance services provided and submitted to the MTO."
     },
     {
-        "look_id": 425,
+        "look_id": 700,
         "keywords": [
-            "routine maintenance",
-            "Scheduled System Maintenance Plan",
-            "scheduling"
-        ]
+            "materials management",
+            "equipment management",
+            "response times",
+            "inventory",
+            "digital system"
+        ],
+        "answer_text": "The management of materials and equipment is crucial to maintaining quick response and repair times. All spare parts, materials, and consumables will be inventoried and placed into a digital inventory management system."
     },
     {
-        "look_id": 426,
+        "look_id": 701,
         "keywords": [
-            "electronic ticketing system",
-            "system outages",
-            "equipment operation"
-        ]
+            "on-call crew",
+            "emergency call",
+            "dispatch center",
+            "MTO"
+        ],
+        "answer_text": "The on-call crew will be briefed on the category of the call and sent after receiving an emergency call at either the 24/7 hour dispatch center or via the list of contacts provided to the MTO."
     },
     {
-        "look_id": 427,
+        "look_id": 702,
         "keywords": [
             "emergency maintenance",
-            "response plan",
-            "manufacturer",
-            "contract"
-        ]
-    },
-    {
-        "look_id": 428,
-        "keywords": [
-            "emergency dispatch center",
-            "construction",
-            "staffing"
-        ]
-    },
-    {
-        "look_id": 429,
-        "keywords": [
-            "response time",
-            "critical failures",
-            "major failures",
-            "minor failures"
-        ]
-    },
-    {
-        "look_id": 430,
-        "keywords": [
-            "warranty",
-            "labour",
-            "equipment",
-            "materials",
-            "five years"
-        ]
-    },
-    {
-        "look_id": 431,
-        "keywords": [
-            "warranty",
-            "repair",
-            "replace",
-            "equipment",
-            "no additional expense"
-        ]
-    },
-    {
-        "look_id": 432,
-        "keywords": [
-            "Stinson AIS",
-            "5 year",
-            "all-inclusive warranty",
-            "system acceptance"
-        ]
-    },
-    {
-        "look_id": 433,
-        "keywords": [
-            "servers",
-            "OVH",
-            "triple redundancy",
-            "fail-over"
-        ]
-    },
-    {
-        "look_id": 434,
-        "keywords": [
-            "Watch Dog",
-            "high availability",
-            "10 minutes downtime",
-            "system failures"
-        ]
+            "reporting",
+            "non-routine maintenance",
+            "log book",
+            "ITS asset"
+        ],
+        "answer_text": "To ensure reports of all emergency maintenance activities are recorded in detail and available. For all call out actions, the non-routine maintenance log book will be updated every time an attendance to an electrical or ITS asset is made."
     }
 ]

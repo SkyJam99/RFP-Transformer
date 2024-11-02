@@ -25,7 +25,7 @@ def create_rfp(supabase, rfp_title, rfp_description, rfp_full_text):
     return response.data
 
 #Create an rfp for testing
-#print(create_rfp(get_supabase_connection(), "Test RFP", "This is a test RFP description", "This is a test RFP full text."))
+print(create_rfp(get_supabase_connection(), "Test RFP", "This is a test RFP description", "This is a test RFP full text."))
 
 def get_rfps(supabase):
     response = supabase.table("rfp").select("*").execute()
@@ -59,6 +59,10 @@ def get_requirements(supabase):
 
 def get_requirement_by_id(supabase, req_id):
     response = supabase.table("requirements").select("*").eq("req_id", req_id).execute()
+    return response.data
+
+def get_requirements_by_rfp_id(supabase, rfp_id):
+    response = supabase.table("requirements").select("*").eq("rfp_id", rfp_id).execute()
     return response.data
 
 def update_requirement(supabase, req_id, updated_text):
@@ -171,6 +175,10 @@ def get_lookups(supabase):
     response = supabase.table("lookup").select("*").execute()
     return response.data
 
+def get_lookup_by_id(supabase, look_id):
+    response = supabase.table("lookup").select("*").eq("look_id", look_id).execute()
+    return response.data
+
 def update_lookup(supabase, look_id, req_text=None, answer_text=None, keywords=None, context=None, req_id=None, answer_id=None):
     update_data = {}
     if req_text:
@@ -218,7 +226,8 @@ def generate_lookup_file(supabase, output_file_path):
     for lookup in lookups:
         entry = {
             "look_id": lookup["look_id"],
-            "keywords": lookup["keywords"]
+            "keywords": lookup["keywords"],
+            "answer_text": lookup["answer_text"],
         }
         lookup_entries.append(entry)
 
