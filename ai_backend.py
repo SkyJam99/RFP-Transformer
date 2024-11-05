@@ -4,8 +4,9 @@ from openai import OpenAI
 from file_processing import extract_text_from_html, read_file, chunk_text, chunk_text_v2
 import time
 import json
+import re
 from typing import List
-from db_backend import create_lookup, get_supabase_connection, generate_lookup_file, create_requirement, get_requirements_by_rfp_id, get_lookup_by_id
+from db_backend import create_lookup, get_rfp_by_id, get_supabase_connection, generate_lookup_file, create_requirement, get_requirements_by_rfp_id, get_lookup_by_id, update_rfp
 
 load_dotenv()
 
@@ -229,6 +230,9 @@ def parse_rfp(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=20000, c
     overall_context_str = json.dumps(overall_context) if isinstance(overall_context, dict) else str(overall_context)
     print("Context: " + overall_context_str + "\n")
 
+    # Update overall context in the database
+    update_rfp(get_supabase_connection(), rfp_id, None, None, None, overall_context_str)
+
     # Create a list to store all of the responses from the assistant
     chunk_responses = []
 
@@ -314,11 +318,21 @@ def parse_rfp(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=20000, c
 
 # ---------------------------- Requirement Matching Function ----------------------------
 # This function takes a rfp id as input, and uses the assistants api to match the requirements in the rfp to potential answers in the lookup table
+# TODO Refactor this function to be more modular, and also return the first final results to the user before moving on to the next requirement
+# TODO Write the end of the function for asking for user output, but might make sense to wait until we have the ui for that
+# TODO Make a seperate function for step 6
+# TODO Take another look at what I am storing in the database, could be a good way to split this function into smaller parts
+# TODO Run the code with PDB to see what the contents of the variables are at each step
+# TODO Make a new version of this function that only tries to find answers for one requirement at a time
+# TODO Add lookup_id to the answers database to keep track of where the answers came from
+
 def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
     # Step 1: Get the list of requirements associated with the rfp_id
     supabase = get_supabase_connection()
     requirements = get_requirements_by_rfp_id(supabase, rfp_id)
-
+    rfp = get_rfp_by_id(supabase, rfp_id)
+    overall_context = rfp[0].get("rfp_overall_context", "")
+    print(f"Overall Context: {overall_context}")
     #print(requirements)
 
     # Step 2: For each requirement, use the assistant to find the best matching answers in the lookup file (3-5 potential answers per requirement)
@@ -354,6 +368,7 @@ def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
                 #     ]
                 # },"""
                 # "Response from the assistant: {'lookup_ids': ['239']}. "
+                "Here is some overall context about the RFP: [" + overall_context + "]. "
                 "Here is the requirement: [" + requirement_text + "]"
             ),
         )
@@ -372,12 +387,22 @@ def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
         # Extract response for the requirement
         messages = client.beta.threads.messages.list(thread_id=thread.id)
         #print(messages)
-        response_json = extract_responses(messages)
-        print(response_json)
+        full_response = extract_responses(messages)
+        print("Full Response: " + str(full_response))
+
+        # Extract JSON from the response by finding content between curly braces after the word 'json'
+        response_json = []
+        for response in full_response:
+            json_match = re.search(r'```json\n({.*?})\n```', response, re.DOTALL)
+            if json_match:
+                response_json.append(json_match.group(1))
+
+        print("Response JSON: " + str(response_json))
+
         try:
             response_data = json.loads(response_json[0])
             lookup_ids = response_data.get("lookup_ids", [])
-            potential_matches.append({"requirement_id": requirement.get("req_id"), "lookup_ids": lookup_ids})
+            potential_matches.append({"requirement_id": requirement.get("req_id"), "lookup_ids": lookup_ids}) # Keep an eye on this line, may need to append more information
         except json.JSONDecodeError:
             print(f"Error parsing JSON for requirement {requirement.get('req_id')}: {response_json}")
 
@@ -389,7 +414,7 @@ def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
         for i, lookup_id in enumerate(match["lookup_ids"], 1):
             print(f"  Lookup ID #{i}: {lookup_id}")
 
-    # Step 3: Make the database calls to get the verbatim text from the lookup database
+    # Step 3: Make the database calls to get the verbatim text from the lookup database This function needs work
     supabase = get_supabase_connection()
     full_answers = []
     for match in potential_matches:
@@ -399,7 +424,7 @@ def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
         for lookup_id in lookup_ids:
             response = get_lookup_by_id(supabase, lookup_id)
             if response:
-                requirement_answers.append(response[0])  # Assuming response is a list of results
+                requirement_answers.append(response[0])  # TODO, fix exactly what is being appended to the list
         full_answers.append({"requirement_id": requirement_id, "answers": requirement_answers})
 
     # Print the full answers for debugging
@@ -409,11 +434,64 @@ def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
             print(f"  Answer #{i}: {ans}")
 
     # Step 4: Use the assistant api to choose the best answer from the list of potential answers (0 - 2 answers per requirement)
+    assistant_id = 'asst_rstr7lrME0LAhivV2sJzwLXD' # This is the id of the Proposal Parser assistant
+    final_answers = []
+    
+    for answer in full_answers:
+        requirement_id = answer["requirement_id"]
+        answers = answer["answers"]
+        if len(answers) > 0:
+            # Create a new thread for each requirement
+            thread = client.beta.threads.create()
+
+            # Add the requirement to the thread as a message. Need to pass the overall_context, the requirement_text, and the potential answers
+            # TODO go through the code and make sure you keep track of each object and the state of them so we can use it propoerly here
+            message = client.beta.threads.messages.create(
+                thread_id=thread.id,
+                role="user",
+                content=(
+                    "Here are the potential answers for a requirement from an RFP. Choose the best answer from the list. "
+                    "Return a JSON object with zero to two 'lookup_id' representing the best match. "
+                    "If there are no good matches, respond with an empty JSON object {}. "
+                    "Ensure that the lookup id is valid and corresponds to the answers given to choose from."
+                    "Here is some overall context about the RFP: [" + overall_context + "]. "
+                    "Here are the potential answers: " + str(answers)
+                ),
+            )
+
+            # Send the thread to the assistant for generation
+            run = client.beta.threads.runs.create_and_poll(
+                thread_id=thread.id,
+                assistant_id=assistant_id,
+            )
+
+            # Check the status of the run, and wait until it is completed
+            while run.status != "completed":
+                print(run.status)
+                time.sleep(1)
+
+            # Extract response for the requirement
+            messages = client.beta.threads.messages.list(thread_id=thread.id)
+            #print(messages)
+            full_response = extract_responses(messages)
+            print("Full Response: " + str(full_response))
+            print(answer)
+            print("\n\n")
+
+            
 
     # Step 5: For each requirement, ask the user to choose the correct answer or enter a new answer (1 answer per requirement) and add the answers to the proposal answers database
+    for answer in final_answers:
+        print(answer)
+
+
 
     # Step 6: Compile the answers into a proposal, return the proposal text, and store the full proposal in the database
 
+
+# Requirement Matching Function Single Requirement
+# This function takes a single requirement as input, and uses the assistants api to match the requirement to potential answers in the lookup table
+# def single_requirement_matching(requirement_id, overall_context, client=setup_GPT_client()):
 
 # ---------------------------- Testing Functions ----------------------------
 # filepath = './test_proposal.html'

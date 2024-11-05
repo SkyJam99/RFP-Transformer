@@ -24,8 +24,8 @@ def create_rfp(supabase, rfp_title, rfp_description, rfp_full_text):
     response = supabase.table("rfp").insert(data).execute()
     return response.data
 
-#Create an rfp for testing
-print(create_rfp(get_supabase_connection(), "Test RFP", "This is a test RFP description", "This is a test RFP full text."))
+# Create an rfp for testing
+# print(create_rfp(get_supabase_connection(), "Test RFP", "This is a test RFP description", "This is a test RFP full text."))
 
 def get_rfps(supabase):
     response = supabase.table("rfp").select("*").execute()
@@ -35,13 +35,27 @@ def get_rfp_by_id(supabase, rfp_id):
     response = supabase.table("rfp").select("*").eq("rfp_id", rfp_id).execute()
     return response.data
 
-def update_rfp(supabase, rfp_id, new_title, new_description, new_full_text=None):
-    response = supabase.table("rfp").update({
-        "rfp_title": new_title,
-        "rfp_description": new_description,
-        "rfp_full_text": new_full_text
-    }).eq("rfp_id", rfp_id).execute()
+# Update RFP but only any of the fields that are not None
+def update_rfp(supabase, rfp_id, new_title=None, new_description=None, new_full_text=None, new_overall_context=None):
+    # response = supabase.table("rfp").update({
+    #     "rfp_title": new_title,
+    #     "rfp_description": new_description,
+    #     "rfp_full_text": new_full_text
+    # }).eq("rfp_id", rfp_id).execute()
+    update_data = {}
+    if new_title:
+        update_data["rfp_title"] = new_title
+    if new_description:
+        update_data["rfp_description"] = new_description
+    if new_full_text:
+        update_data["rfp_full_text"] = new_full_text
+    if new_overall_context:
+        update_data["rfp_overall_context"] = new_overall_context
+    
+    response = supabase.table("rfp").update(update_data).eq("rfp_id", rfp_id).execute()
     return response.data
+
+# print(update_rfp(get_supabase_connection(), 16, "Updated RFP Title", "Updated RFP Description", "Updated RFP Full Text", "Updated Overall Context"))
 
 def delete_rfp(supabase, rfp_id):
     response = supabase.table("rfp").delete().eq("rfp_id", rfp_id).execute()
