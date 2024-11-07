@@ -79,8 +79,11 @@ def get_requirements_by_rfp_id(supabase, rfp_id):
     response = supabase.table("requirements").select("*").eq("rfp_id", rfp_id).execute()
     return response.data
 
-def update_requirement(supabase, req_id, updated_text):
-    response = supabase.table("requirements").update({"req_text": updated_text}).eq("req_id", req_id).execute()
+def update_requirement(supabase, req_id, updated_text, category=None):
+    if category:
+        response = supabase.table("requirements").update({"req_text": updated_text, "category": category}).eq("req_id", req_id).execute()
+    else:
+        response = supabase.table("requirements").update({"req_text": updated_text}).eq("req_id", req_id).execute()
     return response.data
 
 def delete_requirement(supabase, req_id):
@@ -116,7 +119,7 @@ def get_proposal_by_id(supabase, prop_id):
     response = supabase.table("proposals").select("*").eq("prop_id", prop_id).execute()
     return response.data
 
-def update_proposal(supabase, prop_id, new_title=None, new_rfp_id=None, new_full_text=None):
+def update_proposal(supabase, prop_id, new_title=None, new_full_text=None, new_rfp_id=None):
     update_data = {}
     if new_title:
         update_data["prop_title"] = new_title
@@ -150,6 +153,10 @@ def get_answers(supabase):
 
 def get_answer_by_id(supabase, answer_id):
     response = supabase.table("answers").select("*").eq("answer_id", answer_id).execute()
+    return response.data
+
+def get_answers_by_prop_id(supabase, prop_id):
+    response = supabase.table("answers").select("*").eq("prop_id", prop_id).execute()
     return response.data
 
 def update_answer(supabase, answer_id, seq_order=None, answer_text=None, approved=None, prop_id=None, req_id=None):
