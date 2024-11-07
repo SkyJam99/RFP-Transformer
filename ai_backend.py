@@ -504,5 +504,5 @@ def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
 # parse_rfp(extract_text_from_html(read_file(rfp_filepath)), 16)
 # print("RFP Parsed")
 
-find_existing_requirement_answers(16)
-print("Requirements Matched")
+# find_existing_requirement_answers(16)
+# print("Requirements Matched")
