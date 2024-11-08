@@ -13,7 +13,13 @@
         <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
     </head>
+    
     <style>
+        html, body {
+            height: 100%;
+            min-height: 100%;
+        }
+
         body {
             font-family: 'Lato', sans-serif;
         }
@@ -23,9 +29,26 @@
             text-align: center;
             padding: 0;
         }
+        .upload-box {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+        }
+        .upload-box p {
+            color: #333;
+        }
+        .form-container {
+            margin: 20px auto;
+            max-width: 600px;
+        }
     </style>
     <body>
-        <div class="bg-dark text-light">
+        <div class="bg-dark text-light min-vh-100">
             <div class="container-fluid text-center">
                 <div class="row">
                     <div class="col-sm-12">
@@ -35,25 +58,35 @@
                 </div>
             </div>
 
-
-            <!-- Buttons for showing and hiding each of the sections below (Search by ID, Create Prompt, Delete Prompt, Update Prompt, Run Prompt)-->
-
-            <div class="container">
+            <div class="container form-container">
                 <div class="row py-2 justify-content-center">
-
                     <div class="col-auto">
                         <a class="btn btn-primary mx-1 my-2" type="button" href="{{ url_for('main_page')}}">Home Page</a>
-
                         <a class="btn btn-primary mx-1 my-2" type="button" href="{{ url_for('rfp_parsing')}}">RFP Parsing</a>
-
                         <a class="btn btn-primary mx-1 my-2" type="button" href="{{ url_for('proposal_writing')}}">Proposal Writing</a>
-
                     </div>
+                </div>
 
+                <!-- Drag-and-Drop File Upload -->
+                <div class="upload-box">
+                    <p>Drag Here</p>
+                </div>
+                <div class="text-center mb-3">
+                    <p>Drag a or <a href="#">choose</a> a proposal in html format to parse it for answers</p>
+                </div>
 
+                <!-- Proposal Title Input -->
+                <div class="mb-3">
+                    <label for="proposalTitle" class="form-label">Proposal Title:</label>
+                    <input type="text" id="proposalTitle" class="form-control" placeholder="Enter proposal title">
+                </div>
 
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
             </div>
-
         </div>
     </body>
 </html>
+
