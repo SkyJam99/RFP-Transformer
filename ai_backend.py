@@ -51,7 +51,7 @@ def extract_responses(messages):
 
 # ------------------------- Proposal Parsing Functions ----------------------
 # This function takes a proposal as input, and uses the assistants API to parse the proposal into the lookup table
-def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_length=20000, chunk_overlap=3):
+def parse_proposal_for_lookup_legacy(proposalText, client=setup_GPT_client(), chunk_length=20000, chunk_overlap=3):
     # Using the new chunking function
     proposalChunks = chunk_text_v2(proposalText, chunk_length, chunk_overlap)
     thread = client.beta.threads.create()
@@ -180,10 +180,130 @@ def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_len
     # TODO: Update the lookup file in the RFP assistant (which isn't implemented yet)
     return lookup_file_path
 
+# Function for processing one chunk at a time and storing the generated answers in the database
+def process_chunk(chunk, overall_context, client, assistant_id, supabase, chunk_index, total_chunks):
+    # Create a new thread for each chunk
+    thread = client.beta.threads.create()
+    
+    # Add the chunk to the thread as a message
+    message = client.beta.threads.messages.create(
+        thread_id=thread.id,
+        role="user",
+        content=(
+            "Here is a chunk of the proposal. Based on the overall context, extract any verbatim answers that should "
+            "be added to an answer database. This database will be used to help write more proposals in the future. "
+            "Return the answers in structured JSON format, where each answer has a 'verbatim_answer', a "
+            "'req_description', and a list of 'keywords'. If there are no good verbatim answers, respond with an empty JSON list []. "
+            "If there are good verbatim answers in the proposal chunk, try to extract longer answers that are more than 1 sentence long. "
+            "All of the answers will be checked and edited by a human, so don't worry about making them perfect. "
+            "The main goal is to extract the exact text from the proposal that should be included in the lookup table and considered for future proposals. "
+            "Here is the overall context: [" + overall_context + "]. Here is the chunk to look for useful answers in: [" + chunk + "]"
+        ),
+    )
+    
+    # Send the thread to the assistant for generation
+    run = client.beta.threads.runs.create_and_poll(
+        thread_id=thread.id,
+        assistant_id=assistant_id,
+    )
+    
+    # Check the status of the run, and wait until it is completed
+    while run.status != "completed":
+        print(run.status)
+        time.sleep(1)
+    
+    # Send print message to console about what number chunk we are on out of the total chunks
+    print(f"\nChunk {chunk_index + 1} of {total_chunks} Processed")
+    
+    # Extract response for the chunk and parse
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
+    chunk_response_json = extract_responses(messages)
+    try:
+        chunk_response_json = json.loads(chunk_response_json[0])
+        answers = chunk_response_json if isinstance(chunk_response_json, list) else chunk_response_json.get("answers", [])
+        # For each answer, store in database and print
+        i = 0
+        for answer in answers:
+            verbatim_answer = answer.get("verbatim_answer", "N/A")
+            req_description = answer.get("req_description", "N/A")
+            keywords = answer.get("keywords", [])
+            # Add the answer to the lookup database
+            create_lookup(supabase, req_description, verbatim_answer, keywords, overall_context)
+            print(f"Extracted Answer #{i}:\n  Verbatim Answer: {verbatim_answer}\n  Requirement Description: {req_description}\n  Keywords: {', '.join(keywords)}\n")
+            i += 1
+    except Exception as e:
+        print(f"Error parsing JSON for chunk {chunk_index + 1}: {chunk_response_json}")
+        print(f"Exception: {e}")
+
+# Function for controlling the parsing of a proposal one chunk at a time
+def parse_proposal_for_lookup(proposalText, client=setup_GPT_client(), chunk_length=20000, chunk_overlap=3):
+    # Using the new chunking function
+    proposalChunks = chunk_text_v2(proposalText, chunk_length, chunk_overlap)
+    assistant_id = 'asst_rstr7lrME0LAhivV2sJzwLXD'  # This is the id of the Proposal Parser assistant
+
+    # Use the first 2 chunks to generate context
+    context_chunks = proposalChunks[:2]  
+    context = "\n".join(context_chunks)
+
+    # Create a thread and generate the overall context
+    thread = client.beta.threads.create()
+    message = client.beta.threads.messages.create(
+        thread_id=thread.id,
+        role="user",
+        content=(
+            "Here are the first few chunks of a proposal written by Transnomis Solutions, a traffic software company that creates proposals in response to government rfps (request for proposal). "
+            "Generate a context summary in JSON format that will be used to help extract existing answers from the rest of the proposal. These answers will be added to a lookup table that will be used to help write more proposals in the future. "
+            "The JSON object should include only 'overall_context'. Here is the beginning of the Proposal: \n" + context
+        ),
+    )
+
+    # Send to assistant
+    run = client.beta.threads.runs.create_and_poll(
+        thread_id=thread.id,
+        assistant_id=assistant_id,
+    )
+
+    # Wait until run is completed
+    while run.status != "completed":
+        print(run.status)
+        time.sleep(3)
+
+    # Get the generated context from OpenAI and extract it from the JSON
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
+    responses = extract_responses(messages)
+    context = responses[-1]
+    try:
+        context_json = json.loads(context)
+        overall_context = context_json.get("overall_context", "")
+    except json.JSONDecodeError:
+        print("Error parsing context JSON")
+        overall_context = context
+
+    overall_context_str = json.dumps(overall_context) if isinstance(overall_context, dict) else str(overall_context)
+    print("Overall Context: " + overall_context_str + "\n")
+
+    # Get supabase connection
+    supabase = get_supabase_connection()
+
+    # Process each chunk
+    total_chunks = len(proposalChunks)
+    for i, chunk in enumerate(proposalChunks):
+        process_chunk(chunk, overall_context_str, client, assistant_id, supabase, i, total_chunks)
+
+    # Generate a new lookup file based on everything in the database
+    lookup_file_path = generate_lookup_file(supabase, "database_lookup.json")
+    print(f"Lookup file generated at: {lookup_file_path}")
+
+    # TODO: Update the lookup file in the RFP assistant (which isn't implemented yet)
+    return lookup_file_path
+
+
+
+
 # ---------------------------- RFP Parsing Functions ----------------------------
 # This function takes an RFP as input, and uses the assistants API to parse the RFP into the requirements database
 
-def parse_rfp(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=20000, chunk_overlap=3):
+def parse_rfp_legacy(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=20000, chunk_overlap=3):
     print("Parsing RFP")
     # Using the new chunking function
     rfp_chunks = chunk_text_v2(rfp_text, chunk_length, chunk_overlap)
@@ -315,6 +435,127 @@ def parse_rfp(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=20000, c
 
         print(f"Extracted Requirement #{i}:\n  Verbatim Requirement: {verbatim_requirement}\n")
         i += 1
+
+# ---------------------------- RFP Parsing Functions ----------------------------
+
+# Function to process one chunk at a time and store the generated requirements in the database
+def process_rfp_chunk(chunk, overall_context_str, client, assistant_id, supabase, rfp_id, chunk_index, total_chunks):
+    # Create a new thread for each chunk
+    thread = client.beta.threads.create()
+
+    # Add the chunk to the thread as a message
+    message = client.beta.threads.messages.create(
+        thread_id=thread.id,
+        role="user",
+        content=(
+            "Here is a chunk of the RFP. Based on the overall context and the chunk of the RFP, extract any verbatim requirements that the proposal should address. "
+            "Focus on extracting the exact text from the RFP. "
+            "For each requirement, we will attempt to find matching answers in our database of previous proposals, so requirements should be specific and detailed. "
+            "The output should be a JSON object with a 'requirements' object that contains any verbatim requirements found in that chunk of the RFP. If there are no requirements in this chunk, respond with an empty JSON list []. "
+            "This is the schema for the JSON object: {'requirements': [{'verbatim_requirement': 'The requirement text goes here.'}]} "
+            "Here is the overall context: [" + overall_context_str + "]. Here is the chunk to look for useful answers in: [" + chunk + "]"
+        ),
+    )
+
+    # Send the thread to the assistant for generation
+    run = client.beta.threads.runs.create_and_poll(
+        thread_id=thread.id,
+        assistant_id=assistant_id,
+    )
+
+    # Wait until the run is completed
+    while run.status != "completed":
+        print(run.status)
+        time.sleep(1)
+
+    # Print progress
+    print(f"\nChunk {chunk_index + 1} of {total_chunks} Processed")
+
+    # Extract response for the chunk and process
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
+    chunk_response_json = extract_responses(messages)
+    print("Response from ChatGPT: ")
+    print(chunk_response_json)
+    print("\n")
+    try:
+        chunk_response_json = json.loads(chunk_response_json[0])
+        requirements_list = chunk_response_json.get("requirements", [])
+        
+        if isinstance(requirements_list, list):
+            for requirement in requirements_list:
+                verbatim_requirement = requirement.get("verbatim_requirement")
+                if verbatim_requirement:
+                    # Add the requirement to the requirements database
+                    create_requirement(supabase, rfp_id, verbatim_requirement, "test")
+                    print(f"Extracted Requirement:\n  Verbatim Requirement: {verbatim_requirement}\n")
+        else:
+            print(f"\n~~~\nUnexpected format for requirements in chunk {chunk_index + 1}: {requirements_list}")
+    except json.JSONDecodeError:
+        print(f"Error parsing JSON for chunk {chunk_index + 1}: {chunk_response_json}")
+
+# Function to control the parsing of an RFP, chunk the text, generate context, and process each chunk
+def parse_rfp(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=20000, chunk_overlap=3):
+    print("Parsing RFP")
+    # Using the new chunking function
+    rfp_chunks = chunk_text_v2(rfp_text, chunk_length, chunk_overlap)
+    assistant_id = 'asst_rstr7lrME0LAhivV2sJzwLXD'  # This is the id of the Proposal Parser assistant
+
+    # Use the first few chunks to generate context
+    context_chunks = rfp_chunks[:2]  
+    context = "\n".join(context_chunks)
+
+    # Create a thread and generate the overall context
+    thread = client.beta.threads.create()
+    message = client.beta.threads.messages.create(
+        thread_id=thread.id,
+        role="user",
+        content=(
+            "Here are the first few chunks of a RFP (request for proposal) given to Transnomis Solutions, a traffic software company that creates proposals in response to government rfps. Generate a context summary in JSON format that will be used to extract requirements from the rest of the RFP. "
+            "The JSON object should include only 'overall_context'. Here is the beginning of the RFP: \n" + context
+        ),
+    )
+
+    # Send to assistant
+    run = client.beta.threads.runs.create_and_poll(
+        thread_id=thread.id,
+        assistant_id=assistant_id,
+    )
+
+    # Wait until run is completed
+    while run.status != "completed":
+        print(run.status)
+        time.sleep(3)
+
+    # Get the generated context from OpenAI and extract it from the JSON
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
+    responses = extract_responses(messages)
+    context = responses[-1]
+    try:
+        context_json = json.loads(context)
+        overall_context = context_json.get("overall_context", "")
+    except json.JSONDecodeError:
+        print("Error parsing context JSON")
+        overall_context = context
+
+    overall_context_str = json.dumps(overall_context) if isinstance(overall_context, dict) else str(overall_context)
+    print("Context: " + overall_context_str + "\n")
+
+
+    # Get supabase connection
+    supabase = get_supabase_connection()
+
+    # Update overall context in the database
+    update_rfp(supabase, rfp_id, None, None, None, overall_context_str)
+
+    print("Processing chunks now")
+
+    # Process each chunk
+    total_chunks = len(rfp_chunks)
+    for i, chunk in enumerate(rfp_chunks):
+        process_rfp_chunk(chunk, overall_context_str, client, assistant_id, supabase, rfp_id, i, total_chunks)
+
+    print("\n\nAll Requirements Extracted and added to the database\n\n")
+
 
 # ---------------------------- Requirement Matching Function ----------------------------
 # This function takes a rfp id as input, and uses the assistants api to match the requirements in the rfp to potential answers in the lookup table
@@ -500,9 +741,9 @@ def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
 
 #generate_lookup_file(get_supabase_connection(), "database_lookup.json")
 
-# rfp_filepath = './test_rfp.html'
-# parse_rfp(extract_text_from_html(read_file(rfp_filepath)), 16)
-# print("RFP Parsed")
+rfp_filepath = './test_rfp.html'
+parse_rfp(extract_text_from_html(read_file(rfp_filepath)), 16)
+print("RFP Parsed")
 
 # find_existing_requirement_answers(16)
 # print("Requirements Matched")

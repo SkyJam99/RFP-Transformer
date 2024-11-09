@@ -369,6 +369,17 @@
         "answer_text": "Transnomis' ITS Central software is currently installed as the Advanced Traffic Management System in the City of Edmonton, Region of York, Region of Durham, MTO East Region, and BC Ferries. In addition, ITS Central is the control software being used for MTO's Queue and Stopped Vehicle Advisory System (QSVAS) on Highway 405, which is currently in the Operational Performance Test (OPT) period. ITS Central specializes in retrieving data and device status information from the field devices it\u2019s integrated with, including the Stinson AIS Bluetooth/WiFi sensor, cellular modems, CCTV cameras, variable message signs, vehicle detectors, traffic signals, and various weather detection equipment (e.g., atmospheric sensors, wind meters, pavement sensors, etc.)."
     },
     {
+        "look_id": 725,
+        "keywords": [
+            "solar systems",
+            "standalone sites",
+            "designing",
+            "manufacturing",
+            "experience"
+        ],
+        "answer_text": "Stinson will be supplying solar systems for all of the standalone sites that are called for in this project. Stinson has been designing and manufacturing solar systems for over 7 years and has extensive experience."
+    },
+    {
         "look_id": 682,
         "keywords": [
             "scalability",
@@ -593,5 +604,666 @@
             "ITS asset"
         ],
         "answer_text": "To ensure reports of all emergency maintenance activities are recorded in detail and available. For all call out actions, the non-routine maintenance log book will be updated every time an attendance to an electrical or ITS asset is made."
+    },
+    {
+        "look_id": 705,
+        "keywords": [
+            "Black & McDonald",
+            "commitment",
+            "innovative solutions",
+            "cost-effective",
+            "safety"
+        ],
+        "answer_text": "Black & McDonald Limited (B&M) is pleased to provide the enclosed package in response to the above mentioned Request for Proposal. B&M is committed to implementing innovative and cost-effective solutions to its customers\u2019 requirements on time, on budget, and with safety foremost in mind. Black & McDonald is a reliable and flexible contractor operating with integrity and loyalty to employees, customers, suppliers, and the communities we serve."
+    },
+    {
+        "look_id": 706,
+        "keywords": [
+            "labour force",
+            "skills",
+            "best practices",
+            "training",
+            "expertise"
+        ],
+        "answer_text": "B&M will provide a labour force whose selection is based on the required skills and level of expertise. This ensures that best practices and leading edge methodologies are implemented for every contract with which we work. Our staff members continuously train and update their skills, providing our clients with expertise and knowledge in all areas of operation, maintenance, health and safety."
+    },
+    {
+        "look_id": 707,
+        "keywords": [
+            "health and safety",
+            "environment",
+            "commitment",
+            "reputation",
+            "quality service"
+        ],
+        "answer_text": "B&M is committed to protecting their people, their property and the environment and will take all necessary steps to provide and maintain a safe and healthy work environment. With a track record of success spanning over ten decades, B&M has built a solid reputation based on our company\u2019s mission of providing our customers with quality and service that is second to none."
+    },
+    {
+        "look_id": 708,
+        "keywords": [
+            "Transnomis",
+            "road information management",
+            "ATMS",
+            "certified vendor",
+            "RAQS"
+        ],
+        "answer_text": "Transnomis is an Ontario based technology company that specializes in road information management and communications solutions, for agencies with road information, and all that need it. MTO has certified Transnomis as an approved vendor for providing ATMS and Firmware for field hardware in its Registry, Appraisal and Qualification System (RAQS)."
+    },
+    {
+        "look_id": 709,
+        "keywords": [
+            "Intelligent Transportation System",
+            "ITS Central",
+            "ATMS",
+            "cloud-hosted solution",
+            "Smart Work Zones"
+        ],
+        "answer_text": "Transnomis has been building a comprehensive Intelligent Transportation System (ITS) called ITS Central to provide specialized ATMS Control for ITS. Transnomis packaged service offerings includes 1) ITS Central \u2013 a map-centric Advanced Traffic Management System (ATMS) central software, 2) VMS Central - cloud-hosted solution available to work zone traffic safety companies, allowing them to configure and create their own 'Smart Work Zones.'"
+    },
+    {
+        "look_id": 710,
+        "keywords": [
+            "design",
+            "construction",
+            "operation",
+            "maintenance",
+            "Travel Time System"
+        ],
+        "answer_text": "The project involves the design, construction, operation and maintenance of a new Travel Time (TT) System by replacing the existing TT system on multiple highway corridors in MTO Central Region, Ontario."
+    },
+    {
+        "look_id": 711,
+        "keywords": [
+            "Travel Time System",
+            "design",
+            "construction",
+            "operation",
+            "maintenance",
+            "MTO",
+            "VMS",
+            "congestion"
+        ],
+        "answer_text": "The project involves the design, construction, operation and maintenance of a new Travel Time (TT) System by replacing the existing TT system on multiple highway corridors in MTO Central Region, Ontario. The travel time information will be displayed on MTO owned VMS to assist the public to find out the travel time along alternate routes and plan their route selections accordingly as well as reducing congestion in work zones and around incidents."
+    },
+    {
+        "look_id": 712,
+        "keywords": [
+            "Operation",
+            "Maintenance",
+            "Support Phase",
+            "MTO",
+            "coordination",
+            "contract limits"
+        ],
+        "answer_text": "B&M understands that at the end of Operation, Maintenance and Support Phase, MTO may exercise the optional extension of the TT Service for two (2) additional years. B&M understands that once awarded B&M shall coordinate the work with other Contractors within and/or adjacent to the contract limits to ensure that we do not perform work in the same area at the same time, or adversely affect each other\u2019s work."
+    },
+    {
+        "look_id": 713,
+        "keywords": [
+            "TT System",
+            "Graphical User Interface",
+            "Test Plan",
+            "Pre-Installation Testing",
+            "System Acceptance Testing"
+        ],
+        "answer_text": "B&M is responsible to provide, host, and manage a TT System Graphical User Interface (GUI) for MTO users to access. B&M will be responsible for developing a Test Plan including Pre-Installation Testing (PIT), Proof of Performance (POP), System Integration Testing (SIT), Pilot Demonstration Testing (PDT) and System Acceptance Testing (SAT)."
+    },
+    {
+        "look_id": 714,
+        "keywords": [
+            "job cost control",
+            "Oracle",
+            "JD Edwards",
+            "Project Manager",
+            "financials"
+        ],
+        "answer_text": "B&M utilizes a well-defined and monitored job cost control system using Oracle\u2019s JD Edwards (JDE) which acts as an early warning system to enable the Project Manager to review live project financials at any given moment, unlike some elaborate systems which provide little more than historical data long after opportunities for value engineering have passed."
+    },
+    {
+        "look_id": 715,
+        "keywords": [
+            "JDE",
+            "change management",
+            "Change Requests",
+            "customer Change Order",
+            "budget"
+        ],
+        "answer_text": "B&M uses JDE to track and manage the change management process for all projects. Change Requests contain important information regarding a potential customer Change Order including; brief description, reference numbers, associated dates and all required adjustments to estimated man-hours, cost and revenue which impact the overall budget of a job."
+    },
+    {
+        "look_id": 716,
+        "keywords": [
+            "stakeholder management",
+            "Project Managers",
+            "stakeholder plan",
+            "project scope risks"
+        ],
+        "answer_text": "B&M understands that effective stakeholder management is a key skill for our Project Managers who are accountable for end-to-end project management and execution. B&M creates a stakeholder plan that identifies the stakeholders, discusses goals, determines work methods and identifies project/work scope risks."
+    },
+    {
+        "look_id": 717,
+        "keywords": [
+            "on-time",
+            "on-budget",
+            "Microsoft Project",
+            "project completion",
+            "milestones"
+        ],
+        "answer_text": "B&M prioritises on-time and on-budget project completion and uses Microsoft Project to achieve this goal. It enables all of the associated requirements, milestones, and ultimate completion dates involved in the completion of the project delivered through an integrated team method to be mutually established and easily updated."
+    },
+    {
+        "look_id": 718,
+        "keywords": [
+            "Quality Assurance",
+            "Quality Control",
+            "Quality Management",
+            "evaluation",
+            "improvement"
+        ],
+        "answer_text": "B&M has a Quality Assurance / Quality Control Policy and Program in place that will comply with our client's Quality Management needs' principles and objectives. Our Program was established to fulfill, and then surpass, our client's quality assurance standards through continual evaluation and improvement."
+    },
+    {
+        "look_id": 719,
+        "keywords": [
+            "Stinson AIS",
+            "Factory Acceptance Tests",
+            "manual testing",
+            "verification"
+        ],
+        "answer_text": "The Stinson AIS sensor is designed and manufactured by Stinson ITS Inc. in its Woodbridge, ON facility. Each device goes through a series of Factory Acceptance Tests (FAT) which includes manual testing and verification of each subsystem component is functioning properly."
+    },
+    {
+        "look_id": 720,
+        "keywords": [
+            "software quality control",
+            "error free",
+            "operational errors",
+            "rectified quickly"
+        ],
+        "answer_text": "Software system quality control will follow quality control methodologies to ensure that the software is error free, and that operational errors are detected and rectified quickly."
+    },
+    {
+        "look_id": 721,
+        "keywords": [
+            "comprehensive testing",
+            "MTO processes",
+            "Test plan",
+            "test results"
+        ],
+        "answer_text": "The project will undergo comprehensive testing, in adherence with standard MTO processes. A formal Test plan will be prepared and submitted for review and approval that will document the tests to be performed and the expected results. The OE and MTO will be invited to all testing as witnesses, and test results will be documented and submitted at the completion of all tests."
+    },
+    {
+        "look_id": 722,
+        "keywords": [
+            "Public Protection",
+            "Traffic Management Planning",
+            "traffic flow",
+            "traffic control plans"
+        ],
+        "answer_text": "B&M has in place a Public Protection & Traffic Management Planning tenet to make sure B&M authorized employees comprehend the necessities for and to provide protection for workers and the public by regulating traffic flow and implementing efficient traffic control plans."
+    },
+    {
+        "look_id": 723,
+        "keywords": [
+            "Occupational Health and Safety",
+            "workplace safety",
+            "management commitment"
+        ],
+        "answer_text": "B&M believes that the measures we take will help drive B&M closer to our vision of a workplace where 'Nobody Gets Hurt Today or Tomorrow'. Our management team is committed to putting our people first in meeting our customer\u2019s challenges in the most critical environments."
+    },
+    {
+        "look_id": 724,
+        "keywords": [
+            "Travel Time system",
+            "Bluetooth",
+            "WiFi",
+            "ITS Central control software",
+            "travel times"
+        ],
+        "answer_text": "The Travel Time system will gather data from Bluetooth and Wifi detectors. The data will be transmitted to ITS Central control software, and be used to estimate travel times along roadways within the scope area, between detectors, and between specified origin destination pairs."
+    },
+    {
+        "look_id": 726,
+        "keywords": [
+            "hosting",
+            "OVH",
+            "certifications",
+            "data centers",
+            "internet hosting"
+        ],
+        "answer_text": "For hosting, we propose the services of OVH (https://www.ovh.com/). It is one of the largest internet hosting companies in the world, with 400,000 servers, 33 data centers in 4 continents and 1.6 million customers. It is fully certified: PCI DSS, ISO/IEC 27001, 27017, 27018, 27701, 50001, SOC 1, SOC 2 and SOC 3, Cloud Security Alliance STAR certified."
+    },
+    {
+        "look_id": 727,
+        "keywords": [
+            "servers",
+            "OVH",
+            "dedicated servers",
+            "ITS Central application",
+            "live streaming replication"
+        ],
+        "answer_text": "As part of the contract, Transnomis Solutions will procure three dedicated servers with OVH data center in Beauharnois, QC. One server will be the primary server hosting the ITS Central application. The second (fail-over) server will be used for live streaming replication, which will be ready to take over immediately should the primary server fails. The third server will also have live streaming replication serving as hot spare."
+    },
+    {
+        "look_id": 728,
+        "keywords": [
+            "responsibility",
+            "software service",
+            "contact",
+            "server availability"
+        ],
+        "answer_text": "Although hosting is provided by reliable third party, Transnomis Solutions is fully responsible for the availability of its software service. The Ministry will never have to deal with the hosting company. Transnomis Solutions will be the single point of contact for all issues related to services provided for this contract, including server availability issues."
+    },
+    {
+        "look_id": 729,
+        "keywords": [
+            "data hosting",
+            "cloud-based solution",
+            "Canada",
+            "MTO"
+        ],
+        "answer_text": "Data shall be hosted and stored by the Proponent within Canada utilizing cloud-based solution, outside of MTO premises."
+    },
+    {
+        "look_id": 730,
+        "keywords": [
+            "historical data",
+            "storage",
+            "auditing",
+            "Bluetooth Readers"
+        ],
+        "answer_text": "The Proponent shall store a minimum of six (6) months of historical raw data for auditing purposes, including individual timestamped encrypted MAC ID records with their associated Bluetooth Readers."
+    },
+    {
+        "look_id": 731,
+        "keywords": [
+            "data ownership",
+            "MTO",
+            "aggregated data",
+            "archived data"
+        ],
+        "answer_text": "MTO shall own all data, including aggregated and archived data."
+    },
+    {
+        "look_id": 732,
+        "keywords": [
+            "data dump",
+            "MTO",
+            "processed travel time data",
+            "Central Region"
+        ],
+        "answer_text": "The Proponent shall perform a regular data dump to MTO. MTO to provide the Proponent with details on frequency of these data dumps and which data to include. Data to include at minimum processed travel time data for all links and routes in Central Region."
+    },
+    {
+        "look_id": 733,
+        "keywords": [
+            "dashboard",
+            "real-time travel time",
+            "hardware",
+            "Bluetooth reader",
+            "VMS"
+        ],
+        "answer_text": "The GUI shall provide a dashboard for MTO to access real-time travel time and hardware (Bluetooth reader, VMS) information."
+    },
+    {
+        "look_id": 734,
+        "keywords": [
+            "travel time index",
+            "TTI",
+            "links",
+            "routes"
+        ],
+        "answer_text": "The dashboard shall provide information on travel time index (TTI) for links and routes. TTI = TT (real-time) / TT (free-flow)."
+    },
+    {
+        "look_id": 735,
+        "keywords": [
+            "reporting system",
+            "historical time period",
+            "location"
+        ],
+        "answer_text": "The reporting system shall be able to report on any user-specified historical time period and location."
+    },
+    {
+        "look_id": 736,
+        "keywords": [
+            "reports",
+            "exportable",
+            "CSV file format"
+        ],
+        "answer_text": "The reports shall be exportable in CSV file format."
+    },
+    {
+        "look_id": 737,
+        "keywords": [
+            "maintenance",
+            "Proponent",
+            "Term of Agreement"
+        ],
+        "answer_text": "The Proponent shall be responsible for all maintenance of the Solution during the Term of Agreement."
+    },
+    {
+        "look_id": 738,
+        "keywords": [
+            "changes",
+            "processes",
+            "methodologies",
+            "data collection",
+            "MTO"
+        ],
+        "answer_text": "In the event the Proponent makes any changes to its processes or methodologies during the Term of Agreement, including but not limited to data collection, processing methodology, storage, hosting, or cybersecurity, the Proponent shall inform MTO in detail of these changes in advance."
+    },
+    {
+        "look_id": 739,
+        "keywords": [
+            "configuration file",
+            "system configuration",
+            "MTO"
+        ],
+        "answer_text": "The Solution shall automatically send the configuration file detailing the current system configuration to MTO on the last business day of every month."
+    },
+    {
+        "look_id": 740,
+        "keywords": [
+            "generate reports",
+            "status of Readers",
+            "field hardware health",
+            "communications status"
+        ],
+        "answer_text": "The Solution shall generate daily, weekly, and monthly reports on the status of the Readers, including field hardware health and communications status."
+    },
+    {
+        "look_id": 741,
+        "keywords": [
+            "ITS Central",
+            "Advanced Traffic Management System",
+            "data retrieval",
+            "Bluetooth sensor",
+            "CCTV cameras",
+            "traffic signals"
+        ],
+        "answer_text": "Transnomis' ITS Central software is currently installed as the Advanced Traffic Management System in the City of Edmonton, Region of York, Region of Durham, MTO East Region, and BC Ferries. In addition, ITS Central is the control software being used for MTO's Queue and Stopped Vehicle Advisory System (QSVAS) on Highway 405, which is currently in the Operational Performance Test (OPT) period. ITS Central specializes in retrieving data and device status information from the field devices it\u2019s integrated with, including the Stinson AIS Bluetooth/WiFi sensor, cellular modems, CCTV cameras, variable message signs, vehicle detectors, traffic signals, and various weather detection equipment (e.g., atmospheric sensors, wind meters, pavement sensors, etc.)."
+    },
+    {
+        "look_id": 742,
+        "keywords": [
+            "scalable",
+            "geographic expansion",
+            "Bluetooth readers",
+            "VMS"
+        ],
+        "answer_text": "ITS Central is designed to be fully scalable, to include future geographic expansion and inclusion of additional routes. In addition, adding additional Bluetooth readers and VMS\u2019s is a common request by our previous clients, and can be easily accommodated."
+    },
+    {
+        "look_id": 743,
+        "keywords": [
+            "continuous operation",
+            "24/7",
+            "high availability",
+            "redundancy",
+            "failover"
+        ],
+        "answer_text": "Our ITS Central software is designed to operate continuously, 24/7/365. Our ITS Central Advanced Traffic Management Systems in the City of Edmonton, Region of York, Region of Durham, MTO East Region, and BC Ferries operate continuously (24/7/365). MTO's QSVAS is also designed for continuous operations. Our systems in Toronto, Oklahoma, and California are also running 24/7/365. High availability features, and redundancy are designed within our proposed system, including triple servers, failover, device monitoring."
+    },
+    {
+        "look_id": 752,
+        "keywords": [
+            "MTO",
+            "data ownership",
+            "aggregated data",
+            "archived data"
+        ],
+        "answer_text": "MTO shall own all data, including aggregated and archived data. MTO will own all data including raw, aggregated and archived data."
+    },
+    {
+        "look_id": 744,
+        "keywords": [
+            "99% uptime",
+            "triple servers",
+            "redundancy",
+            "OVH"
+        ],
+        "answer_text": "Professional third-party hosting, and triple servers are proposed to achieve 99% uptime, with an expected uptime of better than 99.99% excluding scheduled maintenance. A total of 3 servers, hosted professionally by OVH within Canada, will be utilized in this project to achieve full system triple redundancy and fail-over."
+    },
+    {
+        "look_id": 745,
+        "keywords": [
+            "browser-based access",
+            "HTTPS",
+            "user permissions",
+            "user groups"
+        ],
+        "answer_text": "ITS Central allows for browser-based access, secured by HTTPS, password-based login, and user group permissions. User rights are managed by user groups, and users are assigned to one or more user groups. The permissions the user has is the aggregation of all of the permissions of the groups the user belongs to."
+    },
+    {
+        "look_id": 746,
+        "keywords": [
+            "compliance",
+            "security requirements",
+            "Government of Ontario"
+        ],
+        "answer_text": "ITS Central complies with all Government of Ontario Information Technology Standards security requirements."
+    },
+    {
+        "look_id": 747,
+        "keywords": [
+            "custom REST API",
+            "data feeds",
+            "travel time algorithm"
+        ],
+        "answer_text": "Transnomis has previously provided numerous custom REST API data feeds as per client requirements, such as the VDS and VMS API provided for the MTO QSVAS project. ITS Central does not distinguish between routes or links, in that both routes and links are calculated using the same travel time algorithm."
+    },
+    {
+        "look_id": 748,
+        "keywords": [
+            "data hosting",
+            "cloud-based solution",
+            "OVH",
+            "certifications"
+        ],
+        "answer_text": "Data shall be hosted and stored by the Proponent within Canada utilizing cloud-based solution, outside of MTO premises. For hosting, we propose the services of OVH (https://www.ovh.com/). It is one of the largest internet hosting companies in the world, with 400,000 servers, 33 data centers in 4 continents and 1.6 million customers. It is fully certified: PCI DSS, ISO/IEC 27001, 27017, 27018, 27701, 50001, SOC 1, SOC 2 and SOC 3, Cloud Security Alliance STAR certified."
+    },
+    {
+        "look_id": 749,
+        "keywords": [
+            "Transnomis Solutions",
+            "software service",
+            "single point of contact",
+            "server availability"
+        ],
+        "answer_text": "Although hosting is provided by reliable third party, Transnomis Solutions is fully responsible for the availability of its software service. The Ministry will never have to deal with the hosting company. Transnomis Solutions will be the single point of contact for all issues related to services provided for this contract, including server availability issues."
+    },
+    {
+        "look_id": 750,
+        "keywords": [
+            "historical data",
+            "aggregated travel time",
+            "ITS Central",
+            "contract duration"
+        ],
+        "answer_text": "Historical aggregated travel time information shall be stored and accessible to users for the duration of the Contract. Historical aggregated travel time information is stored in ITS Central's database, and will be accessible for the duration of the contract."
+    },
+    {
+        "look_id": 751,
+        "keywords": [
+            "aggregation period",
+            "historical data",
+            "configurable"
+        ],
+        "answer_text": "The aggregation period of historical aggregated travel time information shall be at least every five (5) minutes. The aggregation period of historical aggregated travel time information is configurable, and will be at least 5 minutes."
+    },
+    {
+        "look_id": 753,
+        "keywords": [
+            "Transnomis",
+            "customize reports",
+            "ITS Central",
+            "MTO needs"
+        ],
+        "answer_text": "Transnomis will customize reports within ITS Central to address all of MTO's needs."
+    },
+    {
+        "look_id": 754,
+        "keywords": [
+            "dashboard",
+            "configurable",
+            "matched records",
+            "link",
+            "route",
+            "time period"
+        ],
+        "answer_text": "The dashboard is configurable to provide the number of matched records for a specified link, route, and time period."
+    },
+    {
+        "look_id": 755,
+        "keywords": [
+            "data feeds",
+            "partners",
+            "MTO",
+            "access"
+        ],
+        "answer_text": "Transnomis will setup access to the data feeds for partners who require access, as requested and authorized by MTO."
+    },
+    {
+        "look_id": 756,
+        "keywords": [
+            "custom data feeds",
+            "MTO",
+            "QSVAS project"
+        ],
+        "answer_text": "Transnomis has previously developed various custom data feeds for customers, including a couple of data feeds for the MTO\u2019s QSVAS project."
+    },
+    {
+        "look_id": 757,
+        "keywords": [
+            "software updates",
+            "ITS Central",
+            "Term of Agreement"
+        ],
+        "answer_text": "Transnomis will keep the ITS Central software up to date with the latest available software updates for the duration of the Term of Agreement."
+    },
+    {
+        "look_id": 758,
+        "keywords": [
+            "System Operational Support",
+            "Warranty",
+            "Routine Maintenance",
+            "TT system"
+        ],
+        "answer_text": "Black & McDonald will maintain fault free operation of the TT system including the hardware and software parts as well as maintaining effective working conditions according to the contract\u2019s specifications."
+    },
+    {
+        "look_id": 759,
+        "keywords": [
+            "operational phases",
+            "maintenance phases",
+            "monitoring",
+            "ITS components"
+        ],
+        "answer_text": "During the operational and maintenance phases of the contract, Black & McDonald will be responsible for monitoring the operation of all ITS components including BT readers installed under the contract."
+    },
+    {
+        "look_id": 760,
+        "keywords": [
+            "monitoring",
+            "device failure",
+            "ITS Central"
+        ],
+        "answer_text": "Field devices will be monitored by ITS Central, and notifications will be sent to B&M if a device failure is detected."
+    },
+    {
+        "look_id": 761,
+        "keywords": [
+            "Scheduled System Maintenance Plan",
+            "MTO",
+            "approval",
+            "staff responsibilities",
+            "operating guidelines"
+        ],
+        "answer_text": "A Scheduled System Maintenance Plan will be submitted to the MTO for approval one month prior to SLA initiation. This plan will indicate all staff, staff responsibilities, resources, schedules and operating guidelines. The plan shall include a description of the processes and tasks required to carry out the Operations, Maintenance and Support of the TT Service including the procedures that address requirements of subsections 1.4.1, 1.4.2 and 1.4.3 of the SLA document."
+    },
+    {
+        "look_id": 762,
+        "keywords": [
+            "safety management plan",
+            "environmental management plan",
+            "MTO",
+            "risk mitigation",
+            "safety hazards"
+        ],
+        "answer_text": "A comprehensive project safety and environmental management plan will be developed and submitted to the MTO for review. The project's safety and environmental protection plan will go through site-specific safety hazards, risk mitigation measures, and environmental protection strategy, as well as a list of all hospitals and clinics in the area."
+    },
+    {
+        "look_id": 763,
+        "keywords": [
+            "monthly service report",
+            "template",
+            "MTO",
+            "maintenance services",
+            "invoice"
+        ],
+        "answer_text": "The project team will prepare a template for monthly field maintenance service. The template will be completed on a monthly basis, based on maintenance services provided and submitted to the MTO. Monthly Reports will be accompanied by each invoice."
+    },
+    {
+        "look_id": 764,
+        "keywords": [
+            "on-call crew",
+            "emergency call",
+            "dispatch center",
+            "service truck",
+            "supplies"
+        ],
+        "answer_text": "The on-call crew will be briefed on the category of the call and sent after receiving an emergency call at either the 24/7 hour dispatch center or via the list of contacts provided to the MTO. On-call crew will have access to a service truck and some supplies from their home base."
+    },
+    {
+        "look_id": 765,
+        "keywords": [
+            "non-routine maintenance",
+            "log book",
+            "electrical asset",
+            "ITS asset",
+            "repair tracking"
+        ],
+        "answer_text": "For all call out actions, the non-routine maintenance log book will be updated every time an attendance to an electrical or ITS asset is made. Crews will keep track of when the repair was finished and when the component was fully functional."
+    },
+    {
+        "look_id": 766,
+        "keywords": [
+            "warranty",
+            "Black & McDonald Limited",
+            "labour",
+            "equipment",
+            "materials",
+            "repair",
+            "replacement",
+            "5 years",
+            "Stinson AIS devices"
+        ],
+        "answer_text": "Black & McDonald Limited will provide warranty on all labour, equipment and materials provided. Upon completion of installation, all equipment and materials delivered will be free of material defects and will perform to the requisite standard for a period of five (5) years. All materials provided and work executed under this contract are covered by the warranty. Black & McDonald Limited will repair or replace any equipment that fails throughout the warranty period at no additional expense to the MTO. The B&M will provide warranty services in accordance with the Service Level Agreement's response times for repair or replacement of equipment that has failed. The Stinson AIS devices will be provided with a 5 year all-inclusive warranty which will commence at the time of system acceptance. Advanced replacement spares will be provided to B&M maintenance staff to have on hand during any service calls. In the case that the contract is extended for an additional 2 years, the warranty will be extended accordingly as well."
+    },
+    {
+        "look_id": 767,
+        "keywords": [
+            "servers",
+            "triple redundancy",
+            "fail-over",
+            "OVH",
+            "network connections",
+            "streaming replication"
+        ],
+        "answer_text": "A total of 3 servers, hosted professionally by OVH within Canada, will be utilized in this project to achieve full system triple redundancy and fail-over. OVH has technician and security on-site 24/7. It has systematic double power supply, 250 kVA UPS and generators with an initial autonomy of 48 hours. It has a minimum of 2 network connections and two network rooms within each of its data centers. In addition to the primary server, an identical software installation will be created in two additional servers \u2013 one for failover and one for hot spare. The database will be set up with streaming replication such that the databases in all three (3) servers will always be in sync. In the event the primary server fails, the secondary server can quickly and automatically take over to become the primary server."
+    },
+    {
+        "look_id": 768,
+        "keywords": [
+            "Watch Dog process",
+            "high availability",
+            "downtime",
+            "PostgreSQL",
+            "Logical Replication",
+            "data replication",
+            "security"
+        ],
+        "answer_text": "The Watch Dog process will ensure that between the primary and secondary servers, ITS Central will be highly available with no more than 10 minutes downtime should there be any system failures with the primary server. Database replication is a built-in feature of PostgreSQL. In particular, PostgreSQL supports Logical Replication. Logical replication allows fine-grained control over both data replication and security. Logical replication uses a publish and subscribe model with one or more subscribers subscribing to one or more publications on a publisher node."
     }
 ]
