@@ -62,8 +62,8 @@ def delete_rfp(supabase, rfp_id):
     return response.data
 
 #Requirements CRUD Operations
-def create_requirement(supabase, rfp_id, req_text, category):
-    data = {"rfp_id": rfp_id, "req_text": req_text, "category": category}
+def create_requirement(supabase, rfp_id, req_text, category, chunk_extract):
+    data = {"rfp_id": rfp_id, "req_text": req_text, "category": category, "chunk_extracted_from": chunk_extract}
     response = supabase.table("requirements").insert(data).execute()
     return response.data
 
@@ -79,11 +79,20 @@ def get_requirements_by_rfp_id(supabase, rfp_id):
     response = supabase.table("requirements").select("*").eq("rfp_id", rfp_id).execute()
     return response.data
 
-def update_requirement(supabase, req_id, updated_text, category=None):
+def update_requirement(supabase, req_id, updated_text, category=None, chunk_extract=None):
+    data = {"req_text": updated_text}
     if category:
-        response = supabase.table("requirements").update({"req_text": updated_text, "category": category}).eq("req_id", req_id).execute()
-    else:
-        response = supabase.table("requirements").update({"req_text": updated_text}).eq("req_id", req_id).execute()
+        data["category"] = category
+
+    if chunk_extract:
+        data["chunk_extracted_from"] = chunk_extract
+
+    response = supabase.table("requirements").update(data).eq("req_id", req_id).execute()
+
+    # if category:
+    #     response = supabase.table("requirements").update({"req_text": updated_text, "category": category}).eq("req_id", req_id).execute()
+    # else:
+    #     response = supabase.table("requirements").update({"req_text": updated_text}).eq("req_id", req_id).execute()
     return response.data
 
 def delete_requirement(supabase, req_id):
@@ -102,7 +111,7 @@ def delete_all_requirements(supabase):
 #delete_all_requirements(get_supabase_connection())
 
 #Proposal CRUD Operations
-def create_proposal(supabase, prop_title, prop_full_text, rfp_id=None):
+def create_proposal(supabase, prop_title, prop_full_text=None, rfp_id=None):
     data = {
         "prop_title": prop_title,
         "rfp_id": rfp_id,
@@ -136,13 +145,14 @@ def delete_proposal(supabase, prop_id):
     return response.data
 
 #Answer CRUD Operations
-def create_answer(supabase, seq_order, answer_text, approved, prop_id=None, req_id=None):
+def create_answer(supabase, seq_order, answer_text, approved, prop_id=None, req_id=None, potential_answers=None):
     data = {
         "seq_order": seq_order,
         "answer_text": answer_text,
         "approved": approved,
         "prop_id": prop_id,
-        "req_id": req_id
+        "req_id": req_id,
+        "potential_answers": potential_answers
     }
     response = supabase.table("answers").insert(data).execute()
     return response.data
@@ -155,22 +165,28 @@ def get_answer_by_id(supabase, answer_id):
     response = supabase.table("answers").select("*").eq("answer_id", answer_id).execute()
     return response.data
 
+def get_answer_by_req_id(supabase, req_id):
+    response = supabase.table("answers").select("*").eq("req_id", req_id).execute()
+    return response.data
+
 def get_answers_by_prop_id(supabase, prop_id):
     response = supabase.table("answers").select("*").eq("prop_id", prop_id).execute()
     return response.data
 
-def update_answer(supabase, answer_id, seq_order=None, answer_text=None, approved=None, prop_id=None, req_id=None):
+def update_answer(supabase, answer_id, seq_order=None, answer_text=None, approved=None, prop_id=None, req_id=None, potential_answers=None):
     update_data = {}
-    if seq_order is not None:
+    if seq_order:
         update_data["seq_order"] = seq_order
     if answer_text:
         update_data["answer_text"] = answer_text
-    if approved is not None:
+    if approved:
         update_data["approved"] = approved
-    if prop_id is not None:
+    if prop_id:
         update_data["prop_id"] = prop_id
-    if req_id is not None:
+    if req_id:
         update_data["req_id"] = req_id
+    if potential_answers:
+        update_data["potential_answers"] = potential_answers
 
     response = supabase.table("answers").update(update_data).eq("answer_id", answer_id).execute()
     return response.data
@@ -180,14 +196,15 @@ def delete_answer(supabase, answer_id):
     return response.data
 
 #Lookup CRUD Operations
-def create_lookup(supabase, req_text, answer_text, keywords, context, req_id=None, answer_id=None):
+def create_lookup(supabase, req_text, answer_text, keywords, context, req_id=None, answer_id=None, chunk_extracted_from=None):
     data = {
         "req_text": req_text,
         "answer_text": answer_text,
         "keywords": keywords,
         "context": context,
         "req_id": req_id,
-        "answer_id": answer_id
+        "answer_id": answer_id,
+        "chunk_extracted_from": chunk_extracted_from
     }
     response = supabase.table("lookup").insert(data).execute()
     return response.data
@@ -200,19 +217,19 @@ def get_lookup_by_id(supabase, look_id):
     response = supabase.table("lookup").select("*").eq("look_id", look_id).execute()
     return response.data
 
-def update_lookup(supabase, look_id, req_text=None, answer_text=None, keywords=None, context=None, req_id=None, answer_id=None):
+def update_lookup(supabase, look_id, req_text=None, answer_text=None, keywords=None, context=None, req_id=None, answer_id=None, chunk_extracted_from=None):
     update_data = {}
     if req_text:
         update_data["req_text"] = req_text
     if answer_text:
         update_data["answer_text"] = answer_text
-    if keywords is not None:
+    if keywords:
         update_data["keywords"] = keywords
     if context:
         update_data["context"] = context
-    if req_id is not None:
+    if req_id:
         update_data["req_id"] = req_id
-    if answer_id is not None:
+    if answer_id:
         update_data["answer_id"] = answer_id
 
     response = supabase.table("lookup").update(update_data).eq("look_id", look_id).execute()
@@ -291,7 +308,7 @@ def test_crud_operations(supabase):
 
     # 1. Create a new requirement
     print("Creating a new requirement...")
-    created = create_requirement(supabase, rfp_id=None, req_text="Test requirement", category="General")
+    created = create_requirement(supabase, rfp_id=None, req_text="Test requirement", category="General", chunk_extract="Test chunk")
     assert created, "Create operation failed.\n"
     print(f"Created: {created}")
 
@@ -304,7 +321,7 @@ def test_crud_operations(supabase):
     # 3. Update a requirement
     req_id = created[0]['req_id']  # Using the ID of the created entry
     print(f"Updating requirement with ID {req_id}...")
-    updated = update_requirement(supabase, req_id, "Updated requirement text")
+    updated = update_requirement(supabase, req_id, "Updated requirement text", category="Updated category", chunk_extract="Updated chunk")
     assert updated, "Update operation failed.\n"
     print(f"Updated: {updated}")
 
@@ -341,7 +358,7 @@ def test_crud_operations(supabase):
 
     # 1. Create a new answer with null prop_id and req_id
     print("Creating a new answer...")
-    created = create_answer(supabase, seq_order=1, answer_text="Test Answer", approved=True)
+    created = create_answer(supabase, seq_order=1, answer_text="Test Answer", approved=True, prop_id=None, req_id=None, potential_answers=None)
     assert created, "Create operation failed.\n"
     print(f"Created: {created}")
 
@@ -354,7 +371,7 @@ def test_crud_operations(supabase):
     # 3. Update the answer
     answer_id = created[0]['answer_id']  # Using the ID of the created entry
     print(f"Updating answer with ID {answer_id}...")
-    updated = update_answer(supabase, answer_id, seq_order=2, answer_text="Updated Answer", approved=False, prop_id=None, req_id=None)
+    updated = update_answer(supabase, answer_id, seq_order=2, answer_text="Updated Answer", approved=False, prop_id=None, req_id=None, potential_answers="Updated Potential Answers")
     assert updated, "Update operation failed.\n"
     print(f"Updated: {updated}")
 
@@ -366,7 +383,7 @@ def test_crud_operations(supabase):
 
     # 1. Create a new lookup entry with null req_id and answer_id
     print("Creating a new lookup entry...")
-    created = create_lookup(supabase, "Test Requirement Text", "Test Answer Text", '{"keywords": ["example", "test"]}', "Test Context")
+    created = create_lookup(supabase, "Test Requirement Text", "Test Answer Text", '{"keywords": ["example", "test"]}', "Test Context", req_id=None, answer_id=None, chunk_extracted_from=None)
     assert created, "Create operation failed.\n"
     print(f"Created: {created}")
 
@@ -379,7 +396,7 @@ def test_crud_operations(supabase):
     # 3. Update the lookup entry
     look_id = created[0]['look_id']  # Using the ID of the created entry
     print(f"Updating lookup entry with ID {look_id}...")
-    updated = update_lookup(supabase, look_id, req_text="Updated Requirement", answer_text="Updated Answer", context="Updated Context")
+    updated = update_lookup(supabase, look_id, req_text="Updated Requirement", answer_text="Updated Answer", context="Updated Context", req_id=None, answer_id=None, chunk_extracted_from="Updated Chunk")
     assert updated, "Update operation failed.\n"
     print(f"Updated: {updated}")
 

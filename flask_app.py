@@ -59,7 +59,7 @@ def delete_rfp(rfp_id):
 @app.route('/requirement', methods=['POST'])
 def create_requirement():
     requirement = request.json
-    result = db_backend.create_requirement(db_backend.get_supabase_connection, requirement['rfp_id'], requirement['req_text'], requirement['category'])
+    result = db_backend.create_requirement(db_backend.get_supabase_connection, requirement['rfp_id'], requirement['req_text'], requirement['category'], requirement['chunk_extracted_from'])
     return jsonify(result)
 
 @app.route('/requirement', methods=['GET'])
@@ -80,7 +80,7 @@ def get_requirements_by_rfp(rfp_id):
 @app.route('/requirement/<int:req_id>', methods=['PUT'])
 def update_requirement(req_id):
     requirement = request.json
-    result = db_backend.update_requirement(db_backend.get_supabase_connection, req_id, requirement['rfp_id'], requirement['req_text'], requirement['category'])
+    result = db_backend.update_requirement(db_backend.get_supabase_connection, req_id, requirement['rfp_id'], requirement['req_text'], requirement['category'], requirement['chunk_extracted_from'])
     return jsonify(result)
 
 @app.route('/requirement/<int:req_id>', methods=['DELETE'])
@@ -120,7 +120,7 @@ def delete_proposal(prop_id):
 @app.route('/answer', methods=['POST'])
 def create_answer():
     answer = request.json
-    result = db_backend.create_answer(db_backend.get_supabase_connection, answer['seq_order'], answer['answer_text'], answer['approved'], answer['prop_id'], answer['req_id'])
+    result = db_backend.create_answer(db_backend.get_supabase_connection, answer['seq_order'], answer['answer_text'], answer['approved'], answer['prop_id'], answer['req_id'], answer['potential_answers'])
     return jsonify(result)
 
 @app.route('/answer', methods=['GET'])
@@ -141,7 +141,7 @@ def get_answers_by_prop(prop_id):
 @app.route('/answer/<int:answer_id>', methods=['PUT'])
 def update_answer(answer_id):
     answer = request.json
-    result = db_backend.update_answer(db_backend.get_supabase_connection, answer_id, answer['seq_order'], answer['answer_text'], answer['approved'], answer['prop_id'], answer['req_id'])
+    result = db_backend.update_answer(db_backend.get_supabase_connection, answer_id, answer['seq_order'], answer['answer_text'], answer['approved'], answer['prop_id'], answer['req_id'], answer['potential_answers'])
     return jsonify(result)
 
 @app.route('/answer/<int:answer_id>', methods=['DELETE'])

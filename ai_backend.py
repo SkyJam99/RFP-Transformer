@@ -6,7 +6,7 @@ import time
 import json
 import re
 from typing import List
-from db_backend import create_lookup, get_rfp_by_id, get_supabase_connection, generate_lookup_file, create_requirement, get_requirements_by_rfp_id, get_lookup_by_id, update_rfp
+from db_backend import create_lookup, get_rfp_by_id, get_supabase_connection, generate_lookup_file, create_requirement, get_requirements_by_rfp_id, get_lookup_by_id, update_rfp, create_answer, create_proposal, get_answer_by_req_id, update_answer
 
 load_dotenv()
 
@@ -228,7 +228,7 @@ def process_chunk(chunk, overall_context, client, assistant_id, supabase, chunk_
             req_description = answer.get("req_description", "N/A")
             keywords = answer.get("keywords", [])
             # Add the answer to the lookup database
-            create_lookup(supabase, req_description, verbatim_answer, keywords, overall_context)
+            create_lookup(supabase, req_description, verbatim_answer, keywords, overall_context, req_id=None, answer_id=None, chunk_extracted_from=chunk)
             print(f"Extracted Answer #{i}:\n  Verbatim Answer: {verbatim_answer}\n  Requirement Description: {req_description}\n  Keywords: {', '.join(keywords)}\n")
             i += 1
     except Exception as e:
@@ -436,10 +436,8 @@ def parse_rfp_legacy(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=2
         print(f"Extracted Requirement #{i}:\n  Verbatim Requirement: {verbatim_requirement}\n")
         i += 1
 
-# ---------------------------- RFP Parsing Functions ----------------------------
-
 # Function to process one chunk at a time and store the generated requirements in the database
-def process_rfp_chunk(chunk, overall_context_str, client, assistant_id, supabase, rfp_id, chunk_index, total_chunks):
+def process_rfp_chunk(chunk, overall_context_str, client, assistant_id, supabase, rfp_id, chunk_index, total_chunks, prop_id):
     # Create a new thread for each chunk
     thread = client.beta.threads.create()
 
@@ -486,7 +484,9 @@ def process_rfp_chunk(chunk, overall_context_str, client, assistant_id, supabase
                 verbatim_requirement = requirement.get("verbatim_requirement")
                 if verbatim_requirement:
                     # Add the requirement to the requirements database
-                    create_requirement(supabase, rfp_id, verbatim_requirement, "test")
+                    response = create_requirement(supabase, rfp_id, verbatim_requirement, "test", chunk)
+                    requirement_id = response[0].get("req_id")
+                    create_answer(supabase, None, None, False, prop_id, requirement_id, None)
                     print(f"Extracted Requirement:\n  Verbatim Requirement: {verbatim_requirement}\n")
         else:
             print(f"\n~~~\nUnexpected format for requirements in chunk {chunk_index + 1}: {requirements_list}")
@@ -547,12 +547,16 @@ def parse_rfp(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=20000, c
     # Update overall context in the database
     update_rfp(supabase, rfp_id, None, None, None, overall_context_str)
 
+    # Create proposal entry in the database
+    response = create_proposal(supabase, None, None, rfp_id)
+    prop_id = response[0].get("prop_id")
+
     print("Processing chunks now")
 
     # Process each chunk
     total_chunks = len(rfp_chunks)
     for i, chunk in enumerate(rfp_chunks):
-        process_rfp_chunk(chunk, overall_context_str, client, assistant_id, supabase, rfp_id, i, total_chunks)
+        process_rfp_chunk(chunk, overall_context_str, client, assistant_id, supabase, rfp_id, i, total_chunks, prop_id)
 
     print("\n\nAll Requirements Extracted and added to the database\n\n")
 
@@ -567,7 +571,7 @@ def parse_rfp(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=20000, c
 # TODO Make a new version of this function that only tries to find answers for one requirement at a time
 # TODO Add lookup_id to the answers database to keep track of where the answers came from
 
-def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
+def find_existing_requirement_answers_legacy(rfp_id, client=setup_GPT_client()):
     # Step 1: Get the list of requirements associated with the rfp_id
     supabase = get_supabase_connection()
     requirements = get_requirements_by_rfp_id(supabase, rfp_id)
@@ -666,7 +670,7 @@ def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
             response = get_lookup_by_id(supabase, lookup_id)
             if response:
                 requirement_answers.append(response[0])  # TODO, fix exactly what is being appended to the list
-        full_answers.append({"requirement_id": requirement_id, "answers": requirement_answers})
+        full_answers.append({"requirement_id": requirement_id, "answers": requirement_answers, "Lookup IDs": lookup_ids})
 
     # Print the full answers for debugging
     for answer in full_answers:
@@ -692,7 +696,7 @@ def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
                 role="user",
                 content=(
                     "Here are the potential answers for a requirement from an RFP. Choose the best answer from the list. "
-                    "Return a JSON object with zero to two 'lookup_id' representing the best match. "
+                    "Return a JSON object with zero to two 'lookup_id' representing the best matches. "
                     "If there are no good matches, respond with an empty JSON object {}. "
                     "Ensure that the lookup id is valid and corresponds to the answers given to choose from."
                     "Here is some overall context about the RFP: [" + overall_context + "]. "
@@ -721,13 +725,182 @@ def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
 
             
 
-    # Step 5: For each requirement, ask the user to choose the correct answer or enter a new answer (1 answer per requirement) and add the answers to the proposal answers database
-    for answer in final_answers:
+    # Step 5: For each requirement, save the potential answers in the database.
+
+
+# Function to process a single requirement
+def process_requirement(requirement, overall_context, client, assistant_id_lookup, assistant_id_parser, supabase, answer_id):
+    requirement_text = requirement.get("req_text", "")
+    requirement_id = requirement.get("req_id")
+    print(f"\nProcessing requirement ID {requirement_id}: {requirement_text}")
+
+    # Step 2: Use the assistant to find the best matching answers in the lookup file (3-5 potential answers per requirement)
+    # Assistant ID for lookup
+    print("Finding potential matches from lookup file...")
+    thread = client.beta.threads.create()
+
+    # Add the requirement to the thread as a message
+    message = client.beta.threads.messages.create(
+        thread_id=thread.id,
+        role="user",
+        content=(
+            "Here is a requirement from the RFP. Find the best matching answers from the lookup file. "
+            "Return a JSON object with a list of 'lookup_ids' representing the best matches (3-5 matches). "
+            "The lookup ids should ALWAYS be returned in the following format to ensure that we can parse your response: {'lookup_ids': ['id1', 'id2', 'id3']}. "
+            "Ensure that the lookup ids are valid and correspond to the lookup file. "
+            "Here is some overall context about the RFP: [" + overall_context + "]. "
+            "Here is the requirement: [" + requirement_text + "]"
+        ),
+    )
+
+    # Send the thread to the assistant for generation
+    run = client.beta.threads.runs.create_and_poll(
+        thread_id=thread.id,
+        assistant_id=assistant_id_lookup,
+    )
+
+    # Wait until the run is completed
+    timeout = 0
+    while run.status != "completed":
+        print(run.status)
+        time.sleep(1)
+        if timeout > 10:
+            print("Timeout reached for chat completion")
+            return
+        timeout = timeout + 1
+
+    # Extract response for the requirement
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
+    full_response = extract_responses(messages)
+    print("Full Response from Assistant (Lookup):", full_response)
+
+    # Extract JSON from the response
+    response_json = []
+    for response in full_response:
+        json_match = re.search(r'({.*?})', response, re.DOTALL)
+        if json_match:
+            response_json.append(json_match.group(1))
+
+    if not response_json:
+        print(f"No valid JSON found in assistant response for requirement ID {requirement_id}")
+        return
+
+    try:
+        response_data = json.loads(response_json[0])
+        lookup_ids = response_data.get("lookup_ids", [])
+        print(f"Lookup IDs found: {lookup_ids}")
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON for requirement ID {requirement_id}: {e}")
+        return
+
+    # Step 3: Retrieve verbatim text from the lookup database
+    full_answers = []
+    for lookup_id in lookup_ids:
+        response = get_lookup_by_id(supabase, lookup_id)
+        if response:
+            full_answers.append(response[0])
+        else:
+            print(f"No lookup entry found for ID {lookup_id}")
+
+    if not full_answers:
+        print(f"No answers found in lookup database for requirement ID {requirement_id}")
+        return
+
+    # Step 4: Use the assistant to choose the best answer(s) from the list of potential answers (0 - 2 answers per requirement)
+    print("Selecting the best answers from potential matches...")
+    thread = client.beta.threads.create()
+
+    # Prepare the answers content
+    answers_content = json.dumps(full_answers, ensure_ascii=False)
+
+    # Add the requirement and potential answers to the thread as a message
+    message = client.beta.threads.messages.create(
+        thread_id=thread.id,
+        role="user",
+        content=(
+            "Here are the potential answers for a requirement from an RFP. Choose the best answers from the list. "
+            "Return a JSON object with zero to two 'lookup_ids' representing the best matches. "
+            "If there are no good matches, respond with an empty JSON object {}. "
+            "Ensure that the lookup ids are valid and correspond to the answers given to choose from. "
+            "Here is some overall context about the RFP: [" + overall_context + "]. "
+            "Here is the requirement: [" + requirement_text + "]. "
+            "Here are the potential answers: " + answers_content
+        ),
+    )
+
+    # Send the thread to the assistant for generation
+    run = client.beta.threads.runs.create_and_poll(
+        thread_id=thread.id,
+        assistant_id=assistant_id_parser,
+    )
+
+    timeout = 0
+    while run.status != "completed":
+        print(run.status)
+        time.sleep(1)
+        if timeout > 10:
+            print("Timeout reached for chat completion")
+            return
+        timeout = timeout + 1
+
+    # Extract response for the requirement
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
+    full_response = extract_responses(messages)
+    print("Full Response from Assistant (Selection):", full_response)
+
+    # Extract JSON from the response
+    response_json = []
+    for response in full_response:
+        json_match = re.search(r'({.*?})', response, re.DOTALL)
+        if json_match:
+            response_json.append(json_match.group(1))
+
+    if not response_json:
+        print(f"No valid JSON found in assistant response for requirement ID {requirement_id}")
+        return
+
+    try:
+        response_data = json.loads(response_json[0])
+        selected_lookup_ids = response_data.get("lookup_ids", [])
+        print(f"Selected Lookup IDs: {selected_lookup_ids}")
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON for requirement ID {requirement_id}: {e}")
+        return
+
+    # Step 5: Update the database with the selected answers
+    # Note: Implementation of updating the database with selected answers is pending
+    print(f"Updating database with selected answers for requirement ID {requirement_id}...")
+    # TODO: Implement database update logic here
+    print(update_answer(supabase, answer_id, None, None, None, None, None, selected_lookup_ids))
+
+    # For debugging purposes, print the selected answers
+    for lookup_id in selected_lookup_ids:
+        answer = next((ans for ans in full_answers if str(ans.get("look_id")) == str(lookup_id)), None)
+        if answer:
+            print(f"Selected Answer for Requirement ID {requirement_id}:\n{answer}")
+        else:
+            print(f"Lookup ID {lookup_id} not found in potential answers for requirement ID {requirement_id}")
+
+# Function to manage the overall process
+def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
+    # Step 1: Get the list of requirements associated with the rfp_id
+    supabase = get_supabase_connection()
+    requirements = get_requirements_by_rfp_id(supabase, rfp_id)
+    rfp = get_rfp_by_id(supabase, rfp_id)
+    overall_context = rfp[0].get("rfp_overall_context", "")
+    print(f"Overall Context: {overall_context}")
+
+    # Assistant IDs
+    assistant_id_lookup = 'asst_AJU8IaPEP7cbaqQtqWNeAtcn'  # Assistant with access to the lookup file
+    assistant_id_parser = 'asst_rstr7lrME0LAhivV2sJzwLXD'  # Proposal Parser assistant
+
+    # Step 2 to 5: Process each requirement
+    for requirement in requirements:
+        answer = get_answer_by_req_id(supabase, requirement.get("req_id"))
         print(answer)
+        answer_id = answer[0]['answer_id']
+        process_requirement(requirement, overall_context, client, assistant_id_lookup, assistant_id_parser, supabase, answer_id)
 
-
-
-    # Step 6: Compile the answers into a proposal, return the proposal text, and store the full proposal in the database
 
 
 # Requirement Matching Function Single Requirement
@@ -741,9 +914,9 @@ def find_existing_requirement_answers(rfp_id, client=setup_GPT_client()):
 
 #generate_lookup_file(get_supabase_connection(), "database_lookup.json")
 
-rfp_filepath = './test_rfp.html'
-parse_rfp(extract_text_from_html(read_file(rfp_filepath)), 16)
-print("RFP Parsed")
+# rfp_filepath = './test_rfp.html'
+# parse_rfp(extract_text_from_html(read_file(rfp_filepath)), 16)
+# print("RFP Parsed")
 
-# find_existing_requirement_answers(16)
-# print("Requirements Matched")
+find_existing_requirement_answers(16)
+print("Requirements Matched")
