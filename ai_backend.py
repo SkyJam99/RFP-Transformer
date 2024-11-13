@@ -868,9 +868,7 @@ def process_requirement(requirement, overall_context, client, assistant_id_looku
         return
 
     # Step 5: Update the database with the selected answers
-    # Note: Implementation of updating the database with selected answers is pending
     print(f"Updating database with selected answers for requirement ID {requirement_id}...")
-    # TODO: Implement database update logic here
     print(update_answer(supabase, answer_id, None, None, None, None, None, selected_lookup_ids))
 
     # For debugging purposes, print the selected answers
