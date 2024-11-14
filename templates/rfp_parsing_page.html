@@ -75,10 +75,11 @@
                 
                 <!-- Drag-and-Drop File Upload -->
                 <div class="upload-box">
-                    <p>Drag Here</p>
+                    <p>Drag Here or Click to Choose File</p>
+                    <input type="file" id="rfpFile" class="form-control" style="display: none;">
                 </div>
                 <div class="text-center mb-3">
-                    <p>Drag a or <a href="#" class="text-primary">choose</a> an RFP in html format to parse it for requirements</p>
+                    <p>Drag or <a href="#" class="text-primary">choose</a> an RFP in html format to parse it for requirements</p>
                 </div>
 
                 <!-- RFP Title Input -->
@@ -95,8 +96,36 @@
 
                 <!-- Submit Button -->
                 <div class="text-center">
-                    <button class="btn btn-primary">Submit</button>
+                    <button id="submitButton" class="btn btn-primary">Submit and Parse</button>
                 </div>
+
+                <script>
+                    let uploadBox = $('#uploadBox');
+                    let fileInput = $('#rfpFile');
+
+                    uploadBox.on('dragover', function(e) {
+                        e.preventDefault
+                        fileInput.click();
+                    });
+
+                    uploadBox.on('dragleave', function(e) {
+                        e.preventDefault
+                        $(this).removeClass('dragover');
+                    });
+
+                    uploadBox.on('drop', function(e) {
+                        e.preventDefault();
+                        $(this).removeClass('dragover');
+                        let file = e.originalEvent.dataTransfer.file;
+                        fileInput[0].files = file;
+                    })
+
+                    uploadBox.click(function() {
+                        fileInput.click();
+                    });
+
+                    
+                </script>
             </div>
         </div>
     </body>

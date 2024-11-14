@@ -173,7 +173,7 @@ def parse_proposal_for_lookup(proposalText, prop_id, client=setup_GPT_client(), 
     lookup_file_path = generate_lookup_file(supabase, "database_lookup.json")
     print(f"Lookup file generated at: {lookup_file_path}")
 
-    # TODO: Update the proposal in the database and set status to complete
+    # Update the proposal in the database and set status to complete
     update_proposal_status(supabase, prop_id, "complete")
     
     # TODO: Update the lookup file in the RFP assistant (which isn't implemented yet)
