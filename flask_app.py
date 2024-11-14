@@ -20,6 +20,9 @@ def proposal_parsing():
 def rfp_parsing():
     return render_template('rfp_parsing_page.html')
 
+#Requirement Editing
+@app.route('/requirement/editing')
+
 #Proposal Writing
 @app.route('/proposal/writing')
 def proposal_writing():

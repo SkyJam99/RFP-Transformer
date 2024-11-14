@@ -55,6 +55,11 @@ def update_rfp(supabase, rfp_id, new_title=None, new_description=None, new_full_
     response = supabase.table("rfp").update(update_data).eq("rfp_id", rfp_id).execute()
     return response.data
 
+# Update RFP status
+def update_rfp_status(supabase, rfp_id, new_status):
+    response = supabase.table("rfp").update({"status": new_status}).eq("rfp_id", rfp_id).execute()
+    return response.data
+
 # print(update_rfp(get_supabase_connection(), 16, "Updated RFP Title", "Updated RFP Description", "Updated RFP Full Text", "Updated Overall Context"))
 
 def delete_rfp(supabase, rfp_id):
@@ -138,6 +143,11 @@ def update_proposal(supabase, prop_id, new_title=None, new_full_text=None, new_r
         update_data["prop_full_text"] = new_full_text
 
     response = supabase.table("proposals").update(update_data).eq("prop_id", prop_id).execute()
+    return response.data
+
+# Update proposal status
+def update_proposal_status(supabase, prop_id, new_status):
+    response = supabase.table("proposals").update({"status": new_status}).eq("prop_id", prop_id).execute()
     return response.data
 
 def delete_proposal(supabase, prop_id):
