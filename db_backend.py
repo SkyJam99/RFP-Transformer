@@ -116,11 +116,12 @@ def delete_all_requirements(supabase):
 #delete_all_requirements(get_supabase_connection())
 
 #Proposal CRUD Operations
-def create_proposal(supabase, prop_title, prop_full_text=None, rfp_id=None):
+def create_proposal(supabase, prop_title, prop_full_text=None, rfp_id=None, prop_overall_context=None):
     data = {
         "prop_title": prop_title,
         "rfp_id": rfp_id,
-        "prop_full_text": prop_full_text
+        "prop_full_text": prop_full_text,
+        "prop_overall_context": prop_overall_context
     }
     response = supabase.table("proposals").insert(data).execute()
     return response.data
@@ -133,14 +134,16 @@ def get_proposal_by_id(supabase, prop_id):
     response = supabase.table("proposals").select("*").eq("prop_id", prop_id).execute()
     return response.data
 
-def update_proposal(supabase, prop_id, new_title=None, new_full_text=None, new_rfp_id=None):
+def update_proposal(supabase, prop_id, new_title=None, new_full_text=None, new_rfp_id=None, new_overall_context=None):
     update_data = {}
     if new_title:
         update_data["prop_title"] = new_title
-    if new_rfp_id is not None:  # Allow updating rfp_id to null
+    if new_rfp_id:  # Allow updating rfp_id to null
         update_data["rfp_id"] = new_rfp_id
-    if new_full_text is not None: # Same for full_text
+    if new_full_text: # Same for full_text
         update_data["prop_full_text"] = new_full_text
+    if new_overall_context:
+        update_data["prop_overall_context"] = new_overall_context
 
     response = supabase.table("proposals").update(update_data).eq("prop_id", prop_id).execute()
     return response.data
