@@ -45,6 +45,11 @@
             margin: 20px auto;
             max-width: 600px;
         }
+
+        /* Change background color when dragging a file over the area */
+        .upload-box.dragover {
+            background-color: #e0e0e0;
+        }
     </style>
     <body>
         <div class="bg-dark text-light min-vh-100">
@@ -100,31 +105,83 @@
                 </div>
 
                 <script>
-                    let uploadBox = $('#uploadBox');
-                    let fileInput = $('#rfpFile');
+                    $(document).ready(function() {
+                        let uploadBox = $('.upload-box');
+                        let fileInput = $('#rfpFile');
+                        let droppedFiles = null;
 
-                    uploadBox.on('dragover', function(e) {
-                        e.preventDefault
-                        fileInput.click();
+                        uploadBox.on('dragover', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            $(this).addClass('dragover');
+                        });
+
+                        uploadBox.on('dragleave', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            $(this).removeClass('dragover');
+                        });
+
+                        uploadBox.on('drop', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            $(this).removeClass('dragover');
+                            let files = e.originalEvent.dataTransfer.files;
+                            if (files.length > 0) {
+                                droppedFiles = files;
+                                $(this).find('p').text(files[0].name);
+                            }
+                        });
+
+                        uploadBox.click(function() {
+                            fileInput.click();
+                        });
+
+                        fileInput.on('change', function(e) {
+                            if (this.files.length > 0) {
+                                droppedFiles = this.files;
+                                uploadBox.find('p').text(this.files[0].name);
+                            }
+                        });
+
+                        $('#submitButton').click(function(e) {
+                            e.preventDefault();
+
+                            if (!droppedFiles || droppedFiles.length === 0) {
+                                alert("Please select a file.");
+                                return;
+                            }
+
+                            let title = $('#rfpTitle').val();
+                            let description = $('#rfpDescription').val();
+                            if (!title || !description) {
+                                alert("Please enter a title and description.");
+                                return;
+                            }
+
+                            let formData = new FormData();
+                            formData.append("rfp_file", droppedFiles[0]);
+                            formData.append("title", title);
+                            formData.append("description", description);
+
+                            // AJAX request to upload the file
+                            $.ajax({
+                                url: "{{ url_for('upload_rfp') }}",
+                                type: "POST",
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: function(response) {
+                                    alert("File uploaded successfully.");
+                                    window.location.href = response.redirect_url;
+                                },
+                                error: function(response) {
+                                    alert("Error uploading file.");
+                                }
+                            });
+                        });
                     });
 
-                    uploadBox.on('dragleave', function(e) {
-                        e.preventDefault
-                        $(this).removeClass('dragover');
-                    });
-
-                    uploadBox.on('drop', function(e) {
-                        e.preventDefault();
-                        $(this).removeClass('dragover');
-                        let file = e.originalEvent.dataTransfer.file;
-                        fileInput[0].files = file;
-                    })
-
-                    uploadBox.click(function() {
-                        fileInput.click();
-                    });
-
-                    
                 </script>
             </div>
         </div>

@@ -25,6 +25,8 @@
             background-color: #f8f9fa;
             padding: 10px;
             border-radius: 8px;
+            overflow-y: auto;
+            color:black;
         }
     </style>
     <body class="bg-dark text-light">
@@ -33,21 +35,114 @@
 
             <!-- Action Buttons -->
             <div class="my-4">
-                <button class="btn btn-primary mx-2">Delete</button>
-                <button class="btn btn-primary mx-2">Approve</button>
+                <button id="deleteButton" class="btn btn-primary mx-2">Delete</button>
+                <button id="approveButton" class="btn btn-primary mx-2">Approve</button>
             </div>
 
             <!-- Content Sections -->
             <div class="row">
                 <div class="col-md-6">
                     <h5>Chunk Extracted From</h5>
-                    <div class="text-area-box"></div>
+                    <div id="chunkText" class="text-area-box"></div>
                 </div>
                 <div class="col-md-6">
                     <h5>Extracted Requirement</h5>
-                    <div class="text-area-box"></div>
+                    <div id="requirementText" class="text-area-box" contenteditable="true"></div>
                 </div>
             </div>
+            
         </div>
+
+        <script>
+            $(document).ready(function() {
+                var rfp_id = "{{ rfp_id }}";  // Get rfp_id from Flask
+                var current_req_id = 0;  // Initialize current_req_id
+    
+                // Function to load requirement
+                function loadRequirement(req_id) {
+                    $.ajax({
+                        url: "{{ url_for('get_next_requirement') }}",
+                        type: "GET",
+                        data: {
+                            rfp_id: rfp_id,
+                            req_id: req_id
+                        },
+                        success: function(response) {
+                            if (response.req_id == -1) {
+                                $('#chunkText').text('Waiting for the next requirement to be ready...');
+                                $('#requirementText').text('');
+                                // Retry after 5 seconds
+                                setTimeout(function() {
+                                    loadRequirement(req_id);  // Retry with the same req_id
+                                }, 5000);  // Wait for 5 seconds before retrying
+                            } else if (response.req_id == 0) {
+                                alert("No more requirements to process.");
+                                
+                                window.location.href = "{{ url_for('proposal_writing') }}";
+                            } else {
+                                current_req_id = response.req_id;
+                                $('#chunkText').text(response.chunk_text);
+                                //print("Requirement text: " + response.req_text);
+                                $('#requirementText').text(response.req_text);
+                            }
+                        },
+                        error: function() {
+                            alert("Error loading requirement.");
+                        }
+                    });
+                }
+    
+                // Function to approve requirement
+                function approveRequirement() {
+                    let data = {
+                        "rfp_id": rfp_id,
+                        "req_text": $('#requirementText').text()
+                    };
+                    
+                    $.ajax({
+                        url: "/requirement/" + current_req_id,
+                        type: "PUT",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        success: function(response) {
+                            //alert("Requirement updated.");
+                            loadRequirement(current_req_id);  // Load next requirement
+                        },
+                        error: function() {
+                            alert("Error updating requirement.");
+                        }
+                    })
+                    //loadRequirement(current_req_id);  // Load next requirement
+                }
+    
+                // Function to delete requirement
+                function deleteRequirement() {
+                    $.ajax({
+                        url: "/requirement/" + current_req_id,
+                        type: "DELETE",
+                        success: function(response) {
+                            loadRequirement(current_req_id);  // Load next requirement
+                        },
+                        error: function() {
+                            alert("Error deleting requirement.");
+                        }
+                    });
+                }
+
+    
+                // Event handlers for buttons
+                $('#approveButton').click(function() {
+                    //alert("Approve button clicked.");
+                    approveRequirement();
+                });
+    
+                $('#deleteButton').click(function() {
+                    deleteRequirement();
+                });
+    
+                // Load the first requirement on page load
+                loadRequirement(0);  // Pass 0 to get the first requirement
+            });
+        </script>
     </body>
 </html>

@@ -35,6 +35,33 @@ def get_rfp_by_id(supabase, rfp_id):
     response = supabase.table("rfp").select("*").eq("rfp_id", rfp_id).execute()
     return response.data
 
+# Get RFP status
+def get_rfp_status(supabase, rfp_id):
+    response = supabase.table("rfp").select("status").eq("rfp_id", rfp_id).execute()
+    return response.data
+
+# Get next requirement
+def get_next_requirement(supabase, rfp_id, current_req_id):
+    if current_req_id == 0:
+        # Get the first requirement
+        response = supabase.table('requirements').select('*').eq('rfp_id', rfp_id).order('req_id', desc=False).limit(1).execute()
+    else:
+        # Get the next requirement
+        response = supabase.table('requirements').select('*').eq('rfp_id', rfp_id).gt('req_id', current_req_id).order('req_id', desc=False).limit(1).execute()
+
+    if response.data:
+        # print(response.data[0])
+        return response.data[0]
+    else:
+        response = get_rfp_status(supabase, rfp_id)
+        parsing_status = response[0].get('status')
+        if parsing_status == 'complete':
+            # No more requirements
+            return 0
+        else:
+            # Parsing is still in progress
+            return -1
+
 # Update RFP but only any of the fields that are not None
 def update_rfp(supabase, rfp_id, new_title=None, new_description=None, new_full_text=None, new_overall_context=None):
     # response = supabase.table("rfp").update({
