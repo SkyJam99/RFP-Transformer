@@ -40,6 +40,28 @@ def get_rfp_status(supabase, rfp_id):
     response = supabase.table("rfp").select("status").eq("rfp_id", rfp_id).execute()
     return response.data
 
+# Get next lookup answer
+def get_next_lookup(supabase, prop_id, current_look_id):
+    if current_look_id == 0:
+        # Get the first requirement
+        response = supabase.table('lookup').select('*').eq('prop_id', prop_id).order('look_id', desc=False).limit(1).execute()
+    else:
+        # Get the next requirement
+        response = supabase.table('lookup').select('*').eq('prop_id', prop_id).gt('look_id', current_look_id).order('look_id', desc=False).limit(1).execute()
+
+    if response.data:
+        # print(response.data[0])
+        return response.data[0]
+    else:
+        response = get_proposal_status(supabase, prop_id)
+        parsing_status = response[0].get('status')
+        if parsing_status == 'complete':
+            # No more requirements
+            return 0
+        else:
+            # Parsing is still in progress
+            return -1
+
 # Get next requirement
 def get_next_requirement(supabase, rfp_id, current_req_id):
     if current_req_id == 0:
@@ -161,6 +183,11 @@ def get_proposal_by_id(supabase, prop_id):
     response = supabase.table("proposals").select("*").eq("prop_id", prop_id).execute()
     return response.data
 
+# Get Proposal status
+def get_proposal_status(supabase, prop_id):
+    response = supabase.table("proposals").select("status").eq("prop_id", prop_id).execute()
+    return response.data
+
 def update_proposal(supabase, prop_id, new_title=None, new_full_text=None, new_rfp_id=None, new_overall_context=None):
     update_data = {}
     if new_title:
@@ -236,7 +263,7 @@ def delete_answer(supabase, answer_id):
     return response.data
 
 #Lookup CRUD Operations
-def create_lookup(supabase, req_text, answer_text, keywords, context, req_id=None, answer_id=None, chunk_extracted_from=None):
+def create_lookup(supabase, req_text, answer_text, keywords, context, req_id=None, answer_id=None, chunk_extracted_from=None, prop_id=None):
     data = {
         "req_text": req_text,
         "answer_text": answer_text,
@@ -244,7 +271,8 @@ def create_lookup(supabase, req_text, answer_text, keywords, context, req_id=Non
         "context": context,
         "req_id": req_id,
         "answer_id": answer_id,
-        "chunk_extracted_from": chunk_extracted_from
+        "chunk_extracted_from": chunk_extracted_from,
+        "prop_id": prop_id
     }
     response = supabase.table("lookup").insert(data).execute()
     return response.data
@@ -255,6 +283,10 @@ def get_lookups(supabase):
 
 def get_lookup_by_id(supabase, look_id):
     response = supabase.table("lookup").select("*").eq("look_id", look_id).execute()
+    return response.data
+
+def get_lookup_by_prop_id(supabase, prop_id):
+    response = supabase.table("lookup").select("*").eq("prop_id", prop_id).execute()
     return response.data
 
 def update_lookup(supabase, look_id, req_text=None, answer_text=None, keywords=None, context=None, req_id=None, answer_id=None, chunk_extracted_from=None):

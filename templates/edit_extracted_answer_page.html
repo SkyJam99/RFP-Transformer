@@ -25,6 +25,8 @@
             background-color: #f8f9fa;
             padding: 10px;
             border-radius: 8px;
+            overflow-y: auto;
+            color:black;
         }
     </style>
     <body class="bg-dark text-light">
@@ -33,21 +35,114 @@
 
             <!-- Action Buttons -->
             <div class="my-4">
-                <button class="btn btn-primary mx-2">Delete</button>
-                <button class="btn btn-primary mx-2">Approve</button>
+                <button id="deleteButton" class="btn btn-primary mx-2">Delete</button>
+                <button id="approveButton" class="btn btn-primary mx-2">Approve</button>
             </div>
 
             <!-- Content Sections -->
             <div class="row">
                 <div class="col-md-6">
                     <h5>Chunk Extracted From</h5>
-                    <div class="text-area-box"></div>
+                    <div id="chunkText" class="text-area-box"></div>
                 </div>
                 <div class="col-md-6">
                     <h5>Extracted Answer</h5>
-                    <div class="text-area-box"></div>
+                    <div id="answerText" class="text-area-box" contenteditable="true"></div>
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function() {
+                var prop_id = "{{ prop_id }}";  // Get prop_id from Flask
+                var current_look_id = 0;  // Initialize current_look_id
+    
+                // Function to load answer
+                function loadAnswer(look_id) {
+                    
+                    $.ajax({
+                        url: "{{ url_for('get_next_lookup') }}",
+                        type: "GET",
+                        data: {
+                            prop_id: prop_id,
+                            look_id: look_id
+                        },
+                        success: function(response) {
+                            if (response.look_id == -1) {
+                                $('#chunkText').text('Waiting for the next answer to be ready...');
+                                $('#answerText').text('');
+                                // Retry after 5 seconds
+                                setTimeout(function() {
+                                    loadAnswer(look_id);  // Retry with the same look_id
+                                }, 5000);  // Wait for 5 seconds before retrying
+                            } else if (response.look_id == 0) {
+                                alert("No more answers to process.");
+                                
+                                window.location.href = "{{ url_for('proposal_writing') }}";
+                            } else {
+                                current_look_id = response.look_id;
+                                $('#chunkText').text(response.chunk_text);
+
+                                $('#answerText').text(response.answer_text);
+                            }
+                        },
+                        error: function() {
+                            alert("Error loading answer.");
+                        }
+                    });
+                }
+    
+                // Function to approve answer
+                function approveAnswer() {
+                    let data = {
+                        "look_id": look_id,
+                        "answer_text": $('#answerText').text()
+                    };
+                    
+                    $.ajax({
+                        url: "/lookup/" + current_look_id,
+                        type: "PUT",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        success: function(response) {
+                            //alert("Answer updated.");
+                            loadAnswer(current_look_id);  // Load next answer
+                        },
+                        error: function() {
+                            alert("Error updating answer.");
+                        }
+                    })
+                    
+                }
+    
+                // Function to delete lookup
+                function deleteAnswer() {
+                    $.ajax({
+                        url: "/lookup/" + current_look_id,
+                        type: "DELETE",
+                        success: function(response) {
+                            loadAnswer(current_look_id);  // Load next answer
+                        },
+                        error: function() {
+                            alert("Error deleting lookup.");
+                        }
+                    });
+                }
+
+    
+                // Event handlers for buttons
+                $('#approveButton').click(function() {
+                    //alert("Approve button clicked.");
+                    approveAnswer();
+                });
+    
+                $('#deleteButton').click(function() {
+                    deleteAnswer();
+                });
+    
+                // Load the first answer on page load
+                loadAnswer(0);  // Pass 0 to get the first answer
+            });
+        </script>
+
     </body>
 </html>

@@ -22,7 +22,7 @@ def proposal_parsing():
 def rfp_parsing():
     return render_template('rfp_parsing_page.html')
 
-# TODO Requirement Editing
+# Requirement Editing
 @app.route('/requirement/editing')
 def requirement_editing():
     rfp_id = request.args.get('rfp_id')
@@ -30,12 +30,54 @@ def requirement_editing():
         return "No RFP ID provided", 400
     return render_template('edit_extracted_requirement_page.html', rfp_id=rfp_id)
 
+# Lookup / Answer Editing
+@app.route('/lookup/editing')
+def lookup_editing():
+    prop_id = request.args.get('prop_id')
+    if not prop_id:
+        return "No Proposal ID provided", 400
+    return render_template('edit_extracted_answer_page.html', prop_id=prop_id)
+
 #Proposal Writing
 @app.route('/proposal/writing')
 def proposal_writing():
     return render_template('proposal_writing_page.html')
 
 #File upload routes
+@app.route('/upload_proposal', methods=['POST'])
+def upload_proposal():
+    if 'prop_file' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+    
+    file = request.files['prop_file']
+
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+    
+    title = request.form.get("title")
+
+    if not title:
+        return jsonify({"error": "Title missing"}), 400
+    
+    if file:
+        file_content = file.read()
+        full_text = file_processing.extract_text_from_html(file_content)
+        supabase = db_backend.get_supabase_connection()
+        result = db_backend.create_proposal(supabase, title, full_text)
+        if result is None:
+            return jsonify({"error": "Error creating Proposal in DB"}), 400
+        
+        # Get the prop_id from the result
+        prop_id = result[0]['prop_id']
+        
+        # Start parsing the rfp
+        parsing_thread = threading.Thread(target = ai_backend.parse_proposal_for_lookup, args = (full_text, prop_id))
+        parsing_thread.start()
+        
+
+        return jsonify({'redirect_url': url_for('lookup_editing', prop_id=prop_id)})
+
+
 @app.route('/upload_rfp', methods=['POST'])
 def upload_rfp():
     if 'rfp_file' not in request.files:
@@ -69,15 +111,40 @@ def upload_rfp():
             return jsonify({"error": "Error creating Proposal in DB"}), 400
         
         # Start parsing the rfp
-        # TODO make sure that the next page is rendered before the parsing is complete
         parsing_thread = threading.Thread(target = ai_backend.parse_rfp, args = (full_text, rfp_id))
         parsing_thread.start()
-        
-
-        # TODO Load the requirements editing page, passing the rfp_id
-        # Then when the page loads, call a function that gets the first requirement and displays it
+    
 
         return jsonify({'redirect_url': url_for('requirement_editing', rfp_id=rfp_id)})
+
+
+
+@app.route('/get_next_lookup', methods=['GET'])
+def get_next_lookup():
+    prop_id = request.args.get('prop_id')
+    look_id = request.args.get('look_id')
+
+    if not prop_id:
+        return jsonify({'error': 'Missing prop_id'}), 400
+    
+    if not look_id:
+        return jsonify({'error': 'Missing look_id'}), 400
+
+    # Get the next lookup based on prop_id and look_id
+    next_lookup = db_backend.get_next_lookup(db_backend.get_supabase_connection(), prop_id, look_id)
+
+    if next_lookup == -1:
+        # Next requirement isn't ready yet
+        return jsonify({'look_id': -1})
+    elif next_lookup:
+        return jsonify({
+            'look_id': next_lookup['look_id'],
+            'chunk_text': next_lookup['chunk_extracted_from'],
+            'answer_text': next_lookup['answer_text']
+        })
+    else:
+        # No more lookups
+        return jsonify({'look_id': 0})
 
 
 @app.route('/get_next_requirement', methods=['GET'])
@@ -248,6 +315,35 @@ def update_answer(answer_id):
 def delete_answer(answer_id):
     result = db_backend.delete_answer(db_backend.get_supabase_connection(), answer_id)
     return jsonify(result)
+
+#Lookup Functions
+@app.route('/lookup/<int:look_id>', methods=['PUT'])
+def update_lookup(look_id):
+    data = request.get_json()
+    if not data:
+        # Try to get form data if JSON is not available
+        data = request.form
+
+    answer_text = data.get('answer_text')
+
+    if not answer_text:
+        return jsonify({"error": "Missing parameters"}), 400
+
+    supabase = db_backend.get_supabase_connection()
+    success = db_backend.update_lookup(supabase, look_id, answer_text)
+
+    if success:
+        return jsonify({'status': 'success'})
+    else:
+        return jsonify({'error': 'Failed to update answer'}), 500
+    
+@app.route('/lookup/<int:look_id>', methods=['DELETE'])
+def delete_lookup(look_id):
+    result = db_backend.delete_lookup(db_backend.get_supabase_connection(), look_id)
+    if result:
+        return jsonify({"status": "success"})
+    else:
+        return jsonify({'status': 'failure'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

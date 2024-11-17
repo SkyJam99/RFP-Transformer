@@ -54,7 +54,7 @@ def extract_responses(messages):
 
 
 # Function for processing one chunk at a time and storing the generated answers in the database
-def process_chunk(chunk, overall_context, client, assistant_id, supabase, chunk_index, total_chunks):
+def process_chunk(chunk, overall_context, client, assistant_id, supabase, chunk_index, total_chunks, prop_id):
     # Create a new thread for each chunk
     thread = client.beta.threads.create()
     
@@ -101,7 +101,7 @@ def process_chunk(chunk, overall_context, client, assistant_id, supabase, chunk_
             req_description = answer.get("req_description", "N/A")
             keywords = answer.get("keywords", [])
             # Add the answer to the lookup database
-            create_lookup(supabase, req_description, verbatim_answer, keywords, overall_context, req_id=None, answer_id=None, chunk_extracted_from=chunk)
+            create_lookup(supabase, req_description, verbatim_answer, keywords, overall_context, req_id=None, answer_id=None, chunk_extracted_from=chunk, prop_id=prop_id)
             print(f"Extracted Answer #{i}:\n  Verbatim Answer: {verbatim_answer}\n  Requirement Description: {req_description}\n  Keywords: {', '.join(keywords)}\n")
             i += 1
     except Exception as e:
@@ -167,7 +167,7 @@ def parse_proposal_for_lookup(proposalText, prop_id, client=setup_GPT_client(), 
     # Process each chunk
     total_chunks = len(proposalChunks)
     for i, chunk in enumerate(proposalChunks):
-        process_chunk(chunk, overall_context_str, client, assistant_id, supabase, i, total_chunks)
+        process_chunk(chunk, overall_context_str, client, assistant_id, supabase, i, total_chunks, prop_id)
 
     # Generate a new lookup file based on everything in the database
     lookup_file_path = generate_lookup_file(supabase, "database_lookup.json")

@@ -46,6 +46,11 @@
             margin: 20px auto;
             max-width: 600px;
         }
+
+        /* Change background color when dragging a file over the area */
+        .upload-box.dragover {
+            background-color: #e0e0e0;
+        }
     </style>
     <body>
         <div class="bg-dark text-light min-vh-100">
@@ -69,11 +74,10 @@
 
                 <!-- Drag-and-Drop File Upload -->
                 <div class="upload-box">
-                    <p>Drag Here</p>
+                    <p>Drag Here or Click to Choose File</p>
+                    <input type="file" id="propFile" class="form-control" style="display: none;">
                 </div>
-                <div class="text-center mb-3">
-                    <p>Drag a or <a href="#">choose</a> a proposal in html format to parse it for answers</p>
-                </div>
+            
 
                 <!-- Proposal Title Input -->
                 <div class="mb-3">
@@ -83,8 +87,88 @@
 
                 <!-- Submit Button -->
                 <div class="text-center">
-                    <button class="btn btn-primary">Submit</button>
+                    <button id="submitButton" class="btn btn-primary">Submit and Parse</button>
                 </div>
+
+                <script>
+                    $(document).ready(function() {
+                        let uploadBox = $('.upload-box');
+                        let fileInput = $('#propFile');
+                        let droppedFiles = null;
+
+                        uploadBox.on('dragover', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            $(this).addClass('dragover');
+                        });
+
+                        uploadBox.on('dragleave', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            $(this).removeClass('dragover');
+                        });
+
+                        uploadBox.on('drop', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            $(this).removeClass('dragover');
+                            let files = e.originalEvent.dataTransfer.files;
+                            if (files.length > 0) {
+                                droppedFiles = files;
+                                $(this).find('p').text(files[0].name);
+                            }
+                        });
+
+                        uploadBox.click(function() {
+                            fileInput.click();
+                        });
+
+                        fileInput.on('change', function(e) {
+                            if (this.files.length > 0) {
+                                droppedFiles = this.files;
+                                uploadBox.find('p').text(this.files[0].name);
+                            }
+                        });
+
+                        $('#submitButton').click(function(e) {
+                            e.preventDefault();
+
+                            if (!droppedFiles || droppedFiles.length === 0) {
+                                alert("Please select a file.");
+                                return;
+                            }
+
+                            let title = $('#proposalTitle').val();
+                            
+                            if (!title) {
+                                alert("Please enter a title");
+                                return;
+                            }
+
+                            let formData = new FormData();
+                            formData.append("prop_file", droppedFiles[0]);
+                            formData.append("title", title);
+                            
+
+                            // AJAX request to upload the file
+                            $.ajax({
+                                url: "{{ url_for('upload_proposal') }}",
+                                type: "POST",
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: function(response) {
+                                    alert("File uploaded successfully.");
+                                    window.location.href = response.redirect_url;
+                                },
+                                error: function(response) {
+                                    alert("Error uploading file.");
+                                }
+                            });
+                        });
+                    });
+
+                </script>
             </div>
         </div>
     </body>
