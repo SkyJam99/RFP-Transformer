@@ -43,6 +43,23 @@ def lookup_editing():
 def proposal_writing():
     return render_template('proposal_writing_page.html')
 
+#Proposal Editing
+@app.route('/proposal/editing')
+def proposal_editing():
+    prop_id = request.args.get('prop_id')
+    if not prop_id:
+        return "No Proposal ID provided", 400
+    return render_template('proposal_editing_page.html', prop_id=prop_id)
+
+# Answer Editing
+@app.route('/answer/editing')
+def answer_editing():
+    prop_id = request.args.get('prop_id')
+    answer_id = request.args.get('answer_id')
+    if not answer_id or not prop_id:
+        return "No Proposal ID or Answer ID provided", 400
+    return render_template('answer_editing_page.html', prop_id=prop_id, answer_id=answer_id)
+
 #File upload routes
 @app.route('/upload_proposal', methods=['POST'])
 def upload_proposal():
@@ -110,8 +127,12 @@ def upload_rfp():
         if result is None:
             return jsonify({"error": "Error creating Proposal in DB"}), 400
         
+        proposal_title = "Proposal for " + title
+
+        client = ai_backend.setup_GPT_client()
+
         # Start parsing the rfp
-        parsing_thread = threading.Thread(target = ai_backend.parse_rfp, args = (full_text, rfp_id))
+        parsing_thread = threading.Thread(target = ai_backend.parse_rfp, args = (full_text, rfp_id, client, 20000, 3, proposal_title))
         parsing_thread.start()
     
 
@@ -173,6 +194,62 @@ def get_next_requirement():
     else:
         # No more requirements
         return jsonify({'req_id': 0})
+
+@app.route('/get_next_answer', methods=['GET'])
+def get_next_answer():
+    prop_id = request.args.get('prop_id')
+    answer_id = request.args.get('answer_id')
+
+    if not prop_id:
+        return jsonify({'error': 'Missing prop_id'}), 400
+    
+    if not answer_id:
+        return jsonify({'error': 'Missing answer_id'}), 400
+
+    # Get the next answer based on prop_id and answer_id
+    next_answer = db_backend.get_next_answer(db_backend.get_supabase_connection(), prop_id, answer_id)
+
+    if next_answer == -1:
+        # Error getting next answer or no more answers
+        return jsonify({'answer_id': -1})
+    elif next_answer:
+        return jsonify({
+            'answer_id': next_answer['answer_id'],
+            'req_text': next_answer['req_text'],
+            'answer_text': next_answer['answer_text'],
+            'potential_answers': next_answer['potential_answers']
+        })
+    else:
+        # No more answers
+        return jsonify({'answer_id': 0})
+    
+@app.route('/get_previous_answer', methods=['GET'])
+def get_previous_answer():
+    prop_id = request.args.get('prop_id')
+    answer_id = request.args.get('answer_id')
+
+    if not prop_id:
+        return jsonify({'error': 'Missing prop_id'}), 400
+    
+    if not answer_id:
+        return jsonify({'error': 'Missing answer_id'}), 400
+    
+    # Get the previous answer based on prop_id and answer_id
+    previous_answer = db_backend.get_previous_answer(db_backend.get_supabase_connection(), prop_id, answer_id)
+
+    if previous_answer == -1:
+        # Error getting previous answer or no more answers
+        return jsonify({'answer_id': -1})
+    elif previous_answer:
+        return jsonify({
+            'answer_id': previous_answer['answer_id'],
+            'req_text': previous_answer['req_text'],
+            'answer_text': previous_answer['answer_text'],
+            'potential_answers': previous_answer['potential_answers']
+        })
+    else:
+        # No more answers
+        return jsonify({'answer_id': 0})
 
 
 #CRUD Operations
@@ -264,8 +341,10 @@ def create_proposal():
 
 @app.route('/proposal', methods=['GET'])
 def get_proposals():
+    print("Getting proposals")
     result = db_backend.get_proposals(db_backend.get_supabase_connection())
-    return jsonify(result)
+    #print(result)
+    return jsonify({'proposals': result})
 
 @app.route('/proposal/<int:prop_id>', methods=['GET'])
 def get_proposal(prop_id):
@@ -300,10 +379,12 @@ def get_answer(answer_id):
     result = db_backend.get_answer_by_id(db_backend.get_supabase_connection(), answer_id)
     return jsonify(result)
 
-@app.route('/answer/<int:prop_id>', methods=['GET'])
+@app.route('/answer/proposal/<int:prop_id>', methods=['GET'])
 def get_answers_by_prop(prop_id):
     result = db_backend.get_answers_by_prop_id(db_backend.get_supabase_connection(), prop_id)
-    return jsonify(result)
+    print("Getting answers")
+    print(result)
+    return jsonify({'answers': result})
 
 @app.route('/answer/<int:answer_id>', methods=['PUT'])
 def update_answer(answer_id):

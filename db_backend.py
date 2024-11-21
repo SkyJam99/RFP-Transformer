@@ -83,6 +83,36 @@ def get_next_requirement(supabase, rfp_id, current_req_id):
         else:
             # Parsing is still in progress
             return -1
+        
+# Get next answer
+def get_next_answer(supabase, prop_id, current_answer_id):
+    if current_answer_id == 0:
+        # Get the first answer
+        response = supabase.table('answers').select('*').eq('prop_id', prop_id).order('answer_id', desc=False).limit(1).execute()
+    else:
+        # Get the next answer
+        response = supabase.table('answers').select('*').eq('prop_id', prop_id).gt('answer_id', current_answer_id).order('answer_id', desc=False).limit(1).execute()
+
+    if response.data:
+        # print(response.data[0])
+        return response.data[0]
+    else:
+        return 0
+    
+# Get previous answer
+def get_previous_answer(supabase, prop_id, current_answer_id):
+    if current_answer_id == 0:
+        # Get the last answer
+        response = supabase.table('answers').select('*').eq('prop_id', prop_id).order('answer_id', desc=True).limit(1).execute()
+    else:
+        # Get the previous answer
+        response = supabase.table('answers').select('*').eq('prop_id', prop_id).lt('answer_id', current_answer_id).order('answer_id', desc=True).limit(1).execute()
+
+    if response.data:
+        # print(response.data[0])
+        return response.data[0]
+    else:
+        return 0
 
 # Update RFP but only any of the fields that are not None
 def update_rfp(supabase, rfp_id, new_title=None, new_description=None, new_full_text=None, new_overall_context=None):
@@ -176,7 +206,9 @@ def create_proposal(supabase, prop_title, prop_full_text=None, rfp_id=None, prop
     return response.data
 
 def get_proposals(supabase):
+    # print("Getting proposals")
     response = supabase.table("proposals").select("*").execute()
+    # print(response.data)
     return response.data
 
 def get_proposal_by_id(supabase, prop_id):

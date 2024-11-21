@@ -247,7 +247,7 @@ def process_rfp_chunk(chunk, overall_context_str, client, assistant_id, supabase
         print(f"Error parsing JSON for chunk {chunk_index + 1}: {chunk_response_json}")
 
 # Function to control the parsing of an RFP, chunk the text, generate context, and process each chunk
-def parse_rfp(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=20000, chunk_overlap=3):
+def parse_rfp(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=20000, chunk_overlap=3, proposal_title="Test Proposal"):
     print("Parsing RFP")
     # Using the new chunking function
     rfp_chunks = chunk_text_v2(rfp_text, chunk_length, chunk_overlap)
@@ -304,7 +304,7 @@ def parse_rfp(rfp_text, rfp_id, client=setup_GPT_client(), chunk_length=20000, c
     update_rfp(supabase, rfp_id, None, None, None, overall_context_str)
 
     # Create proposal entry in the database
-    response = create_proposal(supabase, None, None, rfp_id)
+    response = create_proposal(supabase, proposal_title, None, rfp_id)
     prop_id = response[0].get("prop_id")
 
     print("Processing chunks now")
