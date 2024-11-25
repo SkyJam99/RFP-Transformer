@@ -49,7 +49,7 @@
             <h5>Editing: Proposal {{ prop_id }}</h5>
             <p>Choose which requirement you want to work on</p>
             <button id="findAnswersButton" class="btn btn-primary mx-2">Find Answers</button>
-            <button class="btn btn-primary mx-2">New Answer</button>
+            <button id="newAnswerButton" class="btn btn-primary mx-2">New Answer</button>
             <!-- TODO  include the Find Answers button -->
             
         </div>
@@ -74,7 +74,7 @@
 
         <!-- Download Button -->
         <div class="container text-center my-4">
-            <button class="btn btn-primary">Download Proposal</button>
+            <button id="downloadButton" class="btn btn-primary">Download Proposal</button>
         </div>
 
         <!-- JavaScript code -->
@@ -148,6 +148,36 @@
                             }
                         },
                     })
+                });
+
+
+                $('#downloadButton').click(function() {
+                    alert("Downloading proposal with ID: " + prop_id);
+                    window.location.href = "/answers/download/" + prop_id;
+                });
+
+                $('#newAnswerButton').click(function() {
+                    alert("Creating a new answer for proposal with ID: " + prop_id);
+                    $.ajax({
+                        url: "/answer",
+                        type: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify({
+                            "prop_id": prop_id
+                        }),
+                        success: function(response) {
+                            if (response.answer_id) {
+                                alert("New answer created with ID: " + response.answer_id);
+                                window.location.href = "/answer/editing?answer_id=" + encodeURIComponent(response.answer_id) + "&prop_id=" + encodeURIComponent(prop_id);
+                            } else {
+                                alert("No answer ID received.");
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error creating new answer:", error);
+                            alert("An error occurred while creating a new answer.");
+                        }
+                    });
                 });
 
                 // Load answers on page load

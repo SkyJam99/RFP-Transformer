@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, url_for, jsonify
+from flask import Flask, redirect, render_template, request, url_for, jsonify, make_response
 import ai_backend
 import db_backend
 import file_processing
@@ -386,11 +386,12 @@ def delete_proposal(prop_id):
     return jsonify(result)
 
 #Answer Functions
+# This create function will only create an empty answer associated with a specific proposal
 @app.route('/answer', methods=['POST'])
 def create_answer():
     answer = request.json
-    result = db_backend.create_answer(db_backend.get_supabase_connection(), answer['seq_order'], answer['answer_text'], answer['approved'], answer['prop_id'], answer['req_id'], answer['potential_answers'])
-    return jsonify(result)
+    result = db_backend.create_answer(db_backend.get_supabase_connection(), None, None, False, answer['prop_id'])
+    return jsonify(result[0])
 
 @app.route('/answer', methods=['GET'])
 def get_answers():
@@ -435,6 +436,19 @@ def delete_answer(answer_id):
     result = db_backend.delete_answer(db_backend.get_supabase_connection(), answer_id)
     return jsonify(result)
 
+#Download proposal TODO Complete this function so that it returns a text file with the proposal text
+@app.route('/answers/download/<int:prop_id>', methods=['GET'])
+def download_proposal(prop_id):
+    proposal_text = db_backend.get_all_answer_text_by_prop_id(db_backend.get_supabase_connection(), prop_id)
+    if not proposal_text:
+        return jsonify({"error": "Proposal not found"}), 404
+    
+    # turn the string into a text file the user can download
+    response = make_response(proposal_text)
+    response.headers.set('Content-Type', 'text/plain')
+    response.headers.set('Content-Disposition', 'attachment', filename=f'proposal_{prop_id}.txt')
+    return response
+
 #Lookup Functions
 @app.route('/lookup/<int:look_id>', methods=['PUT'])
 def update_lookup(look_id):
@@ -449,8 +463,8 @@ def update_lookup(look_id):
         return jsonify({"error": "Missing parameters"}), 400
 
     supabase = db_backend.get_supabase_connection()
-    # likely issue here
-    success = db_backend.update_lookup(supabase, look_id, answer_text)
+    # fixed the update_lookup function to take in the correct parameters
+    success = db_backend.update_lookup(supabase, look_id, None, answer_text)
 
     if success:
         return jsonify({'status': 'success'})

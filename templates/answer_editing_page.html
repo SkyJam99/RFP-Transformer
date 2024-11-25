@@ -91,7 +91,11 @@
                             //alert(response.answer_text);
                             //$('#requirementText').text(response.req_text);
                             $('#currentAnswer').text(response.answer_text);
-                            $('#suggestedAnswers').text(response.potential_answers);
+                            if(response.potential_answers == null || response.potential_answers == "" || response.potential_answers == "[]") {
+                                $('#suggestedAnswers').text('No suggested answers found.');
+                            } else {
+                                $('#suggestedAnswers').text(response.potential_answers);
+                            }
                             //alert('Loaded answer with ID: ' + current_answer_id);
                             //alert("response.req_id: " + response.req_id);
                             loadRequirementText(response.req_id);
@@ -112,7 +116,8 @@
                         $('#requirementText').text(response.req_text);
                     },
                     error: function() {
-                        alert('Error loading requirement text.');
+                        //alert('Error loading requirement text.');
+                        $('#requirementText').text("No requirement text found.");
                     }
                 });
             }

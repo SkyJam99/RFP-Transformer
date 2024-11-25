@@ -272,6 +272,15 @@ def get_answers_by_prop_id(supabase, prop_id):
     response = supabase.table("answers").select("*").eq("prop_id", prop_id).execute()
     return response.data
 
+# Function here that will call get_answers_by_prop_id, and then extract all the answer_text and return it as a single string
+def get_all_answer_text_by_prop_id(supabase, prop_id):
+    answers = get_answers_by_prop_id(supabase, prop_id)
+    answer_text = ""
+    for answer in answers:
+        if answer["answer_text"]:
+            answer_text += answer["answer_text"] + " \n\n"
+    return answer_text
+
 def update_answer(supabase, answer_id, seq_order=None, answer_text=None, approved=None, prop_id=None, req_id=None, potential_answers=None):
     update_data = {}
     if seq_order:
