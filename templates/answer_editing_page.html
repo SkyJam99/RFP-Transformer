@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Editing Answer</title>
-        <meta charset="UTF-8">
-        <meta name="author" content="Riley Meyers">
-        <meta name="last modified" content="13/11/2024">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    </head>
+<head>
+    <title>Editing Answer</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Riley Meyers">
+    <meta name="last modified" content="13/11/2024">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <style>
         body {
             font-family: 'Lato', sans-serif;
@@ -25,44 +22,219 @@
             background-color: #f8f9fa;
             padding: 10px;
             border-radius: 8px;
+            overflow-y: auto;
+            color: black;
         }
     </style>
-    <body class="bg-dark text-light">
-        <div class="container text-center">
-            <h1>Editing Answer</h1>
+    
+</head>
+<body class="bg-dark text-light">
+    <div class="container text-center">
+        <h1>Editing Answer</h1>
 
-            <!-- Navigation Buttons -->
-            <div class="my-4">
-                <button class="btn btn-primary mx-1">Previous Answer</button>
-                <button class="btn btn-primary mx-1">Proposal</button>
-                <button class="btn btn-primary mx-1">Next Answer</button>
+        <!-- Navigation Buttons -->
+        <div class="my-4">
+            <button id="previousAnswerButton" class="btn btn-primary mx-1">Previous Answer</button>
+            <button id="proposalButton" class="btn btn-primary mx-1">Proposal</button>
+            <button id="nextAnswerButton" class="btn btn-primary mx-1">Next Answer</button>
+        </div>
+
+        <!-- Editing Controls -->
+        <div>
+            <h5 id="proposalName">Editing: Proposal {{ prop_id }}</h5>
+            <button id="deleteButton" class="btn btn-primary mx-2 my-2">Delete</button>
+            <button id="approveButton" class="btn btn-primary mx-2 my-2">Approve</button>
+            <button id="saveButton" class="btn btn-primary mx-2 my-2">Save</button>
+        </div>
+
+        <!-- Requirement Info and Find Answers Button -->
+        <div class="my-3">
+            <p>Requirement: <span id="requirementText"></span></p>
+            
+        </div>
+
+        <!-- Suggested and Current Answers Section -->
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Suggested Answers</h5>
+                <div id="suggestedAnswers" class="text-area-box"></div>
             </div>
-
-            <!-- Editing Controls -->
-            <div>
-                <h5>Editing: Test Proposal</h5>
-                <button class="btn btn-primary mx-2 my-2">Delete</button>
-                <button class="btn btn-primary mx-2 my-2">Approve</button>
-                <button class="btn btn-primary mx-2 my-2">Save</button>
-            </div>
-
-            <!-- Requirement Info and Find Answers Button -->
-            <div class="my-3">
-                <p>Requirement: Example Requirement</p>
-                <button class="btn btn-primary">Find Answers</button>
-            </div>
-
-            <!-- Suggested and Current Answers Section -->
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Suggested Answers</h5>
-                    <div class="text-area-box"></div>
-                </div>
-                <div class="col-md-6">
-                    <h5>Current Answer</h5>
-                    <div class="text-area-box"></div>
-                </div>
+            <div class="col-md-6">
+                <h5>Current Answer</h5>
+                <div id="currentAnswer" class="text-area-box" contenteditable="true"></div>
             </div>
         </div>
-    </body>
+    </div>
+
+    <!-- JavaScript code -->
+    <script>
+        $(document).ready(function() {
+            const prop_id = "{{ prop_id }}";
+            let current_answer_id = "{{ answer_id }}";
+            //alert('Current answer ID: ' + current_answer_id);
+
+            // Function to load an answer by answer_id
+            function loadAnswer(answer_id) {
+                //alert('Loading answer with ID: ' + answer_id);
+                $.ajax({
+                    url: "/answer/" + answer_id,
+                    type: "GET",
+                    success: function(response) {
+                        console.log(response);
+                        if (response.answer_id == -1) {
+                            //$('#requirementText').text('No answer found.');
+                            $('#currentAnswer').text('');
+                        } else {
+                            //current_answer_id = response.answer_id;
+                            //alert(response);
+                            //alert(response.req_text);
+                            //alert(response.answer_text);
+                            //$('#requirementText').text(response.req_text);
+                            $('#currentAnswer').text(response.answer_text);
+                            $('#suggestedAnswers').text(response.potential_answers);
+                            //alert('Loaded answer with ID: ' + current_answer_id);
+                            //alert("response.req_id: " + response.req_id);
+                            loadRequirementText(response.req_id);
+                        }
+                    },
+                    error: function() {
+                        alert('Error loading answer.');
+                    }
+                });
+            }
+
+            function loadRequirementText(req_id) {
+                $.ajax({
+                    url: "/requirement/text/" + req_id,
+                    type: "GET",
+                    success: function(response) {
+                        //alert('Requirement text: ' + response.req_text);
+                        $('#requirementText').text(response.req_text);
+                    },
+                    error: function() {
+                        alert('Error loading requirement text.');
+                    }
+                });
+            }
+
+            // Load the current answer on page load
+            loadAnswer(current_answer_id);
+
+            // Handle Next Answer button click
+            $('#nextAnswerButton').click(function() {
+                $.ajax({
+                    url: "/get_next_answer",
+                    type: "GET",
+                    data: {
+                        'prop_id': prop_id,
+                        'answer_id': current_answer_id
+                    },
+                    success: function(response) {
+                        if (response.answer_id == -1 || response.answer_id == 0) {
+                            alert('No more answers.');
+                        } else {
+                            current_answer_id = response.answer_id;
+                            loadAnswer(current_answer_id);
+                        }
+                    },
+                    error: function() {
+                        alert('Error loading next answer.');
+                    }
+                });
+            });
+
+            // Handle Previous Answer button click
+            $('#previousAnswerButton').click(function() {
+                $.ajax({
+                    url: "/get_previous_answer",
+                    type: "GET",
+                    data: {
+                        'prop_id': prop_id,
+                        'answer_id': current_answer_id
+                    },
+                    success: function(response) {
+                        if (response.answer_id == -1 || response.answer_id == 0) {
+                            alert('No previous answers.');
+                        } else {
+                            current_answer_id = response.answer_id;
+                            loadAnswer(current_answer_id);
+                        }
+                    },
+                    error: function() {
+                        alert('Error loading previous answer.');
+                    }
+                });
+            });
+
+            // Handle Delete button click
+            $('#deleteButton').click(function() {
+                if (confirm('Are you sure you want to delete this answer?')) {
+                    $.ajax({
+                        url: "/answer/" + current_answer_id,
+                        type: "DELETE",
+                        success: function(response) {
+                            alert('Answer deleted.');
+                            // Load the next answer
+                            $('#nextAnswerButton').click();
+                        },
+                        error: function() {
+                            alert('Error deleting answer.');
+                        }
+                    });
+                }
+            });
+
+            // Handle Approve button click
+            $('#approveButton').click(function() {
+                let data = {
+                    'approved': true
+                };
+                alert('Approving answer with ID: ' + current_answer_id);
+                $.ajax({
+                    url: "/answer/approve/" + current_answer_id,
+                    type: "PUT",
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function(response) {
+                        alert('Answer approved.');
+                    },
+                    error: function() {
+                        alert('Error approving answer.');
+                    }
+                });
+            });
+
+            // Handle Save button click
+            $('#saveButton').click(function() {
+                let updatedAnswerText = $('#currentAnswer').text();
+                let data = {
+                    'answer_text': updatedAnswerText
+                };
+                alert('Saving answer with ID: ' + current_answer_id);
+                $.ajax({
+                    url: "/answer/text/" + current_answer_id,
+                    type: "PUT",
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function(response) {
+                        alert('Answer saved.');
+                    },
+                    error: function() {
+                        alert('Error saving answer.');
+                    }
+                });
+            });
+
+            // Handle Proposal button click
+            $('#proposalButton').click(function() {
+                window.location.href = "/proposal/editing?prop_id=" + prop_id;
+            });
+
+            // TODO Handle Find Answers button click
+            // $('#findAnswersButton').click(function() {
+            //     // Implement find answers functionality
+            // });
+        });
+    </script>
+</body>
 </html>

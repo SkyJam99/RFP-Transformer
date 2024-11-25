@@ -79,6 +79,7 @@
                                 
                                 window.location.href = "{{ url_for('proposal_writing') }}";
                             } else {
+                                //alert(response.look_id);
                                 current_look_id = response.look_id;
                                 $('#chunkText').text(response.chunk_text);
 
@@ -93,8 +94,8 @@
     
                 // Function to approve answer
                 function approveAnswer() {
+                    //alert("Approve button clicked.");
                     let data = {
-                        "look_id": look_id,
                         "answer_text": $('#answerText').text()
                     };
                     

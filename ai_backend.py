@@ -470,18 +470,25 @@ def process_requirement(requirement, prop_id, overall_context, client, assistant
         print(f"Error parsing JSON for requirement ID {requirement_id}: {e}")
         return
 
-    # Step 5: Update the database with the selected answers
-    # TODO, include the remaining details in the answer update
-    print(f"Updating database with selected answers for requirement ID {requirement_id}...")
-    print(update_answer(supabase, answer_id, None, None, None, prop_id, req_id, selected_lookup_ids))
+    # Get the potential answers text for the selected lookup ids and append to potential answers
+    index = 1
+    potential_answers = []
 
-    # For debugging purposes, print the selected answers
     for lookup_id in selected_lookup_ids:
         answer = next((ans for ans in full_answers if str(ans.get("look_id")) == str(lookup_id)), None)
         if answer:
+            potential_answers.append(str(index) + ". " + str(answer.get("answer_text")) + "\n")
+            index += 1
             print(f"Selected Answer for Requirement ID {requirement_id}:\n{answer}")
         else:
             print(f"Lookup ID {lookup_id} not found in potential answers for requirement ID {requirement_id}")
+
+    # Step 5: Update the database with the selected answers
+    # TODO, include the remaining details in the answer update
+    print(f"Updating database with selected answers for requirement ID {requirement_id}...")
+    print(update_answer(supabase, answer_id, None, None, None, prop_id, req_id, str(potential_answers)))
+
+    
 
 # Function to manage the overall process
 def find_existing_requirement_answers(rfp_id, prop_id, client=setup_GPT_client()):
@@ -502,10 +509,11 @@ def find_existing_requirement_answers(rfp_id, prop_id, client=setup_GPT_client()
 
     # Step 2 to 5: Process each requirement
     for requirement in requirements:
-        answer = get_answer_by_req_id(supabase, requirement.get("req_id"))
+        req_id = requirement.get("req_id")
+        answer = get_answer_by_req_id(supabase, req_id)
         print(answer)
         answer_id = answer[0]['answer_id']
-        process_requirement(requirement, prop_id, overall_context, client, assistant_id_lookup, assistant_id_parser, supabase, answer_id)
+        process_requirement(requirement, prop_id, overall_context, client, assistant_id_lookup, assistant_id_parser, supabase, answer_id, req_id)
 
     # TODO Set proposal status to complete
     update_proposal_status(supabase, prop_id, "complete")

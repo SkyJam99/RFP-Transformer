@@ -87,7 +87,7 @@
                             type: "GET",
                             success: function(response) {
                                 if (response.proposals) {
-                                    alert("Proposals found.");
+                                    //alert("Proposals found.");
                                     populateProposalTable(response.proposals);
                                 } else {
                                     alert("No proposals found.");
@@ -104,13 +104,18 @@
                     function populateProposalTable(proposals) {
                         var tbody = $('#proposalTableBody');
                         tbody.empty(); 
-        
+                        
+                        proposals.sort(function(a, b) {
+                            return b.prop_id - a.prop_id;
+                        });
+
+
                         proposals.forEach(function(proposal, index) {
                             var row = $('<tr></tr>');
                             row.append('<td>' + (proposal.prop_id) + '</td>');
                             row.append('<td>' + proposal.prop_title + '</td>');
                             row.append('<td><button class="btn btn-primary edit-button" data-id="' + proposal.prop_id + '">Edit</button></td>');
-                            tbody.prepend(row);
+                            tbody.append(row);
                         });
         
                         // Attach click event to Edit buttons

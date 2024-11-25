@@ -48,8 +48,10 @@
         <div class="container text-center my-4">
             <h5>Editing: Proposal {{ prop_id }}</h5>
             <p>Choose which requirement you want to work on</p>
-            <button class="btn btn-primary mx-2">Find Answers</button>
+            <button id="findAnswersButton" class="btn btn-primary mx-2">Find Answers</button>
             <button class="btn btn-primary mx-2">New Answer</button>
+            <!-- TODO  include the Find Answers button -->
+            
         </div>
 
         <!-- Answer Table -->
@@ -58,6 +60,7 @@
                 <thead>
                     <tr>
                         <th>Order</th>
+                        <th>Answer ID</th>
                         <th>Answer Text</th>
                         <th>Approved</th>
                         <th></th>
@@ -101,9 +104,14 @@
                     var tbody = $('#answersTableBody');
                     tbody.empty();  // Clear existing content
 
+                    answers.sort(function(a, b) {
+                        return a.answer_id - b.answer_id;
+                    });
+
                     answers.forEach(function(answer, index) {
                         var row = $('<tr></tr>');
                         row.append('<td>' + (index + 1) + '</td>');
+                        row.append('<td>' + answer.answer_id + '</td>');
                         if (answer.answer_text == null) {
                             answer.answer_text = "";
                         }
@@ -126,6 +134,21 @@
                     });
 
                 }
+
+                $('#findAnswersButton').click(function() {
+                    alert("Finding answers for proposal with ID: " + prop_id);
+                    $.ajax({
+                        url: "/match_requirements/" + prop_id,
+                        type: "PUT",
+                        success: function(response) {
+                            if (response.message) {
+                                alert(response.message);
+                            } else {
+                                alert("No message received.");
+                            }
+                        },
+                    })
+                });
 
                 // Load answers on page load
                 loadAnswers();

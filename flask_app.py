@@ -213,11 +213,14 @@ def get_next_answer():
         # Error getting next answer or no more answers
         return jsonify({'answer_id': -1})
     elif next_answer:
+        # req_text = db_backend.get_requirement_by_id(db_backend.get_supabase_connection(), next_answer['req_id'])[0]['req_text']
+        # print("Requirement text: ", req_text)
+
         return jsonify({
-            'answer_id': next_answer['answer_id'],
-            'req_text': next_answer['req_text'],
-            'answer_text': next_answer['answer_text'],
-            'potential_answers': next_answer['potential_answers']
+            'answer_id': next_answer['answer_id']
+            # 'req_text': req_text,
+            # 'answer_text': next_answer['answer_text'],
+            # 'potential_answers': next_answer['potential_answers']
         })
     else:
         # No more answers
@@ -241,15 +244,29 @@ def get_previous_answer():
         # Error getting previous answer or no more answers
         return jsonify({'answer_id': -1})
     elif previous_answer:
+        # req_text = db_backend.get_requirement_by_id(db_backend.get_supabase_connection(), previous_answer['req_id'])[0]['req_text']
+        # print("Requirement text: ", req_text)
+
         return jsonify({
-            'answer_id': previous_answer['answer_id'],
-            'req_text': previous_answer['req_text'],
-            'answer_text': previous_answer['answer_text'],
-            'potential_answers': previous_answer['potential_answers']
+            'answer_id': previous_answer['answer_id']
+            # 'req_text': req_text,
+            # 'answer_text': previous_answer['answer_text'],
+            # 'potential_answers': previous_answer['potential_answers']
         })
     else:
         # No more answers
         return jsonify({'answer_id': 0})
+
+@app.route('/match_requirements/<int:prop_id>', methods=['PUT'])
+def match_requirements(prop_id):
+    rfp_id = db_backend.get_proposal_by_id(db_backend.get_supabase_connection(), prop_id)[0]['rfp_id']
+
+    parsing_thread = threading.Thread(target = ai_backend.find_existing_requirement_answers, args = (rfp_id, prop_id))
+    parsing_thread.start()
+
+    print("Matching requirements in process")
+
+    return jsonify({'status': 'success'})
 
 
 #CRUD Operations
@@ -298,6 +315,12 @@ def get_requirements():
 def get_requirement(req_id):
     result = db_backend.get_requirement_by_id(db_backend.get_supabase_connection(), req_id)
     return jsonify(result)
+
+@app.route('/requirement/text/<int:req_id>', methods=['GET'])
+def get_requirement_text(req_id):
+    result = db_backend.get_requirement_by_id(db_backend.get_supabase_connection(), req_id)
+    print("Getting requirement: ", result)
+    return jsonify(result[0])
 
 @app.route('/requirement/<int:rfp_id>', methods=['GET'])
 def get_requirements_by_rfp(rfp_id):
@@ -377,7 +400,9 @@ def get_answers():
 @app.route('/answer/<int:answer_id>', methods=['GET'])
 def get_answer(answer_id):
     result = db_backend.get_answer_by_id(db_backend.get_supabase_connection(), answer_id)
-    return jsonify(result)
+    print("Getting answer")
+    print(result[0])
+    return jsonify(result[0])
 
 @app.route('/answer/proposal/<int:prop_id>', methods=['GET'])
 def get_answers_by_prop(prop_id):
@@ -389,7 +414,20 @@ def get_answers_by_prop(prop_id):
 @app.route('/answer/<int:answer_id>', methods=['PUT'])
 def update_answer(answer_id):
     answer = request.json
+    print(answer)
     result = db_backend.update_answer(db_backend.get_supabase_connection(), answer_id, answer['seq_order'], answer['answer_text'], answer['approved'], answer['prop_id'], answer['req_id'], answer['potential_answers'])
+    print(result)
+    return jsonify(result)
+
+@app.route('/answer/text/<int:answer_id>', methods=['PUT'])
+def update_answer_text(answer_id):
+    answer = request.json
+    result = db_backend.update_answer(db_backend.get_supabase_connection(), answer_id, None, answer['answer_text'])
+    return jsonify(result)
+
+@app.route('/answer/approve/<int:answer_id>', methods=['PUT'])
+def approve_answer(answer_id):
+    result = db_backend.update_answer(db_backend.get_supabase_connection(), answer_id, None, None, True)
     return jsonify(result)
 
 @app.route('/answer/<int:answer_id>', methods=['DELETE'])
@@ -411,6 +449,7 @@ def update_lookup(look_id):
         return jsonify({"error": "Missing parameters"}), 400
 
     supabase = db_backend.get_supabase_connection()
+    # likely issue here
     success = db_backend.update_lookup(supabase, look_id, answer_text)
 
     if success:
