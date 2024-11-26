@@ -123,9 +123,9 @@ def upload_rfp():
         rfp_id = result[0]['rfp_id']
         
         # Create new proposal for this rfp
-        result = db_backend.create_proposal(supabase, f"Proposal for {title}", None, rfp_id)
-        if result is None:
-            return jsonify({"error": "Error creating Proposal in DB"}), 400
+        # result = db_backend.create_proposal(supabase, f"Proposal for {title}", None, rfp_id)
+        # if result is None:
+        #     return jsonify({"error": "Error creating Proposal in DB"}), 400
         
         proposal_title = "Proposal for " + title
 
