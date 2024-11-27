@@ -127,7 +127,7 @@
                         var answer_id = $(this).data('id'); // Get the Answer ID from the button
                         var prop_id = $(this).data('prop-id');
                         
-                        alert("Editing answer with ID: " + answer_id + " for proposal with ID: " + prop_id);
+                        //alert("Editing answer with ID: " + answer_id + " for proposal with ID: " + prop_id);
                         
                         // Redirect to the Flask endpoint with both answer_id and prop_id as query parameters
                         window.location.href = "/answer/editing?answer_id=" + encodeURIComponent(answer_id) + "&prop_id=" + encodeURIComponent(prop_id);
@@ -141,18 +141,14 @@
                         url: "/match_requirements/" + prop_id,
                         type: "PUT",
                         success: function(response) {
-                            if (response.message) {
-                                alert(response.message);
-                            } else {
-                                alert("No message received.");
-                            }
+                            alert("Finding Answers")
                         },
                     })
                 });
 
 
                 $('#downloadButton').click(function() {
-                    alert("Downloading proposal with ID: " + prop_id);
+                    //alert("Downloading proposal with ID: " + prop_id);
                     window.location.href = "/answers/download/" + prop_id;
                 });
 
